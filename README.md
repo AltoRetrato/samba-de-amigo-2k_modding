@@ -11,4 +11,11 @@ Here you'll find information and tools to help you mod "Samba de Amigo: Ver. 200
  - [description of all files in the Samba de Amigo ver. 2000 GDI image](docs/list%20of%20Sda2K%20files.txt) (including Japanese to English translations).
  
  #### To-do
- - [ ] create GUI Python script to simplify GDI modding.
+ - [ ] create GUI Python script to simplify GDI modding:
+   - [ ] include [gditools Python library](https://sourceforge.net/projects/dcisotools/) to manipulate GDI images.
+   - [ ] include / port other libraries to manipulate sound & image files.
+   - [ ] create option to enable "downloaded" songs (saving time & VMU space).
+   - [ ] create option to change save file name (so you can have a save for each pack of songs).
+   - [ ] create a beatmap viewer / editor.
+   - [ ] enable (semi-)automatic importing of songs from Wii version, Shakatto Tambourine (Naomi), MiniMoni. Shakatto Tambourine! Dapyon! (PS)
+   - [ ] enable conversion of songs from other rhythm games, such as StepMania, etc.
