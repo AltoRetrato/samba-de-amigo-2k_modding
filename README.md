@@ -1,6 +1,6 @@
 ## Samba de Amigo Ver. 2000: modding tools and information.
 <div class="separator" style="clear: both; text-align: center;">
-![Samba de Amigo](docs/title.png)
+<img border="0" src="https://4.bp.blogspot.com/-Zw72KfRhqlE/V3-MFVjcyKI/AAAAAAAAGz0/xaSNho4IKuYsV9Vz_XbQJuhChpx9WMdcwCPcBGAYYCw/s200/futuros_confirmados.jpg" width="200" height="141" data-original-width="528" data-original-height="371" />
 </div>
 
 [Samba de Amigo](https://en.wikipedia.org/wiki/Samba_de_amigo) is a rhythm game developed by Sonic Team and published by Sega. There are versions for arcade machines, Dreamcast and Wii consoles.
