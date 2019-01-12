@@ -626,8 +626,8 @@ def filePicker(amg):
     print()
     if fi:
         fi = int(fi)
-        if 0 <= fi < len(fns):
-            return fns[fi]
+        if 1 <= fi <= len(fns):
+            return fns[fi-1]
     return None
 
 
