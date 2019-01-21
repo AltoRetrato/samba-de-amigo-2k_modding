@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 # By Ricardo Mendonça Ferreira - ric@mpcnet.com.br
 
-# 2019.01.11  0.1  1st public release
-# 2019.01.04  0.0  1st version
+# 2019.01.21  0.2  More complete file structure definition, better regex selection,
+#                  block picker, block analysis, output selection for conversion.
+# 2019.01.11  0.1  1st public release.
+# 2019.01.04  0.0  1st version.
 
 import os
 import re
@@ -16,7 +18,7 @@ from subprocess import run
 from samba_de_amigo_amg_dc  import SambaDeAmigoAmgDc
 from samba_de_amigo_amg_wii import SambaDeAmigoAmgWii
 
-__version__ = "0.1"
+__version__ = "0.2"
 
 # Please set the correct paths below:
 ffmpeg     = r"C:\Program Files\ffmpeg\bin\ffmpeg.exe"                             # path to ffmpeg
@@ -116,7 +118,7 @@ def readAllAMG(path, amg_dict):
     #return amg_dict
 
 
-def blocks_overview(fn, data):
+def blocks_overview(fn, data, block_name_regex=".*"):
     """List block names and sizes for the given .AMG file."""
     print(f" {len(data):7,} {fn:22} | ", end="")
     i = 0
@@ -135,11 +137,15 @@ def blocks_overview(fn, data):
     while True:
         name = unpack(mask, data[i:i+4])[0]
         name = pack("<I", name).decode()
-        if name == "END_": break
+        if name == "END_":
+            if re.match(block_name_regex, name):
+                print(f"{name}", end=" ")
+            break
         i += 4
         size = unpack(mask, data[i:i+4])[0]
         i += 4 + size
-        print(f"{name} {size:5}, ", end=" ")
+        if re.match(block_name_regex, name):
+            print(f"{name} {size:5}, ", end=" ")
         if i >= len(data): break
     print()
 
@@ -152,9 +158,11 @@ def dump(fn, data, block_name_regex=None):
     head = data[0:4].decode()
     if   head == "HEAD": # Dreamcast == little-endian
         print("[DC]")
+        is_dc = True
         amg = SambaDeAmigoAmgDc.from_bytes(data)
     elif head == "DAEH": # Wii == big-endian
         print("[Wii]")
+        is_dc = False
         amg = SambaDeAmigoAmgWii.from_bytes(data)
     else:
         print("-> Wrong head format:", head)
@@ -176,40 +184,38 @@ def dump(fn, data, block_name_regex=None):
         if name == "HEAD":
             print("      {n:08X} | {n} entries".format(n=block.block_data.num_entries))
             for frame in block.block_data.entries:
-                print(f"      {frame:08X} | frame {frame:4} ({frame/60:6.2f} s)")
+                print(f"      {frame:08X} | frame {frame:5} ({frame/60:6.2f} s)")
         elif name == "ACT_":
             print("      {n:08X} | Act number {n}".format(n=block.block_data.act_num))
             print("      {n:08X} | {n} entries".format(n=block.block_data.num_entries))
             for entry in block.block_data.entries:
                 f = entry.frame
-                print(f"      {f:08X} | frame {f:4} ({f/60:6.2f} s) ", end="")
-                print("{:08X} ". format(entry.dword1), end="")
-                print("{:08X} ". format(entry.dword2), end="")
-                print("{:08X} [".format(entry.dword3 & 0xFFFFFFFF), end="")
-                print("{}, ".format(entry.dword1), end="")
-                print("{}, ".format(entry.dword2), end="")
-                print("{}]". format(entry.dword3))
+                print(f"      {f:08X} | frame {f:4} ({f/60:6.2f} s), ", end="")
+                print(f"move {entry.dance_move:02X}, ",   end="")
+                print(f"speed {entry.dance_speed:02X}, ", end="")
+                print(f"cycle size {entry.cycle_size:04X}, ", end="")
+                print(f"X Y Z: {entry.actor_x & 0xFFFF:04X} {entry.actor_y & 0xFFFF:04X} {entry.actor_z & 0xFFFF:04X}, ", end="")
+                print(f"unknown {entry.unknown & 0xFFFF:04X}")
         elif name == "CAM_":
             print("      {n:08X} | {n} entries".format(n=block.block_data.num_entries))
             for entry in block.block_data.entries:
                 f = entry.frame
                 print(f"      {f:08X} | frame {f:4} ({f/60:6.2f} s) ", end="")
-                print("{:08X} ". format(entry.dword1), end="")
-                print("{:08X} ". format(entry.dword2 & 0xFFFFFFFF), end="")
-                print("{:08X} ". format(entry.dword3 & 0xFFFFFFFF), end="")
-                print("{:08X} ". format(entry.dword4 & 0xFFFFFFFF), end="")
-                print("{:08X} ". format(entry.dword5 & 0xFFFFFFFF), end="")
-                print("{:08X} ". format(entry.dword6), end="")
-                print("{:08X} [".format(entry.dword7 & 0xFFFFFFFF), end="")
-                print("{}, ".format(entry.dword1), end="")
-                print("{}, ".format(entry.dword2), end="")
-                print("{}, ".format(entry.dword3), end="")
-                print("{}, ".format(entry.dword4), end="")
-                print("{}, ".format(entry.dword5), end="")
-                print("{}, ".format(entry.dword6), end="")
-                print("{}]". format(entry.dword7))
+                if is_dc:
+                    print(f"terminus: {entry.terminus.name:5} [{entry.terminus.value}], ", end="")
+                    print(f"speed: [{entry.transition_speed:2}], ", end="")
+                    print(f"cam. X,Y,Z: [{entry.camera_x:4},{entry.camera_y:4},{entry.camera_z:4}] ", end="")
+                    print(f"target X,Y,Z: [{entry.target_x:4},{entry.target_y:4},{entry.target_z:4}]")
+                else:
+                    print(f"{entry.dword1 &0xFFFFFFFF:08X} ", end="")
+                    print(f"{entry.dword2 &0xFFFFFFFF:08X} ", end="")
+                    print(f"{entry.dword3 &0xFFFFFFFF:08X} ", end="")
+                    print(f"{entry.dword4 &0xFFFFFFFF:08X} ", end="")
+                    print(f"{entry.dword5 &0xFFFFFFFF:08X} ", end="")
+                    print(f"{entry.dword6 &0xFFFFFFFF:08X} ", end="")
+                    print(f"{entry.dword7 &0xFFFFFFFF:08X}")
         elif name in set(["EASY","HARD","NORM","SUPR","DA_E","DA_H","DA_N","DA_S"]):
-            print("      {n:08X} | Player {p}".format(n=block.block_data.player_number.value, p=block.block_data.player_number.name))
+            print("      {n:08X} | Player {p}".format(n=block.block_data.player_number, p=block.block_data.player_number+1))
             print("      {n:08X} | {n} max amigo points".format(n=block.block_data.max_amigo_points))
             print("      {n:08X} | {n} commands".format(n=block.block_data.num_commands))
             for cmd in block.block_data.commands:
@@ -253,7 +259,7 @@ def dump_old(fn, data, block_name_regex=None):
         else:
             out = print
         out(f"   {name}", end="")
-        if name == "END_": 
+        if name == "END_":
             print()
             break
         i += 4
@@ -270,7 +276,7 @@ def dump_old(fn, data, block_name_regex=None):
             elif name == "ACT_":
                 if   num == 0: out(f"      {dword:08X} | Act number {dword}")
                 elif num == 1: out(f"      {dword:08X} | {dword} entries")
-                else       : 
+                else       :
                     out(f"      {dword:08X} | frame {dword:4} ({dword/60:6.2f} s) ", end="")
                     #if dword == 0 and num != 2:
                     #    i += 4
@@ -279,7 +285,7 @@ def dump_old(fn, data, block_name_regex=None):
                     l1 = []
                     l2 = []
                     for j in range(3):
-                        i += 4; 
+                        i += 4;
                         dword = unpack(mask, data[i:i+4])[0]
                         value = unpack('i', pack('<I', dword))[0]
                         l1.append(f"{dword:08X}")
@@ -287,7 +293,7 @@ def dump_old(fn, data, block_name_regex=None):
                     out(" ".join(l1), f" [{', '.join(l2)}]")
             elif name == "CAM_":
                 if   num == 0: out(f"      {dword:08X} | {dword} entries")
-                else       : 
+                else       :
                     out(f"      {dword:08X} | frame {dword:4} ({dword/60:6.2f} s) ", end="")
                     if dword == 0 and num != 1:
                         i += 4
@@ -296,7 +302,7 @@ def dump_old(fn, data, block_name_regex=None):
                     l1 = []
                     l2 = []
                     for j in range(7):
-                        i += 4; 
+                        i += 4;
                         dword = unpack(mask, data[i:i+4])[0]
                         value = unpack('i', pack('<I', dword))[0]
                         l1.append(f"{dword:08X}")
@@ -344,7 +350,7 @@ def search_cmd(fn, data, cmd):
     while True:
         name = unpack(mask, data[i:i+4])[0]
         name = pack("<I", name).decode()
-        if name == "END_": 
+        if name == "END_":
             break
         i += 4
         size = unpack(mask, data[i:i+4])[0]
@@ -399,20 +405,28 @@ def convert_audio(fnWii, fnDC):
 
 class Dword_Buffer():
     """Helper class for file conversion."""
-    
+
     def __init__(self):
         self.data = []
         self.current_size = 0
         self.final_size   = 0
-    
+
     def set_final_size(self, value):
         self.current_size = 0
         self.final_size   = value
-    
+
     def b(self, value):
         """Store a Python binary."""
         self.data.append(value)
         self.current_size += len(value)
+
+    def y(self, value):
+        """Store a Python number as a byte."""
+        self.b(pack("<B", value & 0xFFFF))
+
+    def w(self, value):
+        """Store a Python number as binary word."""
+        self.b(pack("<H", value & 0xFFFF))
 
     def i(self, value):
         """Store a Python integer as binary dword."""
@@ -431,10 +445,30 @@ class Dword_Buffer():
         return b"".join(self.data)
 
 
-def convert(fn, data, hack_data=None):
+def overwrite_picker():
+    filenames = {
+        "1" : {"amg": "VAMOS_A_CARNAVAL.AMG", "adx": "", "title": "Vamos a Carnaval (Mexican Hat stage)"},
+        "2" : {"amg": "VOLARE.AMG",           "adx": "", "title": "Volare (Island stage)"               },
+        "3" : {"amg": "TUBTHUMPING.AMG",      "adx": "", "title": "Tubthumping (Boulevard stage)"       },
+        "4" : {"amg": "MAMBOBEAT.AMG",        "adx": "", "title": "Mambo Beat (TV Studio stage)"        },
+    }
+    for i in sorted(filenames):
+        print(f"    {i}. {filenames[i]['title']}")
+    print()
+    fn = input("File number to overwrite: ")
+    print()
+    if fn and fn in filenames:
+        return filenames[fn]["amg"], filenames[fn]["adx"]
+    return None, None
+
+
+def convert(fn, data, all_amg_data):
     """Convert an Wii's .AMG file to the Dreamcast format."""
+    amg_out, adx_out = overwrite_picker()
+    if not amg_out: return
     fnWii = os.path.join(wii_amg, fn)
-    fnOut = os.path.join(dc_path, "VAMOS_A_CARNAVAL.AMG")
+    fnOut = os.path.join(dc_path, amg_out)
+    hack_data = all_amg_data[amg_out]
     yn = input(f"""Will convert [{fnWii}]
 and write to [{fnOut}]
 OK? (Y/N) """)
@@ -445,12 +479,13 @@ OK? (Y/N) """)
         # "Hack" to replace some blocks in the Wii file with blocks from a Dreamcast .AMG
         hack_blocks = None
         if hack_data:
+            print("** Block hacking enabled ** - I'll replace some Wii blocks with Dreamcast ones.")
             hack = SambaDeAmigoAmgDc.from_bytes(hack_data)
             hack_blocks = { b"HEAD_": [], b"ACT_": [], b"CAM_": [] }
             for block in hack.blocks:
                 block_name = block.block_name.name.upper().encode()
                 if block_name in hack_blocks:
-                    hack_blocks[block_name].append(block)                    
+                    hack_blocks[block_name].append(block)
 
         for block in amg.blocks:
             # block name
@@ -479,24 +514,39 @@ OK? (Y/N) """)
                 out.i(block.block_data.num_entries)
                 for entry in block.block_data.entries:
                     out.i(entry.frame )
-                    out.i(entry.dword1)
-                    out.i(entry.dword2)
-                    out.i(entry.dword3)
+                    out.y(entry.dance_move)
+                    out.y(entry.dance_speed)
+                    out.w(entry.cycle_size)
+                    out.w(entry.actor_x)
+                    out.w(entry.actor_y)
+                    out.w(entry.actor_z)
+                    out.w(entry.unknown)
                 out.pad()
             elif block_name == b"CAM_":
                 out.i(block.block_data.num_entries)
                 for entry in block.block_data.entries:
                     out.i(entry.frame )
-                    out.i(entry.dword1)
-                    out.i(entry.dword2)
-                    out.i(entry.dword3)
-                    out.i(entry.dword4)
-                    out.i(entry.dword5)
-                    out.i(entry.dword6)
-                    out.i(entry.dword7)
+                    # DC and Wii have different structures and values in the CAM_ block, do let's deal with each case differently.
+                    if hasattr(entry, "dword1"):
+                        out.i(entry.dword1)
+                        out.i(entry.dword2)
+                        out.i(entry.dword3)
+                        out.i(entry.dword4)
+                        out.i(entry.dword5)
+                        out.i(entry.dword6)
+                        out.i(entry.dword7)
+                    else:
+                        out.w(entry.terminus.value)
+                        out.w(entry.transition_speed)
+                        out.i(entry.camera_x)
+                        out.i(entry.camera_y)
+                        out.i(entry.camera_z)
+                        out.i(entry.target_x)
+                        out.i(entry.target_y)
+                        out.i(entry.target_z)
                 out.pad()
             elif block_name in set([b"EASY",b"HARD",b"NORM",b"SUPR",b"DA_E",b"DA_H",b"DA_N",b"DA_S"]):
-                out.i(block.block_data.player_number.value)
+                out.i(block.block_data.player_number)
                 out.i(block.block_data.max_amigo_points)
                 out.i(block.block_data.num_commands)
                 for cmd in block.block_data.commands:
@@ -508,7 +558,7 @@ OK? (Y/N) """)
         open(fnOut,"wb").write(out.data_bytes())
         fnWii = os.path.join(wii_stream, fn)
         fnWii = os.path.splitext(fnWii)[0] + ".brstm"
-        fnDC  = os.path.splitext(fnOut)[0] + ".ADX"
+        fnDC  = os.path.splitext(fnOut)[0] + ".ADX" # FIX-ME: use adx_out instead...
         convert_audio(fnWii, fnDC)
         print("Conversion done! You can rebuild your GDI now.")
 
@@ -525,15 +575,15 @@ def convert_old(fn, data):
             # block name
             block_name = pack("<I", unpack(">I", data[i:i+4])[0])
             i += 4
-            if block_name != b"ONSH": 
+            if block_name != b"ONSH":
                 data2.append(block_name)
-            if block_name == b"END_": 
+            if block_name == b"END_":
                 #print()
                 break
             # block size (in bytes)
             block_size = unpack(">I", data[i:i+4])[0]
             i += 4
-            if block_name != b"ONSH": 
+            if block_name != b"ONSH":
                 data2.append(pack("<I", block_size))
             # block data
             block_data = data[i:i+block_size]
@@ -605,7 +655,7 @@ def convert_old(fn, data):
                 print("Return code...:", cp.returncode)
 
 
-def filePicker(amg):
+def file_picker(amg):
     # List files
     fns   = sorted(amg)
     ncols = 3
@@ -620,6 +670,7 @@ def filePicker(amg):
             if len(cols[c]) > r:
                 print(f"| {cols[c][r]:{max_w[c]}} ", end = "")
         print("|")
+    # FIX-ME: ask for "dc", "wii" and "all" files as well
 
     # Ask for file number
     fi = input("\nFile number: ")
@@ -628,6 +679,26 @@ def filePicker(amg):
         fi = int(fi)
         if 1 <= fi <= len(fns):
             return fns[fi-1]
+    return None
+
+
+def block_picker():
+    block_type_regex = {
+        "1" : { "regex": ".*",   "title":"All blocks" },
+        "2" : { "regex": "HEAD", "title":"HEAD" },
+        "3" : { "regex": "CAM_", "title":"CAM_" },
+        "4" : { "regex": "ACT_", "title":"ACT_" },
+        "5" : { "regex": "(HEAD|CAM_|ACT_)", "title":"HEAD, CAM_ & ACT_ blocks" },
+        "6" : { "regex": "DA_?", "title":"Amigo non-Hustle blocks" },
+        "7" : { "regex": "(EASY|NORM|HARD|SUPR)", "title":"Amigo Hustle blocks" },
+    }
+    for i in sorted(block_type_regex):
+        print(f"    {i}. {block_type_regex[i]['title']}")
+    print()
+    block_type = input("Block type to display (enter number or custom regex): ")
+    print()
+    if block_type:
+        return block_type_regex.get(block_type,{}).get("regex", block_type)
     return None
 
 
@@ -658,11 +729,88 @@ def translate():
         #~ patches_images = (
             #~ # Convert Wii images to Dreamcast: [afs, name, wii, comment]
             #~ ("AFS_CHALLENGE.AFS", "cha_mt01", "challenge_course.tpl"),
-        #~ )        
+        #~ )
         #~ for entry in patches_copy:
             #~ print(entry)
 
         print("\nTranslation done! You can rebuild your GDI now.")
+
+
+def analyse_frames(fn, data):
+    """Dump the contents of HEAD and ACT_ blocks of a given .AMG file,
+    interleaving the data using the frame numbers."""
+    print(f" {fn}, {len(data):7,} bytes ", end="")
+
+    # Is it a DC or a Wii file?
+    head = data[0:4].decode()
+    if   head == "HEAD": # Dreamcast == little-endian
+        print("[DC]")
+        amg = SambaDeAmigoAmgDc.from_bytes(data)
+    elif head == "DAEH": # Wii == big-endian
+        print("[Wii]")
+        amg = SambaDeAmigoAmgWii.from_bytes(data)
+    else:
+        print("-> Wrong head format:", head)
+        return
+
+    frames = {}
+    for block in amg.blocks:
+        name = block.block_name.name.upper()
+        # show only matching block names
+        if name not in set(["HEAD", "ACT_"]):
+            continue
+        # show block name & size
+        print(f"   {name}", end="")
+        if name == "END_":
+            print("\n")
+            break
+        print(f" {block.block_size:5} bytes, ", end="")
+        # code for each block type
+        if name == "HEAD":
+            print("0x{n:08X} [{n:3}] entries".format(n=block.block_data.num_entries), end="")
+            for frame in block.block_data.entries:
+                if frame in frames:
+                      frames[frame].append((name,))
+                else: frames[frame] = [(name,)]
+        elif name == "ACT_":
+            print("0x{n:08X} [{n:3}] entries in act number {n2}".format(n2=block.block_data.act_num, n=block.block_data.num_entries), end="")
+            for entry in block.block_data.entries:
+                frame = entry.frame
+                frame_data = (name+str(block.block_data.act_num), entry.dword1, entry.dword2, entry.dword3)
+                if frame in frames:
+                      frames[frame].append(frame_data)
+                else: frames[frame] = [frame_data]
+        elif name in set(["CAM_","EASY","HARD","NORM","SUPR","DA_E","DA_H","DA_N","DA_S","ONSH"]):
+            continue
+        else:
+            print("I don't know to handle blocks", name)
+        print()
+
+    for frame in sorted(frames):
+        print(f"      {frame:08X} | frame {frame:5} ({frame/60:6.2f} s) | ", end="")
+        head = False
+        for block in frames[frame]:
+            if   block[0] == "HEAD":
+                head = True
+                print(f"{block[0]} | ", end="")
+            elif block[0].startswith("ACT_"):
+                if not head:
+                    print(f"     | ", end="")
+                    head = True
+                print(f"{block[0]} ", end="")
+                a = block[1]       & 0XFF
+                b = block[1] >>  8 & 0XFF
+                c = block[1] >> 16 & 0XFFFF
+                d = block[2]       & 0XFFFF
+                e = block[3]       & 0XFFFF | block[2] & 0XFFFF0000
+                f = block[3] >> 16 & 0XFFFF
+                #00 02 0101 | 0000 0009|0000 000A
+                #aa bb cccc | dddd eeee|eeee ffff
+                print(f"{a:02X} {b:02X} {c:04X} {d:04X} {e:08X} {f:04X} ", end="")
+                print(f"[{a:2} {b:2} {c:4} {d:4} {e:6} {f:4}] ", end="")
+            else:
+                print("My code must be buggy...")
+        print()
 
 
 if __name__ == '__main__':
@@ -672,6 +820,10 @@ if __name__ == '__main__':
     readAllAMG(dc_path,  amg)
     readAllAMG(wii_amg,  amg)
     print(f"{len(amg)} .AMG files:")
+    
+    if len(amg) == 0:
+        print("Please edit the settings at the beginning of this script and try again.")
+        exit()
 
     while True:
         opt = input("""
@@ -679,41 +831,35 @@ if __name__ == '__main__':
     2. Dump one file
     3. Dump all files
     4. Search for a hustle command
-    5. Convert a Wii song to Dreamcast
-    6. Translate Dreamcast game
+    5. Analyse HEAD & ACT_ blocks of one file
+    6. Analyse HEAD & ACT_ blocks of all files
+    7. Convert a Wii song to Dreamcast
+    8. Translate Dreamcast game
 
-       Your option: """)
+Your option: """)
         print()
 
         # === Get an overview of all blocks in all files
-        if opt == "1":
-            for fn in sorted(amg):
-                blocks_overview(fn, amg[fn])
+        if   opt == "1":
+            block_regex = block_picker()
+            if block_regex:
+                for fn in sorted(amg):
+                    blocks_overview(fn, amg[fn], block_regex)
 
         # === Dump a single file
         elif opt == "2":
-            fn = filePicker(amg)
+            fn = file_picker(amg)
             if fn:
-                dump(fn, amg[fn])
+                block_regex = block_picker()
+                if block_regex:
+                    dump(fn, amg[fn], block_regex)
 
         # === Dump all files (optionally, only regex matching block names)
         elif opt == "3":
-            block_type_regex = {
-                "1" : { "regex": ".*",   "title":"All blocks" },
-                "2" : { "regex": "HEAD", "title":"HEAD" },
-                "3" : { "regex": "CAM_", "title":"CAM_" },
-                "4" : { "regex": "ACT_", "title":"ACT_" },
-                "5" : { "regex": "DA_?", "title":"Amigo non-Hustle blocks" },
-                "6" : { "regex": "(EASY|NORM|HARD|SUPR)", "title":"Amigo Hustle blocks" },
-            }
-            for i in sorted(block_type_regex):
-                print(f"{i}. {block_type_regex[i]['title']}")
-            print()
-            block_type = input("   Block type to display (enter number or regex): ")
-            print()
-            if block_type:
+            block_regex = block_picker()
+            if block_regex:
                 for fn in sorted(amg):
-                    dump(fn, amg[fn], block_type_regex.get(block_type,{}).get("regex", block_type))
+                    dump(fn, amg[fn], block_regex)
 
         # === Show songs + stages containing the specified command
         elif opt == "4":
@@ -722,123 +868,38 @@ if __name__ == '__main__':
                 for fn in sorted(amg):
                     search_cmd(fn, amg[fn], cmd)
 
-        # === Convert a single file
+        # === Analyse HEAD & ACT_ blocks of one file
         elif opt == "5":
-            fn = filePicker(amg)
+            fn = file_picker(amg)
             if fn:
-                convert(fn, amg[fn], amg["SAMBA_DE_JANEIRO.AMG"])
+                analyse_frames(fn, amg[fn])
+
+        # === Analyse HEAD & ACT_ blocks of all files
+        elif opt == "6":
+            for fn in sorted(amg):
+                analyse_frames(fn, amg[fn])
+
+        # === Convert a single file
+        elif opt == "7":
+            fn = file_picker(amg)
+            if fn:
+                convert(fn, amg[fn], amg)
 
         # === Translate game
-        elif opt == "6":
+        elif opt == "8":
             translate()
-        
+
         # === Quit
         else: break
 
 
-
-""" The contents of .AMG files are organized into blocks, each with a 4 character name.
-
-In a typical Samba de Amigo ver. 2000 .AMG file, these are the blocks found, in order:
-  |HEAD|CAM_|EASY|EASY|HARD|HARD|DA_E|DA_E|DA_H|DA_H|DA_N|DA_N|DA_S|DA_S|ACT_|NORM|NORM|ACT_|ACT_|ACT_|SUPR|SUPR|
-
-Wii .AMG files have an exclusive block type (ONSH).
-
-Here's how many blocks exists, on average, in all .AMG files, per console:
-
-|   |HEAD|CAM_|EASY|HARD|DA_E|DA_H|DA_N|DA_S|ACT_|NORM|SUPR|ONSH|END_|
-|DC |  1 |  1 |  2 |  2 |  2 |  2 |  2 |  2 | 3.4|  2 |  2 |  - |  1 |
-|Wii|  1 |  1 |  2 |  2 |  2 |  2 |  2 |  2 | 2.3|  2 |  2 |  1 |  1 |
-
-Block types & description:
-
-    HEAD: sequence of frame numbers when camera position & animation changes.
-
-"Amigo" blocks: timed commands the player must perform.
-Same block name always appears twice, once for each player.
-    EASY: easy mode
-    NORM: normal mode
-    HARD: hard mode
-    SUPR: super hard mode
-    DA_E: hustle easy mode
-    DA_H: hustle hard mode
-    DA_N: hustle normal mode
-    DA_S: hustle super hard mode
-
-Other blocks:
-    CAM_: camera?
-    ACT_: actor(s)? In IDA, bin search for ACT_ (ACT_STOP, ...)
-    ONSH: Wii only, training related?
-
-Final block:
-    END_: end of file
-
-Each Amigo block has a player number (dword, 0=player 2, 1=player 1),
-max. Amigo points (dword) and a certain number of entries/commands (dword).
-Each entry has a frame number (dword) and a command (dword).
-
-The command bitfield seems to have this format:
-
-       circle?
-  ,____|_________________ hustle cmd
-  |    |   ,_____________ hustle speed ? might use bits 9 & 8, too?
-  |    |   |      ,______ cmd pos
-  |    |   |      |    ,_ cmd
-__|_   | __|_ ____|_ __|_
-1111 1 1 1111   
-9876 5 4 3210 987654 3210
----- - - ---- ------ ----
-0011 0 0 0101 000000 0101
-
-cmd (bits 0-3):
-    cmd & 0xf == 1 ? "hit"
-    cmd & 0xf == 4 ? "pose"
-    cmd & 0xf == 3 ? "hit rapidly, begin"
-    cmd & 0xf == 8 ? "hit rapidly, end"
-    cmd & 0xf == 5 ? "hustle begin"
-    cmd & 0xf == 6 ? "hustle end"
-
-cmd pos (bits 4-9):
-    bit 4: TL (top, left)
-    bit 5: ML (medium, left)
-    bit 6: BL (bottom, left)
-    bit 7: TR (top, right)
-    bit 8: MR (medium, right)
-    bit 9: BR (bottom, right)
-
-hustle speed (bits 10-13):
-    Seems to influence the hustle speed, but I'm not sure if it is linear...
-    Might include bits 8-9 and 14 (even 15) as well.
-
-circle (bit 14):
-    bit 14: 1 when hustle cmd is "circle *", but not always...
-
-(bit 15: always zero)
-
-hustle cmd (bits 16-19):
-    hustle cmd >> 16 & 0xf ==  0 ? "TL/TR"
-    hustle cmd >> 16 & 0xf ==  1 ? "BL/BR"
-    hustle cmd >> 16 & 0xf ==  2 ? "TL/ML"
-    hustle cmd >> 16 & 0xf ==  3 ? "TR/MR"
-    hustle cmd >> 16 & 0xf ==  4 ? "ML/BL"
-    hustle cmd >> 16 & 0xf ==  5 ? "MR/BR"
-    hustle cmd >> 16 & 0xf ==  6 ? "TL/BL"
-    hustle cmd >> 16 & 0xf ==  7 ? "TR/BR"
-    hustle cmd >> 16 & 0xf ==  8 ? "circle anti-clockwise"
-    hustle cmd >> 16 & 0xf ==  9 ? "circle clockwise"
-    hustle cmd >> 16 & 0xf == 10 ? "TL/TR"
-    hustle cmd >> 16 & 0xf == 11 ? "BL/BR"
-    hustle cmd >> 16 & 0xf == 12 ? "TL/TR"
-    hustle cmd >> 16 & 0xf == 13 ? "BL/BR"
-    hustle cmd >> 16 & 0xf == 14 ? "TL/TR 2 hands"
-    hustle cmd >> 16 & 0xf == 15 ? "BL/BR 2 hands"
-
-
+""" The contents of .AMG files are described in Samba de Amigo ver. 2000 - AMG file format.txt
 For a full format description, see Kaitai Struct .ksy files.
+Kaitai Struct Web IDE: https://ide.kaitai.io/
 """
 
 """ Video capture, conversion, inspection:
-Run emulator, press [Win]+[G] to record, play one level, stop recording.
+Run Null DC emulator, press [Win]+[G] to record, play one level, stop recording.
 Trim video to start as soon as screen isn't black.
 Get starting position by playing with ffplay, press [S] to step frame by frame.
 Trim with:
@@ -847,11 +908,14 @@ Trim with:
 
 
 """ To investigate / try:
- - IDA: see "act" stuff in "debug_extra_edit?", "aStand" (stand, jump, side_step, fr_bk_step, act_bakuten, act_object)
- - Check if ACT_ has a field with 6 values range
- - Check if a song have the same animations in all levels
- - Check frame when an extra/actor do an action (e.g., jump) and look for it in HEAD, CAM_, ACT_
- - Use CAM_ & ACT_ from another song
+
+ - CAM_: field "terminus" is something else!
+   In some songs (e.g., THE_CUP_OF_LIFE, others) all CAM_ blocks are "begin" [1]...
+
+ - What are HEAD blocks for?
+
+ - Use HEAD, CAM_ & ACT_ from another song: it mostly works, but camera is slightly wonky?
+   (perhaps was using data from a different stage - should probably have to use the same, e.g., boulevard (or simply import only Amigo blocks)
 
 Bamboleo DC vs Wii
  - Wii block order is different - does it matter? (it seems it doesn't)
@@ -859,4 +923,39 @@ Bamboleo DC vs Wii
  - CAM_ - VERY different!
  - ACT_ - 0 & 1 are identical, 2 & 3 are slightly different
  - Amigo blocks - VERY similar, same format
+"""
+
+""" Emulator + debugger options for live patching:
+ - Null DC: its own debugger is buggy, emulator crashes on step, memory view, ...
+ - Null DC + cheat discs (Action Replay / Game Shark CDX, Code Breaker, XPloder): not tested, probably too slow.
+ - Demul + Cheat Engine: not tested
+ - Null DC running under a debugger
+   - x32dbg........: works!
+   - WinDbg Preview: chokes!
+   - ollydbg.......: slow 1st time analysis
+                     slow to pass exceptions (fix in Options > Debugging > Exceptions > Ignore > Memory access violations)
+                     stutters on normal run
+
+Patching .AMG data on Null DC with x32dbg:
+    DC address to Null DC:  DC - 0x6FFE0000
+    Null DC to DC address: X32 + 0x6FFE0000
+
+    Simple test: change an audio file:
+        DC's 8C07F8FF -> Null DC's 1C09F8FF
+            orig: TEAMLOGO.ADX ("Hey, we are the Sonic Team" (3.99 s))
+            new.: NOTICE2.ADX  ("マラカスつか隣にを人ぶつからないように、足跡の上にのってプレイしましょうね" (21.64 s))
+
+    Null DC breakpoints I've investigated:
+        8C02790C -> debug_original?   -> breakpoint triggered, but no debugging!
+        8C024558 -> call_call_amg_block_names?? -> not triggered during song preview, but before gameplay
+
+    x32dbg memory positions:
+        1C657200 -> .AMG file data? -> 0x8C637200 on Dreamcast
+
+To test patches on .AMG files:
+    Null DC: start game, navigate until the song selection, select a music do play
+    x32dbg : edit data @ 1C657200 (e.g., first bytes in CAM_ or ACT_ blocks)
+    Null DC: start the song
+
+    WARNING: buffer is not cleared before loading AMG (you might get previous data, even from another song, if you're not careful).
 """
