@@ -1,6 +1,7 @@
 List and description of all files in the GDI for SAMBA DE AMIGO Ver, 2000
 By Ricardo Mendonça Ferreira - ric@mpcnet.com.br
 
+2019.01.21 - Marked "downloadable" files and their respective VMU file names.
 2018.10.19 - First (almost) complete release.
 2018.10.06 - First draft.
 
@@ -18,49 +19,49 @@ Obs.:
 SONGS (43)                SONG PREVIEWS (43)            AMG (43)
 ========================= ============================= ========================
 
-AFTER_BURNER.ADX        | PRE_AFTER_BURNER.ADX        | AFTERBURNER.AMG        | 01:47.35 s After Burner ("downloadable")
+AFTER_BURNER.ADX        | PRE_AFTER_BURNER.ADX        | AFTERBURNER.AMG        | 01:47.35 s After Burner ("downloadable", SAMBAV2K.D06)
 BAMBOLEO.ADX            | PRE_BAMBOLEO.ADX            | BAMBOLEO.AMG           | 01:44.22 s Bamboleo
-B_RANGER.ADX            | PRE_B_RANGER.ADX            | B_RANGER.AMG           | 01:43.98 s Burning Hearts ("downloadable")
+B_RANGER.ADX            | PRE_B_RANGER.ADX            | B_RANGER.AMG           | 01:43.98 s Burning Hearts ("downloadable", SAMBAV2K.D04)
 CHA_CHA_CUBA.ADX        | PRE_CHA_CHA_CUBA.ADX        | CHA_CHA_CUBA.AMG       | 01:52.29 s Cha Cha Cuba
-DAYTONA.ADX             | PRE_DAYTONA.ADX             | DAYTONA.AMG            | 01:49.53 s Let's Go Away ("downloadable")
+DAYTONA.ADX             | PRE_DAYTONA.ADX             | DAYTONA.AMG            | 01:49.53 s Let's Go Away ("downloadable", SAMBAV2K.D15)
 DJOBI_DJOBA.ADX         | PRE_DJOBI_DJOBA.ADX         | DJOBI_DJOBA.AMG        | 01:34.16 s Djobi Djoba
 EL_RITMO_TROPICANA2.ADX | PRE_EL_RITMO_TROPICANA2.ADX | EL_RITMO_TROPICANA.AMG | 01:46.74 s El Ritmo Tropical
 GAMES_PEOPLE_PLAY.ADX   | PRE_GAMES_PEOPLE_PLAY.ADX   | GAMES_PEOPLE_PLAY.AMG  | 01:43.80 s Games People Play
 HOT_HOT_HOT.ADX         | PRE_HOT_HOT_HOT.ADX         | HOT_HOT_HOT.AMG        | 01:55.89 s Hot Hot Hot
 INOKI.ADX               | PRE_INOKI.ADX               | INOKI.AMG              | 01:52.42 s The Theme of Inoki
-JETSET.ADX              | PRE_JETSET.ADX              | JET_SET_RADIO.AMG      | 01:31.08 s Let Mom Sleep ("downloadable")
+JETSET.ADX              | PRE_JETSET.ADX              | JET_SET_RADIO.AMG      | 01:31.08 s Let Mom Sleep ("downloadable", SAMBAV2K.D14)
 LA_BAMBA.ADX            | PRE_LA_BAMBA.ADX            | LA_BAMBA.AMG           | 01:47.95 s La Bamba
 LIVIN_LA_VIDA_LOCA2.ADX | PRE_LIVIN_LA_VIDA_LOCA2.ADX | LIVIN_LA_VIDA_LOCA.AMG | 01:41.24 s Livin' la Vida Loca
 LOVE_LEASE.ADX          | PRE_LOVE_LEASE.ADX          | LOVE_LEASE.AMG         | 01:59.30 s Love Lease
 MACARENA.ADX            | PRE_MACARENA.ADX            | MACARENA.AMG           | 01:24.47 s Macarena
 MAMBOBEAT.ADX           | PRE_MAMBOBEAT.ADX           | MAMBOBEAT.AMG          | 01:26.29 s Mambo Beat
 MAMBO_DE_VERANO.ADX     | PRE_MAMBO_DE_VERANO.ADX     | MAMBO_DE_VERANO.AMG    | 02:01.27 s Mambo de Verano
-NIGHTS.ADX              | PRE_NIGHTS.ADX              | NIGHTS.AMG             | 01:47.21 s Dreams Dreams ("downloadable")
-OPA_OPA.ADX             | PRE_OPA_OPA.ADX             | OPAOPA.AMG             | 01:45.62 s Opa-Opa! ("downloadable")
-OUT_RUN.ADX             | PRE_OUT_RUN.ADX             | OUTRUN.AMG             | 01:45.62 s Magical Sound Shower ("downloadable")
-RENT_A_HERO.ADX         | PRE_RENT_A_HERO.ADX         | RENT_A_HERO.AMG        | 01:45.43 s Rent a Hero No.1 ("downloadable")
+NIGHTS.ADX              | PRE_NIGHTS.ADX              | NIGHTS.AMG             | 01:47.21 s Dreams Dreams ("downloadable", SAMBAV2K.D05)
+OPA_OPA.ADX             | PRE_OPA_OPA.ADX             | OPAOPA.AMG             | 01:45.62 s Opa-Opa! ("downloadable", SAMBAV2K.D08)
+OUT_RUN.ADX             | PRE_OUT_RUN.ADX             | OUTRUN.AMG             | 01:45.62 s Magical Sound Shower ("downloadable", SAMBAV2K.D07)
+RENT_A_HERO.ADX         | PRE_RENT_A_HERO.ADX         | RENT_A_HERO.AMG        | 01:45.43 s Rent a Hero No.1 ("downloadable", SAMBAV2K.D09)
 ROCKY.ADX               | PRE_ROCKY.ADX               | ROCKY.AMG              | 01:35.60 s The Theme of Rocky
 SALOME.ADX              | PRE_SALOME.ADX              | SALOME.AMG             | 01:46.24 s Salome
 SAMBA_DE_2000_2.ADX     | PRE_SAMBA_DE_2000_2.ADX     | SAMBA_DE_AMIGO.AMG     | 01:58.50 s Samba de Amigo
 SAMBA_DE_JA_NEIRO.ADX   | PRE_SAMBA_DE_JA_NEIRO.ADX   | SAMBA_DE_JANEIRO.AMG   | 01:44.31 s Samba de Janeiro
-SONIC_ADV.ADX           | PRE_SONIC_ADV.ADX           | SONIC_ADV.AMG          | 01:56.68 s Open Your Heart ("downloadable")
-SONIC_CD.ADX            | PRE_SONIC_CD.ADX            | SONIC_CD.AMG           | 01:30.47 s Sonic-You can do Anything ("downloadable")
-SONIC_R.ADX             | PRE_SONIC_R.ADX             | SONIC_R.AMG            | 01:54.06 s Super Sonic Racing ("downloadable")
+SONIC_ADV.ADX           | PRE_SONIC_ADV.ADX           | SONIC_ADV.AMG          | 01:56.68 s Open Your Heart ("downloadable", SAMBAV2K.D01)
+SONIC_CD.ADX            | PRE_SONIC_CD.ADX            | SONIC_CD.AMG           | 01:30.47 s Sonic-You can do Anything ("downloadable", SAMBAV2K.D02)
+SONIC_R.ADX             | PRE_SONIC_R.ADX             | SONIC_R.AMG            | 01:54.06 s Super Sonic Racing ("downloadable", SAMBAV2K.D03)
 SOS.ADX                 | PRE_SOS.ADX                 | SOS.AMG                | 01:46.00 s S.O.S.
 SOUL_BOSSANOVA1.ADX     | PRE_SOUL_BOSSANOVA1.ADX     | SOUL_BOSSANOVA.AMG     | 01:40.16 s Soul Bossa Nova
 SWAY.ADX                | PRE_SWAY.ADX                | SWAY.AMG               | 01:55.25 s Sway
 TAKE_ON_ME.ADX          | PRE_TAKE_ON_ME.ADX          | TAKE_ON_ME.AMG         | 01:50.08 s Take On Me
 TEQUILA.ADX             | PRE_TEQUILA.ADX             | TEQUILA.AMG            | 01:32.79 s Tequila
-THEME_AMY.ADX           | PRE_THEME_AMY.ADX           | THEME_OF_AMY.AMG       | 01:25.29 s My Sweet Passion ("downloadable")
-THEME_BIG.ADX           | PRE_THEME_BIG.ADX           | THEME_OF_BIG.AMG       | 01:43.16 s Lazy Days ("downloadable")
-THEME_SONIC.ADX         | PRE_THEME_SONIC.ADX         | THEME_OF_SONIC.AMG     | 01:49.01 s It Doesn't Matter ("downloadable")
+THEME_AMY.ADX           | PRE_THEME_AMY.ADX           | THEME_OF_AMY.AMG       | 01:25.29 s My Sweet Passion ("downloadable", SAMBAV2K.D12)
+THEME_BIG.ADX           | PRE_THEME_BIG.ADX           | THEME_OF_BIG.AMG       | 01:43.16 s Lazy Days ("downloadable", SAMBAV2K.D13)
+THEME_SONIC.ADX         | PRE_THEME_SONIC.ADX         | THEME_OF_SONIC.AMG     | 01:49.01 s It Doesn't Matter ("downloadable", SAMBAV2K.D11)
 THE_CUP_OF_LIFE2.ADX    | PRE_THE_CUP_OF_LIFE2.ADX    | THE_CUP_OF_LIFE.AMG    | 01:53.40 s The Cup of Life
 TOUT_TOUT.ADX           | PRE_TOUT_TOUT.ADX           | TOUT_TOUT.AMG          | 01:40.14 s Tout,Tout,Pour Ma Cherie
 TUBTHUMPING.ADX         | PRE_TUBTHUMPING.ADX         | TUBTHUMPING.AMG        | 01:50.87 s Tubthumping
 VAMOS_A_CARNAVAL.ADX    | PRE_VAMOS_A_CARNAVAL.ADX    | VAMOS_A_CARNAVAL.AMG   | 01:59.58 s Vamos a Carnaval
 VOLARE.ADX              | PRE_VOLARE.ADX              | VOLARE.AMG             | 01:57.84 s Volare
 WEDDING.ADX             | PRE_WEDDING.ADX             | WEDDING.AMG            | 01:32.57 s Wedding March
-WE_ARE_BR.ADX           | PRE_WE_ARE_BR.ADX           | WE_ARE_BR.AMG          | 01:32.71 s We Are Burning Rangers ("downloadable")
+WE_ARE_BR.ADX           | PRE_WE_ARE_BR.ADX           | WE_ARE_BR.AMG          | 01:32.71 s We Are Burning Rangers ("downloadable", SAMBAV2K.D10)
 
 =============================
 SFX & Background Music (32)
