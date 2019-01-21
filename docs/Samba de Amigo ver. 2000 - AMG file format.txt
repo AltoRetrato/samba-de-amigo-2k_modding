@@ -1,0 +1,329 @@
+Description of the .AMG file format used by SAMBA DE AMIGO Ver, 2000,
+for the Sega Dreamcast.
+
+By Ricardo Mendonça Ferreira - ric@mpcnet.com.br
+
+2019.01.21 - First release.
+
+            *********************************************
+            WARNING: this document is a WORK IN PROGRESS!
+            *********************************************
+
+I'm not sure of some details, and might even be wrong on what I think I'm sure.
+Comments and corrections are welcome.
+
+
+============
+KAITAI FILES
+============
+
+    I recommend you to use the Kaitai Struct files (.ksy) that more formally
+    describes the file format. They also allow you to navigate the parsed
+    files on your browser (on https://ide.kaitai.io/ ), as well as
+    produce parser code in several different programming languages.
+
+
+=============
+FILE OVERVIEW
+=============
+
+    Even though this information is specific for the Samba de Amigo Ver, 2000,
+    most of it should also apply to the original Dreamcast game, as well as
+    the Wii version.
+
+    .AMG ("Amigo") files contain gameplay and animation data
+    for each song in the game.
+
+    The information is split into blocks, each with a 4 character name.
+
+    Here's how many blocks exists, on average, in all Amigo files, per console:
+
+    |   |HEAD|CAM_|EASY|HARD|DA_E|DA_H|DA_N|DA_S|ACT_|NORM|SUPR|ONSH|END_|
+    |DC |  1 |  1 |  2 |  2 |  2 |  2 |  2 |  2 | 3.4|  2 |  2 |  0 |  1 |
+    |Wii|  1 |  1 |  2 |  2 |  2 |  2 |  2 |  2 | 2.3|  2 |  2 |  1 |  1 |
+
+    Wii Amigo files have an exclusive block type (ONSH). I don't know its
+    purpose, but it seem to be related to training songs.
+
+    All Amigo files start with a HEAD block.
+
+        HEAD: sequence of frame numbers. I'm not sure about its purpose,
+              but the frame numbers usually match some of CAM_ and ACT_.
+
+    These "Amigo" blocks contain timed commands the player must perform.
+    Same block name always appears twice, once for each player.
+
+        EASY: easy mode
+        NORM: normal mode
+        HARD: hard mode
+        SUPR: super hard mode
+        DA_E: hustle easy mode
+        DA_H: hustle hard mode
+        DA_N: hustle normal mode
+        DA_S: hustle super hard mode
+
+    Other blocks:
+
+        CAM_: camera animation data.
+        ACT_: actors animation data.
+        ONSH: Wii only, training related?
+
+    Final block:
+
+        END_: end of file
+
+    The major difference between the Dreamcast and Wii format is endianness:
+    the Dreamcast uses little-endiand, while Wii uses big-endian. But also
+    on the Wii the block order is different, and CAM_ blocks seems to have
+    a completely different structure / meaning.
+
+
+==========
+HEAD BLOCK
+==========
+
+    Unless otherwise noted, all values are in hexadecimal,
+    bit numbers in decimal.
+
+    48 45 41 44 | Block name ("HEAD").
+    ___dword___ | Block size, in bytes, starting on next field.
+    ___dword___ | Number of frames.
+    
+    Next is a sequence of frame numbers:
+    ___dword___ | Frame number 0.
+    ___dword___ | Frame number 1.
+    ...
+
+
+============
+AMIGO BLOCKS
+============
+
+    ___dword___ | Block name (e.g., "EASY", "NORM", ...).
+    ___dword___ | Block size, in bytes, starting on next field.
+    ___dword___ | Player number (0: player one, 1: player two).
+    ___dword___ | Max. Amigo points.
+    ___dword___ | Number of commands.
+    
+    Next is a sequence of frame numbers and commands:
+    ___dword___ | Frame number 0
+    ___dword___ | Command 0
+    ___dword___ | Frame number 1
+    ___dword___ | Command 1
+    ...
+
+    The command bitfield seems to have this format:
+    
+          circle?
+      ,____|_________________ hustle cmd
+      |    |   ,_____________ hustle speed ? might use bits 9 & 8, too?
+      |    |   |      ,______ cmd pos
+      |    |   |      |    ,_ cmd
+    __|_   | __|_ ____|_ __|_
+    1111 1 1 1111   
+    9876 5 4 3210 987654 3210
+    ---- - - ---- ------ ----
+    0011 0 0 0101 000000 0101
+    
+    cmd (bits 0-3):
+        cmd & 0xF == 1 ? "hit"
+        cmd & 0xF == 4 ? "pose"
+        cmd & 0xF == 3 ? "hit rapidly, begin"
+        cmd & 0xF == 8 ? "hit rapidly, end"
+        cmd & 0xF == 5 ? "hustle begin"
+        cmd & 0xF == 6 ? "hustle end"
+
+    cmd pos (bits 4-9):
+        bit 4: TL (top, left)
+        bit 5: ML (medium, left)
+        bit 6: BL (bottom, left)
+        bit 7: TR (top, right)
+        bit 8: MR (medium, right)
+        bit 9: BR (bottom, right)
+    
+    hustle speed (bits 10-13):
+        Seems to influence the hustle speed, but I'm not sure how.
+        Might include bits 8-9 and 14 (even 15) as well.
+    
+    circle (bit 14):
+        bit 14: 1 when hustle cmd is "circle *", but not always...
+    
+    (bit 15: always zero)
+    
+    hustle cmd (bits 16-19):
+        hustle cmd >> 16 & 0xF == 0 ? "TL/TR"
+        hustle cmd >> 16 & 0xF == 1 ? "BL/BR"
+        hustle cmd >> 16 & 0xF == 2 ? "TL/ML"
+        hustle cmd >> 16 & 0xF == 3 ? "TR/MR"
+        hustle cmd >> 16 & 0xF == 4 ? "ML/BL"
+        hustle cmd >> 16 & 0xF == 5 ? "MR/BR"
+        hustle cmd >> 16 & 0xF == 6 ? "TL/BL"
+        hustle cmd >> 16 & 0xF == 7 ? "TR/BR"
+        hustle cmd >> 16 & 0xF == 8 ? "circle anti-clockwise"
+        hustle cmd >> 16 & 0xF == 9 ? "circle clockwise"
+        hustle cmd >> 16 & 0xF == A ? "TL/TR"
+        hustle cmd >> 16 & 0xF == B ? "BL/BR"
+        hustle cmd >> 16 & 0xF == C ? "TL/TR"
+        hustle cmd >> 16 & 0xF == D ? "BL/BR"
+        hustle cmd >> 16 & 0xF == E ? "TL/TR both hands"
+        hustle cmd >> 16 & 0xF == F ? "BL/BR both hands"
+
+
+===========
+CAM_ BLOCKS
+===========
+
+    43 41 4D 5F | Block name ("CAM_").
+    ___dword___ | Block size, in bytes, starting on next field.
+    ___dword___ | Number of entries.
+    
+    Next is a sequence of the following structure:
+
+    ___dword___ | Frame number.
+    _word_      | Terminus: 0001 = begin, 0002 = end ?
+    _word_      | Transition speed (larger values means slower).
+    ___dword___ | Camera X position.
+    ___dword___ | Camera Y position.
+    ___dword___ | Camera Z position. Positive values move camera away from stage.
+    ___dword___ | Camera X target position.
+    ___dword___ | Camera Y target position.
+    ___dword___ | Camera Z target position.
+
+
+===========
+ACT_ BLOCKS
+===========
+
+    41 43 54 5F | Block name ("CAM_").
+    ___dword___ | Block size, in bytes, starting on next field.
+    ___dword___ | Actor number (from 0 to 3).
+    ___dword___ | Number of entries.
+    
+    Next is a sequence of the following structure:
+    ___dword___ | Frame number.
+    _byte_      | Actor command (from 01 to 0C)
+    _byte_      | Speed? (larger is faster, varies between 00 and 10)
+    _word_      | Animation cycle size? (larger means slower and/or longer animation cycle?)
+    _word_      | Actor X position
+    _word_      | Actor Y position? (Changing this field didn't seems produce any changes)
+    _word_      | Actor Z position. Positive values move actor away from camera (?).
+    _word_      | Either 0000, 0113, 0115, or FFFF
+
+    This seems to be the most complex block. Each block represents an "actor",
+    i.e., Amigo, Amiga, Rio, Linda, Bingo, Bongo, Chumba and Wamba.
+    Actor "0" is always "Amigo", and is present in all songs. Other actors
+    vary according to the stage (Boulevard, Island, Mexican Hat and TV Studio).
+
+    Commands for ACT_ 0, all stages (always Amigo):
+        01: Amigo dance
+        02: Amigo rotate (to his left)
+        03: Amigo rotate (to his right)
+        04: Amigo jumps high / hat jumps & backflips
+        05: Amigo jumps high / hat jumps & backflips ???
+        06: Amigo flips backwards
+        07: Amigo flips forward
+        08: Amigo limbo
+        09: Amigo "pose"
+        0A: Amigo jumps (a little)
+        0B: Amigo shimmy
+        0C: Amigo backflip
+
+    Commands for Boulevard stage, where Linda is ACT_ 1:
+        ACT_ 1                        |
+            01: Linda dances     
+            02: Linda turns left 
+            03: Linda turns right
+            04: Linda hip swing  
+            05: Linda jumps      
+            06: Linda jumps      
+            07: Linda jumps      
+            08: Linda jumps      
+            09: Linda jumps      
+            0A: Linda jumps      
+            0B: Linda jumps      
+            0C: Linda jumps      
+
+    Commands for Mexican Hat stage, where Amiga is ACT_ 1:
+      ACT_ 1                               
+          01: Amiga dances             
+          02: Amiga turns left         
+          03: Amiga turns right        
+          04: Amiga plays              
+          05: Amiga plays, turns left  
+          06: Amiga plays, turns right 
+          07: Amiga jumps              
+          08: Amiga jumps, turns left  
+          09: Amiga jumps, turns right 
+          0A: Amiga swings arm high    
+          0B: Amiga swings arm high    
+          0C: Amiga swings arm high    
+
+    Commands for TV Studio stage, where Bingo is ACT_ 1 and Bongo is ACT_ 2:
+        ACT_1
+            01: Bingo dances
+            02: Bingo turns left
+            03: Bingo turns right
+            04: Bingo poses left
+            05: Bingo poses right
+            06: Bingo dances
+            07: Bingo dances
+            08: Bingo dances
+            09: Bingo dances
+            0A: Bingo dances
+            0B: Bingo dances
+            0C: Bingo dances
+        ACT_2
+            01: Bongo dances
+            02: Bongo turns left
+            03: Bongo turns right
+            04: Bongo poses right                                       
+            05: Bongo poses left                                       
+            06: Bongo dances                                       
+            07: Bongo dances                                       
+            08: Bongo dances                                       
+            09: Bongo dances                                       
+            0A: Bongo dances                                       
+            0B: Bongo dances                                       
+            0C: Bongo dances                                       
+
+    Commands for Island stage, where
+    Rio is ACT_ 1, Chumba is ACT_2 and Wamba is ACT_ 3:
+        ACT_ 1                                  
+            01: Rio dances                  
+            02: Rio turns left              
+            03: Rio turns right             
+            04: Rio swings arms             
+            05: Rio swings arms & turn left 
+            06: Rio swings arms & turn right
+            07: Rio swings leg, does a split
+            08: Rio blows a kiss            
+            09: Rio jumps                   
+            0A: Rio dances                  
+            0B: Rio dances                  
+            0C: Rio dances                  
+        ACT_2                                   
+            01: Chumba plays                
+            02: Chumba plays, turns left    
+            03: Chumba plays, turns right   
+            04: Chumba plays                
+            05: Chumba plays, turns left    
+            06: Chumba plays, turns right   
+            07: Chumba plays                
+            08: Chumba plays                
+            09: Chumba jumps                
+            0A: Chumba plays                
+            0B: Chumba plays                
+            0C: Chumba plays                
+        ACT_3                                   
+            01: Wamba plays                 
+            02: Wamba plays, turns left     
+            03: Wamba plays, turns right    
+            04: Wamba plays                 
+            05: Wamba plays, turns left     
+            06: Wamba plays, turns right    
+            07: Wamba plays                 
+            08: Wamba plays                 
+            09: Wamba jumps                 
+            0A: Wamba plays                 
+            0B: Wamba plays                 
+            0C: Wamba plays                 
