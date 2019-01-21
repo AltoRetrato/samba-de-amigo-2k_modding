@@ -3,7 +3,7 @@ meta:
   id: samba_de_amigo_amg_dc
   file-extension: amg
   endian: le # alternatively, see http://doc.kaitai.io/user_guide.html#calc-endian
-  title: Amigo (.AMG) file format for the Sega Dreamcast game Samba de Amigo ver. 2000.
+  title: Amigo (.AMG) file format v. 0.1, for the Sega Dreamcast game Samba de Amigo ver. 2000.
   application: Samba de Amigo ver. 2000
   ks-version: 0.8
   license: LGPL-3.0-or-later
@@ -37,9 +37,9 @@ enums:
     0x5f544341: act_ # actors?
    #0x48534e4f: onsh # only for the Wii version
     0x5f444e45: end_ # last block
-  player_enum:
-    0: player2
-    1: player1
+  terminus_enum:
+    0001: begin
+    0002: end
 types:
   block:
     seq:
@@ -83,8 +83,7 @@ types:
     seq:
       - id: player_number
         type: u4
-        enum: player_enum
-        doc: Player number, 0=2nd player, 1=1st player.
+        doc: Player number, 0=1st player, 1=2nd player.
       - id: max_amigo_points
         type: u4
         doc: Amigo points for a perfect score.
@@ -186,20 +185,31 @@ types:
       - id: frame
         type: u4
         doc: Frame number.
-      - id: dword1
-        type: u4
-      - id: dword2
+      - id: terminus
+        type: u2
+        enum: terminus_enum
+        doc: Either BEGIN(ning) or END of a camera transition? Changing this value doesn't change anything?
+      - id: transition_speed
+        type: u2
+        doc: The larger this value, the slower is the transition speed.
+      - id: camera_x
         type: s4
-      - id: dword3
+        doc: Camera position, X axis.
+      - id: camera_y
         type: s4
-      - id: dword4
+        doc: Camera position, Y axis.
+      - id: camera_z
         type: s4
-      - id: dword5
+        doc: Camera position, Z axis. Negative values go into the screen.
+      - id: target_x
         type: s4
-      - id: dword6
-        type: u4
-      - id: dword7
+        doc: Camera target position, X axis.
+      - id: target_y
         type: s4
+        doc: Camera target position, Y axis.
+      - id: target_z
+        type: s4
+        doc: Camera target position, Z axis.
   block_act_:
     seq:
       - id: act_num
@@ -218,9 +228,24 @@ types:
       - id: frame
         type: u4
         doc: Frame number.
-      - id: dword1
-        type: u4
-      - id: dword2
-        type: u4
-      - id: dword3
-        type: s4
+      - id: dance_move
+        type: u1
+        doc: Actor dance move (range from 0x01 to 0x0C).
+      - id: dance_speed
+        type: u1
+        doc: Dance speed? (larger values provide faster animation, varies between 0x00 and 0x10).
+      - id: cycle_size
+        type: u2
+        doc: Animation cycle size? (larger values means slower and/or longer animation cycle?)
+      - id: actor_x
+        type: s2
+        doc: Actor position, X axis.
+      - id: actor_y
+        type: s2
+        doc: Actor position, Y axis? But doesn't seem to be used...
+      - id: actor_z
+        type: s2
+        doc: Actor position, Z axis. Positive values move actor away from camera?
+      - id: unknown
+        type: s2
+        doc: Unknown function. Either 0000, 0113, 0115, or FFFF.
