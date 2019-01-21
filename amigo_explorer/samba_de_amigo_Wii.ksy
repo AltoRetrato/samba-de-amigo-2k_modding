@@ -3,7 +3,7 @@ meta:
   id: samba_de_amigo_amg_wii
   file-extension: amg
   endian: be # alternatively, see http://doc.kaitai.io/user_guide.html#calc-endian
-  title: Amigo (.AMG) file format for the Nintendo Wii game Samba de Amigo.
+  title: Amigo (.AMG) file format v. 0.1, for the Nintendo Wii game Samba de Amigo.
   application: Samba de Amigo (Wii)
   ks-version: 0.8
   license: LGPL-3.0-or-later
@@ -38,9 +38,6 @@ enums:
     0x5f544341: act_ # actors?
     0x48534e4f: onsh # only for the Wii version
     0x5f444e45: end_ # last block
-  player_enum:
-    0: player2
-    1: player1
 types:
   block:
     seq:
@@ -85,8 +82,7 @@ types:
     seq:
       - id: player_number
         type: u4
-        enum: player_enum
-        doc: Player number, 0=2nd player, 1=1st player.
+        doc: Player number, 0=1st player, 1=2nd player.
       - id: max_amigo_points
         type: u4
         doc: Amigo points for a perfect score.
@@ -199,7 +195,7 @@ types:
       - id: dword5
         type: s4
       - id: dword6
-        type: u4
+        type: s4
       - id: dword7
         type: s4
   block_act_:
@@ -220,12 +216,27 @@ types:
       - id: frame
         type: u4
         doc: Frame number.
-      - id: dword1
-        type: u4
-      - id: dword2
-        type: u4
-      - id: dword3
-        type: u4
+      - id: cycle_size
+        type: u2
+        doc: Animation cycle size? (larger values means slower and/or longer animation cycle?)
+      - id: dance_speed
+        type: u1
+        doc: Dance speed? (larger values provide faster animation, varies between 0x00 and 0x10).
+      - id: dance_move
+        type: u1
+        doc: Actor dance move (range from 0x01 to 0x0C).
+      - id: unknown
+        type: s2
+        doc: Unknown function. Either 0000, 0113, 0115, or FFFF.
+      - id: actor_x
+        type: s2
+        doc: Actor position, X axis.
+      - id: actor_y
+        type: s2
+        doc: Actor position, Y axis? But doesn't seem to be used...
+      - id: actor_z
+        type: s2
+        doc: Actor position, Z axis. Positive values move actor away from camera?
   block_onsh:
     seq:
       - id: num_entries
