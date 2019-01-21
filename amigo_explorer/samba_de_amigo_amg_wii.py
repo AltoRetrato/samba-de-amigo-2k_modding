@@ -34,10 +34,6 @@ class SambaDeAmigoAmgWii(KaitaiStruct):
         end_ = 1598312005
         cam_ = 1598898499
         act_ = 1599357761
-
-    class PlayerEnum(Enum):
-        player2 = 0
-        player1 = 1
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
         self._parent = _parent
@@ -83,7 +79,7 @@ class SambaDeAmigoAmgWii(KaitaiStruct):
             self.dword3 = self._io.read_u4be()
             self.dword4 = self._io.read_u4be()
             self.dword5 = self._io.read_s4be()
-            self.dword6 = self._io.read_u4be()
+            self.dword6 = self._io.read_s4be()
             self.dword7 = self._io.read_s4be()
 
 
@@ -261,7 +257,7 @@ class SambaDeAmigoAmgWii(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.player_number = self._root.PlayerEnum(self._io.read_u4be())
+            self.player_number = self._io.read_u4be()
             self.max_amigo_points = self._io.read_u4be()
             self.num_commands = self._io.read_u4be()
             self.commands = [None] * (self.num_commands)
@@ -279,9 +275,13 @@ class SambaDeAmigoAmgWii(KaitaiStruct):
 
         def _read(self):
             self.frame = self._io.read_u4be()
-            self.dword1 = self._io.read_u4be()
-            self.dword2 = self._io.read_u4be()
-            self.dword3 = self._io.read_u4be()
+            self.cycle_size = self._io.read_u2be()
+            self.dance_speed = self._io.read_u1()
+            self.dance_move = self._io.read_u1()
+            self.unknown = self._io.read_s2be()
+            self.actor_x = self._io.read_s2be()
+            self.actor_y = self._io.read_s2be()
+            self.actor_z = self._io.read_s2be()
 
 
     class BlockOnsh(KaitaiStruct):

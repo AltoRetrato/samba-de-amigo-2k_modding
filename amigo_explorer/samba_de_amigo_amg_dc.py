@@ -33,9 +33,9 @@ class SambaDeAmigoAmgDc(KaitaiStruct):
         cam_ = 1598898499
         act_ = 1599357761
 
-    class PlayerEnum(Enum):
-        player2 = 0
-        player1 = 1
+    class TerminusEnum(Enum):
+        begin = 1
+        end = 2
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
         self._parent = _parent
@@ -76,13 +76,14 @@ class SambaDeAmigoAmgDc(KaitaiStruct):
 
         def _read(self):
             self.frame = self._io.read_u4le()
-            self.dword1 = self._io.read_u4le()
-            self.dword2 = self._io.read_s4le()
-            self.dword3 = self._io.read_s4le()
-            self.dword4 = self._io.read_s4le()
-            self.dword5 = self._io.read_s4le()
-            self.dword6 = self._io.read_u4le()
-            self.dword7 = self._io.read_s4le()
+            self.terminus = self._root.TerminusEnum(self._io.read_u2le())
+            self.transition_speed = self._io.read_u2le()
+            self.camera_x = self._io.read_s4le()
+            self.camera_y = self._io.read_s4le()
+            self.camera_z = self._io.read_s4le()
+            self.target_x = self._io.read_s4le()
+            self.target_y = self._io.read_s4le()
+            self.target_z = self._io.read_s4le()
 
 
     class BlockAct(KaitaiStruct):
@@ -255,7 +256,7 @@ class SambaDeAmigoAmgDc(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.player_number = self._root.PlayerEnum(self._io.read_u4le())
+            self.player_number = self._io.read_u4le()
             self.max_amigo_points = self._io.read_u4le()
             self.num_commands = self._io.read_u4le()
             self.commands = [None] * (self.num_commands)
@@ -273,9 +274,13 @@ class SambaDeAmigoAmgDc(KaitaiStruct):
 
         def _read(self):
             self.frame = self._io.read_u4le()
-            self.dword1 = self._io.read_u4le()
-            self.dword2 = self._io.read_u4le()
-            self.dword3 = self._io.read_s4le()
+            self.dance_move = self._io.read_u1()
+            self.dance_speed = self._io.read_u1()
+            self.cycle_size = self._io.read_u2le()
+            self.actor_x = self._io.read_s2le()
+            self.actor_y = self._io.read_s2le()
+            self.actor_z = self._io.read_s2le()
+            self.unknown = self._io.read_s2le()
 
 
 
