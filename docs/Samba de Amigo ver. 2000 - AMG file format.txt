@@ -194,7 +194,7 @@ CAM_ BLOCKS
 ACT_ BLOCKS
 ===========
 
-    41 43 54 5F | Block name ("CAM_").
+    41 43 54 5F | Block name ("ACT_").
     ___dword___ | Block size, in bytes, starting on next field.
     ___dword___ | Actor number (from 0 to 3).
     ___dword___ | Number of entries.
