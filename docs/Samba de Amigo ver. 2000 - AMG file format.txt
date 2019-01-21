@@ -201,7 +201,7 @@ ACT_ BLOCKS
     
     Next is a sequence of the following structure:
     ___dword___ | Frame number.
-    _byte_      | Actor command (from 01 to 0C)
+    _byte_      | Actor dance move (from 01 to 0C)
     _byte_      | Speed? (larger is faster, varies between 00 and 10)
     _word_      | Animation cycle size? (larger means slower and/or longer animation cycle?)
     _word_      | Actor X position
@@ -214,7 +214,7 @@ ACT_ BLOCKS
     Actor "0" is always "Amigo", and is present in all songs. Other actors
     vary according to the stage (Boulevard, Island, Mexican Hat and TV Studio).
 
-    Commands for ACT_ 0, all stages (always Amigo):
+    Dance moves for ACT_ 0, all stages (always Amigo):
         01: Amigo dance
         02: Amigo rotate (to his left)
         03: Amigo rotate (to his right)
@@ -228,7 +228,7 @@ ACT_ BLOCKS
         0B: Amigo shimmy
         0C: Amigo backflip
 
-    Commands for Boulevard stage, where Linda is ACT_ 1:
+    Dance moves for Boulevard stage, where Linda is ACT_ 1:
         ACT_ 1                        |
             01: Linda dances     
             02: Linda turns left 
@@ -243,7 +243,7 @@ ACT_ BLOCKS
             0B: Linda jumps      
             0C: Linda jumps      
 
-    Commands for Mexican Hat stage, where Amiga is ACT_ 1:
+    Dance moves for Mexican Hat stage, where Amiga is ACT_ 1:
       ACT_ 1                               
           01: Amiga dances             
           02: Amiga turns left         
@@ -258,7 +258,7 @@ ACT_ BLOCKS
           0B: Amiga swings arm high    
           0C: Amiga swings arm high    
 
-    Commands for TV Studio stage, where Bingo is ACT_ 1 and Bongo is ACT_ 2:
+    Dance moves for TV Studio stage, where Bingo is ACT_ 1 and Bongo is ACT_ 2:
         ACT_1
             01: Bingo dances
             02: Bingo turns left
@@ -286,7 +286,7 @@ ACT_ BLOCKS
             0B: Bongo dances                                       
             0C: Bongo dances                                       
 
-    Commands for Island stage, where
+    Dance moves for Island stage, where
     Rio is ACT_ 1, Chumba is ACT_2 and Wamba is ACT_ 3:
         ACT_ 1                                  
             01: Rio dances                  
