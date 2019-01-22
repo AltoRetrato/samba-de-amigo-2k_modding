@@ -10,7 +10,7 @@ Here you'll find information and tools to help you mod "Samba de Amigo: Ver. 200
 #### What's currently available
  - [Description of all files in the Samba de Amigo ver. 2000 GDI image](docs/Samba%20de%20Amigo%20ver.%202000%20-%20list%20of%20files.txt) (including Japanese to English translations).
  - [Description of the .AMG ("Amigo") file format](docs/Samba%20de%20Amigo%20ver.%202000%20-%20AMG%20file%20format.txt).
- - [Amigo_explorer.py](/amigo_explorer), a console script to dump, analyse & convert Amigo files. It also allows you to import Wii songs into a Dreamcast GDI image, and (in the future) might help you translate the game from Japanese to English.
+ - [amg_explorer.py](/amigo_explorer), a console script to dump, analyse & convert Amigo files. It also allows you to import Wii songs into a Dreamcast GDI image, and (in the future) might help you translate the game from Japanese to English.
  - [Kaitai Struct files (.ksy)](/amigo_explorer) describing the Amigo .AMG file format for Samba de Amigo ver. 2000 (Dreamcast) and for the Wii. I also provided the "compiled" parsers in Python (currently only for reading).
  
  #### To-do
