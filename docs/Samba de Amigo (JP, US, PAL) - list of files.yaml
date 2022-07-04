@@ -1,0 +1,3130 @@
+--- 
+# List and description of all files in the GDIs for SAMBA DE AMIGO (JP, US & EU)
+# By Ricardo Mendonça Ferreira - ric@mpcnet.com.br
+#
+# 2022.06.29 - First draft.
+# 
+# Obs.:
+#  - This is a YAML file
+#  - My knowledge of the Japanese language is limited!
+#  - So is my experience with Dreamcast development!
+#  - What I'm unsure of is marked with a question mark.
+#  - I didn't bother to document most of the DreamPassport browser files
+#  - Take everything with a grain of salt (and watch your blood pressure)!
+#  - Corrections and suggestions are welcome!
+#  - To load this with Python and yaml:
+#       with open("list_of_files.yaml", encoding="utf-8") as fh: data = yaml.load(fh, Loader=yaml.FullLoader)
+
+# Game versions (releases):
+#     J: 1.000 NTSC JP
+#     U: 1.001 NTSC US
+#     P: 1.002 PAL
+    # A file can exist in one or more versions of the game,
+    # and can have different contents in each release.
+    # File descriptions starts with 3 characters:
+    #  - 1st char is for the JP  game: [J] if file exists, [_] otherwise
+    #  - 2nd char is for the US  game: [J] if it is exactly like the Japanese version,
+    #                                  [U] if it is different, [_] if it does not exist
+    #  - 3rd char is for the PAL game: [J] if it is exactly like the Japanese version,
+    #                                  [U] if it is exactly like the USA version,
+    #                                  [P] if it is different, [_] if it does not exist
+    # Examples:
+    #   [J, J, J] = the exact same file exists in all versions of the game
+    #   [J, _, _] = file exists only in the Japanese version
+    #   [J, U, P] = file exists in all versions, but different in each version
+    #   [_, U, U] = file does not exist in the Japanese version, 
+    #               USA and PAL versions have the same content
+
+OTHERS:
+    0GDTEX.PVR  :     [J, J, J, Disc cover]
+    1ST_READ.BIN:     [J, U, P, Main game binary]
+    2_DP.BIN:         [J, U, P, Dreamkey binary]
+    DP2.INI:          [J, U, P, Dreamkey Ver. 1.5]      # According to DPETC\MESSAGE.INI
+    MAIGO.BIN:        [J, J, J, "browser related?"]     # ?
+    MANATEE.DRV:      [J, J, J, low-level sound driver]
+    SAMBADEAMIGO.BIN: [_, U, U, 805.306.368 bytes]      # ?
+    SG_DPLDR.BIN:     [J, J, J, "browser related?"]     # ?
+
+SONG PREVIEWS:
+    PRE_AFTER_BURNER.ADX:        [J, J, J, preview of After Burner]
+    PRE_B_RANGER.ADX:            [J, J, J, preview of Burning Hearts]
+    PRE_EL_MAMBO.ADX:            [J, _, _, preview of El Mambo]
+    PRE_EL_RITMO_TROPICANA2.ADX: [J, J, J, preview of El Ritmo Tropical]
+    PRE_INOKI.ADX:               [J, J, J, preview of The Theme of Inoki]
+    PRE_LA_BAMBA.ADX:            [J, J, J, preview of La Bamba]
+    PRE_LIVIN_LA_VIDA_LOCA2.ADX: [J, J, J, preview of Livin' la Vida Loca]
+    PRE_LOVE_LEASE.ADX:          [J, J, J, preview of Love Lease]
+    PRE_MACARENA.ADX:            [J, J, J, preview of Macarena]
+    PRE_MAMBOBEAT.ADX:           [J, J, J, preview of Mambo Beat]
+    PRE_MAS_QUE_NADA.ADX:        [J, _, _, preview of Mas Que Nada]
+    PRE_NIGHTS.ADX:              [J, J, J, preview of Dreams Dreams]
+    PRE_OPA_OPA.ADX:             [J, J, J, preview of Opa-Opa!]
+    PRE_OUT_RUN.ADX:             [J, J, J, preview of Magical Sound Shower]
+    PRE_RENT_A_HERO.ADX:         [J, J, J, preview of Rent a Hero No.1]
+    PRE_SAMBA_DE_2000_2.ADX:     [J, J, J, preview of Samba de Amigo]
+    PRE_SAMBA_DE_JA_NEIRO.ADX:   [J, J, J, preview of Samba de Janeiro]
+    PRE_SONIC_A_GOGO.ADX:        [J, _, _, preview of Sonic A Go Go!!]
+    PRE_SONIC_ADV.ADX:           [J, J, J, preview of Open Your Heart]
+    PRE_SONIC_CD.ADX:            [J, J, J, preview of Sonic-You can do Anything]
+    PRE_SONIC_R.ADX:             [J, J, J, preview of Super Sonic Racing]
+    PRE_SOUL_BOSSANOVA1.ADX:     [J, J, J, preview of Soul Bossa Nova]
+    PRE_TAKE_ON_ME.ADX:          [J, J, J, preview of Take On Me]
+    PRE_TEQUILA.ADX:             [J, J, J, preview of Tequila]
+    PRE_THE_CUP_OF_LIFE2.ADX:    [J, J, J, preview of The Cup of Life]
+    PRE_TUBTHUMPING.ADX:         [J, J, J, preview of Tubthumping]
+
+SONGS:
+    AFTER_BURNER.ADX:            [J, J, J, After Burner]
+    B_RANGER.ADX:                [J, J, J, Burning Hearts]
+    EL_MAMBO.ADX:                [J, _, _, El Mambo]
+    EL_RITMO_TROPICANA2.ADX:     [J, J, J, El Ritmo Tropical]
+    INOKI.ADX:                   [J, J, J, The Theme of Inoki]
+    LA_BAMBA.ADX:                [J, J, J, La Bamba]
+    LIVIN_LA_VIDA_LOCA2.ADX:     [J, J, J, Livin' la Vida Loca]
+    LOVE_LEASE.ADX:              [J, J, J, Love Lease]
+    MACARENA.ADX:                [J, J, J, Macarena]
+    MAMBOBEAT.ADX:               [J, J, J, Mambo Beat]
+    MAS_QUE_NADA.ADX:            [J, _, _, Mas Que Nada]
+    NIGHTS.ADX:                  [J, J, J, Dreams Dreams]
+    OPA_OPA.ADX:                 [J, J, J, Opa-Opa!]
+    OUT_RUN.ADX:                 [J, J, J, Magical Sound Shower]
+    RENT_A_HERO.ADX:             [J, J, J, Rent a Hero No.1]
+    SAMBA_DE_2000_2.ADX:         [J, J, J, Samba de Amigo]
+    SAMBA_DE_JA_NEIRO.ADX:       [J, J, J, Samba de Janeiro]
+    SONIC_A_GOGO.ADX:            [J, _, _, Sonic A Go Go!!]
+    SONIC_ADV.ADX:               [J, J, J, Open Your Heart]
+    SONIC_CD.ADX:                [J, J, J, Sonic-You can do Anything]
+    SONIC_R.ADX:                 [J, J, J, Super Sonic Racing]
+    SOUL_BOSSANOVA1.ADX:         [J, J, J, Soul Bossa Nova]
+    TAKE_ON_ME.ADX:              [J, J, J, Take On Me]
+    TEQUILA.ADX:                 [J, J, J, Tequila]
+    THE_CUP_OF_LIFE2.ADX:        [J, J, J, The Cup of Life]
+    TUBTHUMPING.ADX:             [J, J, J, Tubthumping]
+
+AMG: # "Amigo" files, with timing info for each difficulty level
+    AFTERBURNER.AMG:             [J, U, U, After Burner]
+    B_RANGER.AMG:                [J, U, U, Burning Hearts]
+    EL_MAMBO.AMG:                [J, U, U, El Mambo]
+    EL_RITMO_TROPICANA.AMG:      [J, U, U, El Ritmo Tropical]
+    INOKI.AMG:                   [J, U, U, The Theme of Inoki]
+    LA_BAMBA.AMG:                [J, U, U, La Bamba]
+    LIVIN_LA_VIDA_LOCA.AMG:      [J, U, U, Livin' la Vida Loca]
+    LOVE_LEASE.AMG:              [J, U, U, Love Lease]
+    MACARENA.AMG:                [J, U, U, Macarena]
+    MAMBOBEAT.AMG:               [J, U, U, Mambo Beat]
+    MAS_QUE_NADA.AMG:            [J, U, U, Mas Que Nada]
+    NIGHTS.AMG:                  [J, U, U, Dreams Dreams]
+    ONE_WEEK.AMG:                [_, U, U, "Barenaked Ladies' One Week, from 1998?"] # ? U/P: 22,548 bytes
+    OPAOPA.AMG:                  [J, U, U, Opa-Opa!]
+    OUTRUN.AMG:                  [J, U, U, Magical Sound Shower]
+    RENT_A_HERO.AMG:             [J, U, U, Rent a Hero No.1]
+    SAMBA.AMG:                   [J, _, _, "?"]                # ? J: 160 bytes
+    SAMBA_DE_AMIGO.AMG:          [J, U, U, Samba de Amigo]
+    SAMBA_DE_JANEIRO.AMG:        [J, U, U, Samba de Janeiro]
+    SONIC_ADV.AMG:               [J, U, U, Open Your Heart]
+    SONIC_CD.AMG:                [J, U, U, Sonic-You can do Anything]
+    SONIC_R.AMG:                 [J, U, U, Super Sonic Racing]
+    SOUL_BOSSANOVA.AMG:          [J, U, U, Soul Bossa Nova]    # ? J: 12,852 bytes, U/P: 21,988 bytes
+    SOUL_BOSSANOVA2.AMG:         [_, U, U, "Soul Bossa Nova?"] # ?                  U/P: 23,236 bytes
+    TAKE_ON_ME.AMG:              [J, U, U, Take On Me]
+    TEQUILA.AMG:                 [J, U, U, Tequila]
+    THE_CUP_OF_LIFE.AMG:         [J, U, U, The Cup of Life]
+    TUBTHUMPING.AMG:             [J, U, U, Tubthumping]
+
+SFX & Background Music:
+    FANFARE1.ADX:                [J, J, J, SFX]
+    FANFARE2.ADX:                [J, J, J, SFX]
+    FANFARE3.ADX:                [J, J, J, SFX]
+    FANFARE4.ADX:                [J, J, J, SFX]
+    FANFARE5.ADX:                [J, J, J, SFX]
+    FANFARE6.ADX:                [J, J, J, SFX]
+    FANFARE7.ADX:                [J, J, J, SFX]
+    FANFARE8.ADX:                [J, J, J, SFX]
+    FANFARE9.ADX:                [J, J, J, SFX]
+    HEIGHT_SELECT.ADX:           [J, J, J, Height selection background music]
+    MAINMENU.ADX:                [J, J, J, Main menu background music]
+    MINIGAME.ADX:                [J, J, J, Minigame menu background music] # ???
+    MISSION_LESSON.ADX:          [J, J, J, BGM]
+    MODE_SELECT.ADX:             [J, J, J, BGM]
+    NAME_ENTRY.ADX:              [J, J, J, BGM]
+    NOTICE1.ADX:                 [J, J, J, マラカスつか隣にを人ぶつからないように、足跡の上にのってプレイしましょう]
+    NOTICE2.ADX:                 [J, J, J, マラカスつか隣にを人ぶつからないように、足跡の上にのってプレイしましょうね]
+    NOTICE_ENGLISH.ADX:          [J, J, J, To avoid hitting maracas, stand on the footprints marked on the mat below]
+    PARTY_SELECT.ADX:            [J, J, J, BGM]
+    RHYTHM.ADX:                  [J, J, J, BGM]
+    SAMBA_DE_AMIGO.ADX:          [J, J, J, Samba de Amigo]
+    SEGALOGO1.ADX:               [J, J, J, Presented by Sega (hehe)]
+    SEGALOGO2.ADX:               [J, J, J, Welcome to Sega's dance world]
+    SEGALOGO3.ADX:               [J, J, J, Let's dance, with Sega]
+    SEGALOGO4.ADX:               [J, J, J, Sega]
+    TEAMLOGO.ADX:                [J, J, J, Hey, we are the Sonic Team]
+    TITLE.ADX:                   [J, J, J, BGM]
+    TITLE_WITH_VOICE.ADX:        [J, J, J, Samba de Amigo BGM]
+    TUTORIAL.ADX:                [J, J, J, BGM]
+
+PRS:
+    POSE.PRS:                  # [J, J, J, Compressed PVM file with 21 textures]
+        pose1  : PVR 128 × 128, TL TR (top left, top right)
+        pose2  : PVR 128 × 128, TL MR (top left, middle right)
+        pose7  : PVR 128 × 128, TL BR
+        pose5  : PVR 128 × 128, TL ML
+        pose6  : PVR 128 × 128, ML TR
+        pose18 : PVR 128 × 128, ML MR
+        pose15 : PVR 128 × 128, ML BR
+        pose11 : PVR 128 × 128, ML BL
+        pose20 : PVR 128 × 128, BL TR
+        pose19 : PVR 128 × 128, BL MR
+        pose3  : PVR 128 × 128, BM BM
+        pose9  : PVR 128 × 128, TR MR
+        pose4  : PVR 128 × 128, MR BR
+        pose12 : PVR 128 × 128, TL BL
+        pose14 : PVR 128 × 128, TR BR
+        pose13 : PVR 128 × 128, TL TL
+        pose21 : PVR 128 × 128, ML ML
+        pose10 : PVR 128 × 128, BL BL
+        pose17 : PVR 128 × 128, TR TR
+        pose8  : PVR 128 × 128, MR MR
+        pose16 : PVR 128 × 128, BR BR
+    EFF_GAME.PRS:              # [_, U, U, PVR files]
+        samba_frame : PVR 256 × 256, (flames)
+        sda_bom01   : PVR 128 × 128, (explosion)
+        sda_bom02   : PVR  64 ×  64, (bubbles or cloud)
+        sda_hanabi01: PVR 256 × 256, (fireworks)
+
+AFS:
+    AFS_BAKAVOICE.AFS:           [J, J, J,  33 files of type SMLT - multi-unit archives]
+    AFS_CHALLENGE.AFS:         # [J, U, U, 108 PVR files ]
+        JP:
+            file_1  : PVR  256 ×  32, 左のボタンで戻る
+            file_2  : PVR  128 ×  64, CLEAR
+            file_3  : PVR  256 ×  64, マラカス見習い
+            file_4  : PVR  256 ×  64, マラカス一人前
+            file_5  : PVR  256 ×  64, マラカス名人
+            file_6  : PVR  256 ×  64, マラカス達人
+            file_7  : PVR  256 ×  64, マラカス大王
+            file_8  : PVR  512 × 128, まだまだ未熟なマラカス見習い　まずはシャカシャカ振ってみよう！
+            file_9  : PVR  512 × 128, やっとなんとか一人前　もっとシャカシャカノリまくろう！
+            file_10 : PVR  512 × 128, ここまでくればマラカス名人テンションあげて踊るんだ！
+            file_11 : PVR  512 × 128, すごいよセニョール、マラカス達人みんなをもっとのせてくれ！
+            file_12 : PVR  512 × 128, みんなが爆笑、マラカス大王だれもあなたにかなわない！
+            file_13 : PVR  512 × 128, チャレンジメニュー
+            file_14 : PVR  256 ×  64, チャレンジNO.1
+            file_15 : PVR  256 ×  64, チャレンジNO.2
+            file_16 : PVR  256 ×  64, チャレンジNO.3
+            file_17 : PVR  256 ×  64, チャレンジNO.4
+            file_18 : PVR  256 ×  64, チャレンジNO.5
+            file_19 : PVR  512 × 256, サンバデジャネイロ（ノーマル）をCランク以上でクリアしろ！
+            file_20 : PVR  512 × 256, マンボビート（ノーマル）をBランク以上でクリアしろ！
+            file_21 : PVR  512 × 256, テイクオンミー（ノーマル）をAランクでクリアしろ！
+            file_22 : PVR  512 × 256, タブサンピング（ノーマル）をAランクでクリアしろ！
+            file_23 : PVR  512 × 256, マカレナ（ノーマル）をAランクでクリアしろ！
+            file_24 : PVR  512 × 256, ミニゲーム（トータルチェックモード）をラテン指数80以上でクリアしろ！
+            file_25 : PVR  512 × 256, サンバデジャネイロ（ノーマル）を98%以上Aランクでクリアしろ！
+            file_26 : PVR  512 × 256, タブサンピング（ハード）をCランク以上でクリアしろ！
+            file_27 : PVR  512 × 256, マシュケナダ（ノーマル）をパーフェクトでクリアしろ！
+            file_28 : PVR  512 × 256, ラバンバ（ハード）を400000点以上でクリアしろ！
+            file_29 : PVR  512 × 256, マンボビート（ノーマル）をパーフェクトでクリアしろ！
+            file_30 : PVR  512 × 256, テイクオンミー（ハード）をAランクでクリアしろ！
+            file_31 : PVR  512 × 256, ラブリース（ノーマル）をパーフェクトでクリアしろ！
+            file_32 : PVR  512 × 256, ラバンバ（ハード）をAランクでクリアしろ！
+            file_33 : PVR  512 × 256, ミニゲーム（トータルチェックモード）をラテン指数90以上でクリアしろ！
+            file_34 : PVR  512 × 256, テキーラ（ハード）を98%以上Aランクでクリアしろ！
+            file_35 : PVR  512 × 256, タブサンピング（ハード）をパーフェクトでクリアしろ！
+            file_36 : PVR  512 × 256, サンバデジャネイロ（ランダム）を430000点以上でクリアしろ！
+            file_37 : PVR  512 × 256, マカレナ（スーパーハード）をCランク以上でクリアしろ！
+            file_38 : PVR  512 × 256, テーマオブイノキ（ハード）をパーフェクトでクリアしろ！
+            file_39 : PVR  512 × 256, マシュケナダ（スーパーハード）をBランク以上でクリアしろ！
+            file_40 : PVR  512 × 256, ソウルボサンバ（スーパーハード）をAランクでクリアしろ！
+            file_41 : PVR  512 × 128, マラカス見習いコース
+            file_42 : PVR  512 × 128, マラカス一人前コース
+            file_43 : PVR  512 × 128, マラカス名人コース
+            file_44 : PVR  512 × 128, マラカス達人コース
+            file_45 : PVR  512 × 128, マラカス大王コース
+            file_46 : PVR  512 ×  32, GO TO NEXT CHALLENGE 🠖
+            file_47 : PVR  512 × 512, チャレンジNO.1 - クリア条件 - SAMBA DE JANEIRO - NORMAL MODE - をCランク以上でクリアしろ！
+            file_48 : PVR  512 × 512, チャレンジNO.2 - クリア条件 - MAMBO BEAT - NORMAL MODE - をBランク以上でクリアしろ！
+            file_49 : PVR  512 × 512, チャレンジNO.3 - クリア条件 - TAKE ON ME - NORMAL MODE - をAランクでクリアしろ！
+            file_50 : PVR  512 × 512, チャレンジNO.1 - クリア条件 - TUBTHUMPING - NORMAL MODE - をAランクでクリアしろ！
+            file_51 : PVR  512 × 512, チャレンジNO.2 - クリア条件 - MACARENA - NORMAL MODE - をAランクでクリアしろ！
+            file_52 : PVR  512 × 512, チャレンジNO.3 - クリア条件 - ミニケーム - トータルチェックモード - をラテン指数80以上でクリアしろ！
+            file_53 : PVR  512 × 512, チャレンジNO.4 - クリア条件 - SAMBA DE JANEIRO - NORMAL MODE - を98%以上Aランクでクリアしろ！
+            file_54 : PVR  512 × 512, チャレンジNO.1 - クリア条件 - TUBTHUMPING - HARD MODE - をCランク以上でクリアしろ！
+            file_55 : PVR  512 × 512, チャレンジNO.2 - クリア条件 - MAS QUE NADA - NORMAL MODE - をパーフェクトでクリアしろ！
+            file_56 : PVR  512 × 512, チャレンジNO.3 - クリア条件 - LA BAMBA - HARD MODE - を400000点以上でクリアしろ！
+            file_57 : PVR  512 × 512, チャレンジNO.4 - クリア条件 - MAMBO BEAT - NORMAL MODE - をパーフェクトでクリアしろ！
+            file_58 : PVR  512 × 512, チャレンジNO.5 - クリア条件 - TAKE ON ME - HARD MODE - をAランクでクリアしろ！
+            file_59 : PVR  512 × 512, チャレンジNO.1 - クリア条件 - LOVE LEASE - NORMAL MODE - をパーフェクトでクリアしろ！
+            file_60 : PVR  512 × 512, チャレンジNO.2 - クリア条件 - LA BAMBA - HARD MODE - をAランクでクリアしろ！
+            file_61 : PVR  512 × 512, チャレンジNO.3 - クリア条件 - ミニケーム - トータルチェックモード - をラテン指数90以上でクリアしろ！
+            file_62 : PVR  512 × 512, チャレンジNO.4 - クリア条件 - TEQUILA - HARD MODE - を98%以上Aランクでクリアしろ！
+            file_63 : PVR  512 × 512, チャレンジNO.5 - クリア条件 - TUBTHUMPING - HARD MODE - をパーフェクトでクリアしろ！
+            file_64 : PVR  512 × 512, チャレンジNO.1 - クリア条件 - SAMBA DE JANEIRO - RANDOM MODE - を430000点以上でクリアしろ！
+            file_65 : PVR  512 × 512, チャレンジNO.2 - クリア条件 - MACARENA - SUPERHARD MODE - をCランク以上でクリアしろ！
+            file_66 : PVR  512 × 512, チャレンジNO.3 - クリア条件 - THE THEME OF INOKI - HARD MODE - をパーフェクトでクリアしろ！
+            file_67 : PVR  512 × 512, チャレンジNO.4 - クリア条件 - MAS QUE NADA - SUPERHARD MODE - をBランク以上でクリアしろ！
+            file_68 : PVR  512 × 512, チャレンジNO.5 - クリア条件 - SOUL BOSSA NOVA - SUPERHARD MODE - をAランク以上でクリアしろ！
+            file_69 : PVR  512 × 128, チャレンジNO.1
+            file_70 : PVR  512 × 128, チャレンジNO.2
+            file_71 : PVR  512 × 128, チャレンジNO.3
+            file_72 : PVR  512 × 128, チャレンジNO.4
+            file_73 : PVR  512 × 128, チャレンジNO.5
+            file_74 : PVR  128 × 128, (blue image of a book with a drawing of a school and flying birds)
+            file_75 : PVR  128 × 128, (magenta image of a japanese style door with a pagoda in the background)
+            file_76 : PVR  128 × 128, (green image of coconuts in the foreground, abstract version of Linda in the background)
+            file_77 : PVR  128 × 128, (yellow image of two fighters in front of a pagoda)
+            file_78 : PVR  128 × 128, (two maracas inside a star)
+            file_79 : PVR  256 × 256, (yellow and orange explosions)
+            file_80 : PVR  128 × 128, NO.02 (magenta)
+            file_81 : PVR  128 × 128, NO.01 (blue)
+            file_82 : PVR  128 × 128, NO.03 (green)
+            file_83 : PVR  128 × 128, NO.04 (yellow)
+            file_84 : PVR  128 × 128, NO.05 (brown)
+            file_85 : PVR 1024 × 512, (graduated Amigo with diploma, 38, latin univ.)
+            file_86 : PVR 1024 × 512, (Amigo cleaning the floor with a broom)
+            file_87 : PVR 1024 × 512, (Amigo cleaning the floor with a broom, encircled by 12 stars)
+            file_88 : PVR 1024 × 512, (Amigo showing his feet while holding 10 kg maracas)
+            file_89 : PVR 1024 × 512, (graduated Amigo with diploma, 38, latin univ., encircled by 12 stars)
+            file_90 : PVR 1024 × 512, (Amigo jumping)
+            file_91 : PVR 1024 × 512, (Amigo jumping, encircled by 12 stars)
+            file_92 : PVR 1024 × 512, (Chinese style Amigo)
+            file_93 : PVR 1024 × 512, (Chinese style Amigo, encircled by 12 stars)
+            file_94 : PVR 1024 × 512, (Crowned and bearded Amigo holding surreal maracas)
+            file_95 : PVR 1024 × 512, (Crowned and bearded Amigo holding surreal maracas, encircled by 12 stars)
+            file_96 : PVR  128 × 128, (gray star pattern)
+            file_97 : PVR   64 ×  64, (vertical gradient of yellow, orange and brown)
+            file_98 : PVR 1024 × 512, SAMBA DE AMIGO をプレイできるようになりました。
+            file_99 : PVR 1024 × 512, THE THEME OF INOKI をプレイできるようになりました。
+            file_100: PVR 1024 × 512, EL MAMBO をプレイできるようになりました。
+            file_101: PVR 1024 × 512, EL RITMO TROPICAL をプレイできるようになりました。
+            file_102: PVR 1024 × 512, TEQUILA - LOVE LEASE - SOUL BOSSA NOVA をプレイできるようになりました。
+            file_103: PVR  512 × 128, VIVA!!
+            file_104: PVR  512 × 128, マラカス見習い
+            file_105: PVR  512 × 128, マラカス一人前
+            file_106: PVR  512 × 128, マラカス名人
+            file_107: PVR  512 × 128, マラカス達人
+            file_108: PVR  512 × 128, マラカス大王
+        US:
+            file_1  : PVR  256 ×  32, 左のボタンで戻る
+            file_2  : PVR  128 ×  64, CLEAR
+            file_3  : PVR  256 ×  64, MARACAS BEGINNER
+            file_4  : PVR  256 ×  64, MARACAS PRO
+            file_5  : PVR  256 ×  64, MARACAS EXPERT
+            file_6  : PVR  256 ×  64, MARACAS MASTER
+            file_7  : PVR  256 ×  64, MARACAS KING
+            file_8  : PVR  512 × 128, You still have much to learn, Maracas Beginner! Shake those maracas with all your might!
+            file_9  : PVR  512 × 128, You've finally reached the Maracas Pro level! C'mon! Shake your maracas and feel the groove!
+            file_10 : PVR  512 × 256, Alright! Now you're a Maracas Expert! Now you really gotta get into it to do better!
+            file_11 : PVR  512 × 256, That was great! You truly are a Maracas Master! Now make everyone around you feel the beat, too!
+            file_12 : PVR  512 × 256, You are the Maracas King!!! Nobody can match you!
+            file_13 : PVR  512 × 128, CHALLENGE MENU
+            file_14 : PVR  256 ×  64, Challenge NO. 1
+            file_15 : PVR  256 ×  64, Challenge NO. 2
+            file_16 : PVR  256 ×  64, Challenge NO. 3
+            file_17 : PVR  256 ×  64, Challenge NO. 4
+            file_18 : PVR  256 ×  64, Challenge NO. 5
+            file_19 : PVR  512 × 256, Complete SAMBA DE JANEIRO (Normal) with a C rank or better!
+            file_20 : PVR  512 × 256, Complete AL COMPAS DEL MAMBO (Normal) with a B rank or better!
+            file_21 : PVR  512 × 256, Complete TAKE ON ME (Normal) with an A rank!
+            file_22 : PVR  512 × 256, Complete TUBTHUMPING (Normal) with an A rank!
+            file_23 : PVR  512 × 256, Complete MACARENA (Normal) with an A rank!
+            file_24 : PVR  512 × 256, Complete Mini Game (Total Check Mode) with a Samba Score of 80 or better!
+            file_25 : PVR  512 × 256, Complete SAMBA DE JANEIRO (Normal) with an A rank of 98% or more!
+            file_26 : PVR  512 × 256, Complete TUBTHUMPING (Hard) with an C rank or better!
+            file_27 : PVR  512 × 256, Complete THE CUP OF LIFE (Normal) with a perfect!
+            file_28 : PVR  512 × 256, Complete LA BAMBA (Hard) with 400000 points or more!
+            file_29 : PVR  512 × 256, Complete AL COMPAS DEL MAMBO (Normal) with a perfect!
+            file_30 : PVR  512 × 256, Complete TAKE ON ME (Hard) with an A rank!
+            file_31 : PVR  512 × 256, Complete LOVE LEASE (Normal) with a perfect!
+            file_32 : PVR  512 × 256, Complete LA BAMBA (Hard) with an A rank!
+            file_33 : PVR  512 × 256, Complete Mini Game (Total Check Mode) with a Samba Score of 90 or better!
+            file_34 : PVR  512 × 256, Complete TEQUILA (Hard) with an A rank of 98% or more!
+            file_35 : PVR  512 × 256, Complete TUBTHUMPING (Hard) with a perfect!
+            file_36 : PVR  512 × 256, Complete SAMBA DE JANEIRO (Random) with 430000 points or more!
+            file_37 : PVR  512 × 256, Complete MACARENA (Super Hard) with a C rank or better!
+            file_38 : PVR  512 × 256, Complete ALI BOMBAYE (Hard) with a perfect!
+            file_39 : PVR  512 × 256, Complete LIVIN' LA VIDA LOCA (Super Hard) with a B rank or better!
+            file_40 : PVR  512 × 256, Complete SOUL BOSSA NOVA (Super Hard) with an A rank!
+            file_41 : PVR  512 × 128, MARACAS BEGINNER COURSE
+            file_42 : PVR  512 × 128, MARACAS PRO COURSE
+            file_43 : PVR  512 × 128, MARACAS EXPERT COURSE
+            file_44 : PVR  512 × 128, MARACAS MASTER COURSE
+            file_45 : PVR  512 × 128, MARACAS KING COURSE
+            file_46 : PVR  512 ×  32, GO TO NEXT CHALLENGE 🠖
+            file_47 : PVR  512 × 512, CHALLENGE NO.1 - COMPLETE - SAMBA DE JANEIRO - NORMAL MODE - with a C rank or better!
+            file_48 : PVR  512 × 512, CHALLENGE NO.2 - COMPLETE - AL COMPAS DEL MAMBO - NORMAL MODE - with a B rank or better!
+            file_49 : PVR  512 × 512, CHALLENGE NO.3 - COMPLETE - TAKE ON ME - NORMAL MODE - with an A rank!
+            file_50 : PVR  512 × 512, CHALLENGE NO.1 - COMPLETE - TUBTHUMPING - NORMAL MODE - with an A rank!
+            file_51 : PVR  512 × 512, CHALLENGE NO.2 - COMPLETE - MACARENA - NORMAL MODE - with an A rank!
+            file_52 : PVR  512 × 512, CHALLENGE NO.3 - COMPLETE - MINI GAME - TOTAL CHECK MODE - with a Samba Score of 80 or better!
+            file_53 : PVR  512 × 512, CHALLENGE NO.4 - COMPLETE - SAMBA DE JANEIRO - NORMAL MODE - with an A rank of 98% or more!
+            file_54 : PVR  512 × 512, CHALLENGE NO.1 - COMPLETE - TUBTHUMPING - HARD MODE - with a C rank or better!
+            file_55 : PVR  512 × 512, CHALLENGE NO.2 - COMPLETE - THE CUP OF LIFE - NORMAL MODE - with a perfect!
+            file_56 : PVR  512 × 512, CHALLENGE NO.3 - COMPLETE - LA BAMBA - HARD MODE - with 400000 points or more!
+            file_57 : PVR  512 × 512, CHALLENGE NO.4 - COMPLETE - AL COMPAS DEL MAMBO - NORMAL MODE - with a perfect!
+            file_58 : PVR  512 × 512, CHALLENGE NO.5 - COMPLETE - TAKE ON ME - HARD MODE - with an A rank!
+            file_59 : PVR  512 × 512, CHALLENGE NO.1 - COMPLETE - LOVE LEASE - NORMAL MODE - with a perfect!
+            file_60 : PVR  512 × 512, CHALLENGE NO.2 - COMPLETE - LA BAMBA - HARD MODE - with an A rank!
+            file_61 : PVR  512 × 512, CHALLENGE NO.3 - COMPLETE - MINI GAME - TOTAL CHECK MODE - with a Samba Score of 90 or better!
+            file_62 : PVR  512 × 512, CHALLENGE NO.4 - COMPLETE - TEQUILA - HARD MODE - with an A rank of 98% or more!
+            file_63 : PVR  512 × 512, CHALLENGE NO.5 - COMPLETE - TUBTHUMPING - HARD MODE - with a perfect!
+            file_64 : PVR  512 × 512, CHALLENGE NO.1 - COMPLETE - SAMBA DE JANEIRO - RANDOM MODE - with 430000 points or more!
+            file_65 : PVR  512 × 512, CHALLENGE NO.2 - COMPLETE - MACARENA - SUPERHARD MODE - with a C rank or better!
+            file_66 : PVR  512 × 512, CHALLENGE NO.3 - COMPLETE - ALI BOMBAYE - HARD MODE - with a perfect!
+            file_67 : PVR  512 × 512, CHALLENGE NO.4 - COMPLETE - LIVIN' LA VIDA LOCA - SUPERHARD MODE - with a B rank or better!
+            file_68 : PVR  512 × 512, CHALLENGE NO.5 - COMPLETE - SOUL BOSSA NOVA - SUPERHARD MODE - with an A rank!
+            file_69 : PVR  512 × 128, CHALLENGE NO.1
+            file_70 : PVR  512 × 128, CHALLENGE NO.2
+            file_71 : PVR  512 × 128, CHALLENGE NO.3
+            file_72 : PVR  512 × 128, CHALLENGE NO.4
+            file_73 : PVR  512 × 128, CHALLENGE NO.5
+            file_74 : PVR  128 × 128, (blue image of a book with a drawing of a school and flying birds)
+            file_75 : PVR  128 × 128, (magenta image of a japanese style door with a pagoda in the background)
+            file_76 : PVR  128 × 128, (green image of coconuts in the foreground, abstract version of Linda in the background)
+            file_77 : PVR  128 × 128, (yellow image of two fighters in front of a pagoda)
+            file_78 : PVR  128 × 128, (two maracas inside a star)
+            file_79 : PVR  256 × 256, (yellow and orange explosions)
+            file_80 : PVR  128 × 128, NO.02 (magenta)
+            file_81 : PVR  128 × 128, NO.01 (blue)
+            file_82 : PVR  128 × 128, NO.03 (green)
+            file_83 : PVR  128 × 128, NO.04 (yellow)
+            file_84 : PVR  128 × 128, NO.05 (brown)
+            file_85 : PVR 1024 × 512, (graduated Amigo with diploma, 38, latin univ.)
+            file_86 : PVR 1024 × 512, (Amigo cleaning the floor with a broom)
+            file_87 : PVR 1024 × 512, (Amigo cleaning the floor with a broom, encircled by 12 stars)
+            file_88 : PVR 1024 × 512, (Amigo showing his feet while holding 10 kg maracas)
+            file_89 : PVR 1024 × 512, (graduated Amigo with diploma, 38, latin univ., encircled by 12 stars)
+            file_90 : PVR 1024 × 512, (Amigo jumping)
+            file_91 : PVR 1024 × 512, (Amigo jumping, encircled by 12 stars)
+            file_92 : PVR 1024 × 512, (Chinese style Amigo)
+            file_93 : PVR 1024 × 512, (Chinese style Amigo, encircled by 12 stars)
+            file_94 : PVR 1024 × 512, (Crowned and bearded Amigo holding surreal maracas)
+            file_95 : PVR 1024 × 512, (Crowned and bearded Amigo holding surreal maracas, encircled by 12 stars)
+            file_96 : PVR  128 × 128, (gray star pattern)
+            file_97 : PVR   64 ×  64, (vertical gradient of yellow, orange and brown)
+            file_98 : PVR 1024 × 512, Now you can play SAMBA DE AMIGO
+            file_99 : PVR 1024 × 512, Now you can play ALI BOMBAYE
+            file_100: PVR 1024 × 512, Now you can play EL MAMBO
+            file_101: PVR 1024 × 512, Now you can play EL RITMO TROPICAL
+            file_102: PVR 1024 × 512, Now you can play TEQUILA - LOVE LEASE - SOUL BOSSA NOVA
+            file_103: PVR  512 × 128, VIVA!!
+            file_104: PVR  512 × 128, MARACAS BEGINNER
+            file_105: PVR  512 × 128, MARACAS PRO
+            file_106: PVR  512 × 128, MARACAS EXPERT
+            file_107: PVR  512 × 128, MARACAS MASTER
+            file_108: PVR  512 × 128, MARACAS KING
+    AFS_LOVELOVE.AFS:          # [J, U, U,  44 PVR files]
+        JP:
+            file_1  : PVR  512 ×  64, あなたたちの「LOVE LOVE」度は。。。
+            file_2  : PVR  256 × 256, 相性は。。。　うん、最悪だぜ！　でも気を落とすなよ、　陽気に踊れば相性もドーンとアップだ！　ノリノリシェイクで　ラブラブアミーゴしようぜ！
+            file_3  : PVR  256 × 256, 相性は。。。　いまいちみたいだな。　でも元気を出せ！　セニョール、セニョリータ！　おまえらの心にはきっと　ラテン魂があるはずだ！
+            file_3  : PVR  256 × 256, 相性は。。。　いまいちみたいだな。　でも元気を出せ！　セニョール、セニョリータ！　おまえらの心にはきっと　ラテン魂があるはずだ！
+            file_4  : PVR  256 × 256, 相性は。。。　うーん、普通だ、普通すぎる！　まだまだラブラブアミーゴには　程遠いな。　相手の名前を叫びながら　サンバすると　ラブラブアミーゴだ！
+            file_5  : PVR  256 × 256, 相性は。。。　まーまーだな。　セニョールはもっとノリノリでセニョリータはもっと　腰をふってプレイするんだ！　二人の愛を　見せつけてくれよ！
+            file_6  : PVR  256 × 256, 相性は。。。　おっ、　なかなかいいじゃねーか！　でも、2人ともまだ動きが 堅いみたいだから、もっと　リラックスしてサンバすれば　もっとラブラブアミーゴになるぜ！
+            file_7  : PVR  256 × 256, 相性は。。。　それなりにいいな。　自分の心を開放して、　2人でノリノリアミーゴで　踊れば、2人のラブラブ度は　きっと倍増するぜ！
+            file_8  : PVR  256 × 256, 相性は。。。　ま、いいじゃねーか。　おまえらは何かやらかす　ビックカップルだよ。　もっとマラカス振って　ラブラブアミーゴしようぜ。
+            file_9  : PVR  256 × 256, 相性は。。。　なかなかいいじゃねーか！　セニョール、セニョリータ。　二人の愛を踊りにすれば、ラブラブアミーゴになるかもな。
+            file_10 : PVR  256 × 256, 相性は。。。　まさに上昇中だ。　2人が踊れば踊るほど　ラブラブアミーゴアップな　時期だ！　もっと、マラカスふって　ラブラブアミーゴしようぜ。
+            file_11 : PVR  256 × 256, 相性は。。。　すごくナイスなカップルだな！　セニョール、セニョリータの　ダンスが二人の愛を　あらわしているぜ！　これからも、マラカス振って　ラブラブになろうぜ！
+            file_12 : PVR  256 × 256, 相性は。。。　すごくいいじゃねーか！　2人の息はぴったり合ってるよ。　おれもうらやましいぜ！　よっ、おふたりさん、　ラブラブアミーゴだね！
+            file_13 : PVR  256 × 256, 相性は。。。　ワォ！抜群な2人だな。　ラブラブアミーゴは　パーフェクトに近いぜ！　この調子でいけば、無敵の　ラブラブカップル間近だぜ！
+            file_14 : PVR  256 × 256, 相性は。。。　すげー！　相性ぴったりじゃないが！　おめーら、お似合いだよ。　チキチキだぜ！もうちょっと　ノリノリでがんばれば　パーフェクトアミーゴだぜ！
+            file_15 : PVR  256 × 256, 相性は。。。　もー、ラブラブアミーゴ！　二人のあつさで　俺もとろけそうだぜ！　結婚したら、今度俺んちに　とびにきてくれよ！
+            file_16 : PVR  256 × 256, 相性は。。。　ラブラブアミーゴ！！！！　すごい！相性ドンピシャだそ、セニョール、セニョリータ！2人のノリノリサンバが　きっとみんなを幸せにするぜ！
+            file_17 : PVR  128 × 128, (red heart)
+            file_18 : PVR  512 ×  64, (magenta bar with blue squares)
+            file_19 : PVR  128 × 128, (4 pink hearts with faces)
+            file_20 : PVR  128 × 128, (4 pink hearts with faces)
+            file_21 : PVR  128 × 128, (white heart on pink background with cyan countour)
+            file_22 : PVR  128 × 128, (light red heart on pink background with red countour)
+            file_23 : PVR  128 × 128, (cyan heart on pink background with yellow countour)
+            file_24 : PVR  128 × 128, (red heart on yellow background)
+            file_25 : PVR  128 × 128, (yellow splashing heart on pink background)
+            file_26 : PVR  128 × 128, (red heart, same as file_17)
+            file_27 : PVR  256 ×  64, LOVE!
+            file_28 : PVR  256 ×  64, RANK (inside pink circle with cyan contour)
+            file_29 : PVR 1024 × 512, ゲーム説明 - サンバで2人のラブラブ度がわかるぞ！　2人の息がピッタリあえばLOVE!がでるぞ！　2人でLOVE!を集めてラブラブ度をあげよう！
+            file_30 : PVR   64 ×  64, %
+            file_31 : PVR   64 ×  64, (pink ball)
+            file_32 : PVR  128 ×  32, LOVE
+            file_33 : PVR   32 ×  32, (red hard on pink background)
+            file_34 : PVR  512 × 128, LOVE LOVE
+            file_35 : PVR   64 ×  64, 9
+            file_36 : PVR   64 ×  64, 0
+            file_37 : PVR   64 ×  64, 1
+            file_38 : PVR   64 ×  64, 2
+            file_39 : PVR   64 ×  64, 3
+            file_40 : PVR   64 ×  64, 4
+            file_41 : PVR   64 ×  64, 5
+            file_42 : PVR   64 ×  64, 6
+            file_43 : PVR   64 ×  64, 7
+            file_44 : PVR   64 ×  64, 8
+        US:
+            file_1  : PVR  512 ×  64, Your "Love Rating" is...
+            file_2  : PVR  256 × 256, Whoa... what a terrible match! But don't worry! You can make everything better if you play Samba de Amigo more and practice!
+            file_3  : PVR  256 × 256, Hmm... that wasn't very good! But forget about it! If you've got the rhythm in your souls, you'll be alright!
+            file_4  : PVR  256 × 256, Just average... WAY too average! You're still far away from being Love Amigos! Try again, but this time, shout your partner's name as you play!
+            file_5  : PVR  256 × 256, Not too bad! But you still need more groove, Señor! And shake those hips, Señorita! C'mon! Show me your love!
+            file_6  : PVR  256 × 256, That was okay, but you still seem a little too tense! Just relax and let the rhythm take control. Maybe you two will be able to become Love Amigos!
+            file_7  : PVR  256 × 256, Pretty good! Free yourself and feel the groove to make your Love Rating better!
+            file_8  : PVR  256 × 256, Wow... that was good! I can see that you two will make a great couple!
+            file_9  : PVR  256 × 256, Very good! Your dancing is an expression of your love! Maybe you two can be Love Amigos someday!
+            file_10 : PVR  256 × 256, You guys work great together! The more you dance, the better your Love Rating will be! C'mon! Shake your maracas and feel the love!
+            file_11 : PVR  256 × 256, You guys make a great couple! Señor... Señorita... your dancing is proof of your love for each other! Keep on shaking those maracas!
+            file_12 : PVR  256 × 256, Cool! You two really are made for each other! I envy you two!
+            file_13 : PVR  256 × 256, What a great couple! You two better realize that what you've got going is something special!
+            file_14 : PVR  256 × 256, Wonderful! You two are great! You're so close to being Love Amigos!
+            file_15 : PVR  256 × 256, Wow - you're almost Love Amigos! You guys really heat up the place!
+            file_16 : PVR  256 × 256, Love Amiiiiiiiiiiiiiiiigos!! You two are perfect partners, Señor and Señorita!
+            file_17 : PVR  128 × 128, (red heart)
+            file_18 : PVR  512 ×  64, (magenta bar with blue squares)
+            file_19 : PVR  128 × 128, (4 pink hearts with faces)
+            file_20 : PVR  128 × 128, (4 pink hearts with faces)
+            file_21 : PVR  128 × 128, (white heart on pink background with cyan countour)
+            file_22 : PVR  128 × 128, (light red heart on pink background with red countour)
+            file_23 : PVR  128 × 128, (cyan heart on pink background with yellow countour)
+            file_24 : PVR  128 × 128, (red heart on yellow background)
+            file_25 : PVR  128 × 128, (yellow splashing heart on pink background)
+            file_26 : PVR  128 × 128, (red heart, same as file_17)
+            file_27 : PVR  256 ×  64, LOVE!
+            file_28 : PVR  256 ×  64, RANK (inside pink circle with cyan contour)
+            file_29 : PVR 1024 × 512, INSTRUCTIONS - Determine your "Love Rating!" Synchronize your maracas with each other and collect LOVE! points!
+            file_30 : PVR   64 ×  64, %
+            file_31 : PVR   64 ×  64, (pink ball)
+            file_32 : PVR  128 ×  32, LOVE
+            file_33 : PVR   32 ×  32, (red hard on pink background)
+            file_34 : PVR  512 × 128, LOVE LOVE
+            file_35 : PVR   64 ×  64, 9
+            file_36 : PVR   64 ×  64, 0
+            file_37 : PVR   64 ×  64, 1
+            file_38 : PVR   64 ×  64, 2
+            file_39 : PVR   64 ×  64, 3
+            file_40 : PVR   64 ×  64, 4
+            file_41 : PVR   64 ×  64, 5
+            file_42 : PVR   64 ×  64, 6
+            file_43 : PVR   64 ×  64, 7
+            file_44 : PVR   64 ×  64, 8
+    AFS_MINIGAME.AFS:          # [J, U, U, 105 PVR/PVM files]
+        JP:
+            file_1  : PVR  128 ×  128, 1
+            file_2  : PVR  128 ×  128, 2
+            file_3  : PVR  128 ×  128, 3BA! 
+            file_4  : PVR  128 ×  128, (smiling bomb)
+            file_5  : PVR  512 ×  128, (red rounded rectangle)
+            file_6  : PVR  512 ×  128, (yellow rounded rectangle)
+            file_7  : PVR  512 ×  128, (cyan rounded rectangle)
+            file_8  : PVR  256 ×   32, 左のボタンで戻る
+            file_9  : PVR   64 ×   64, 第
+            file_10 : # PVM, 4 files
+                samba_frame : PVR 256 × 256, (flames)
+                sda_bom01   : PVR 128 × 128, (explosion)
+                sda_bom02   : PVR  64 ×  64, (bubbles or cloud)
+                sda_hanabi01: PVR 256 × 256, (fireworks)
+            file_11 : PVR   32 ×   32, 匹
+            file_12 : PVR   32 ×   32, 回
+            file_13 : PVR   32 ×   32, 枚
+            file_14 : PVR 1024 ×  128, Stage 1 モグラパニック
+            file_15 : PVR 1024 ×  128, Stage 2 パワーラッシュ
+            file_16 : PVR 1024 ×  128, Stage 3 1-2-サンバ
+            file_17 : PVR 1024 ×  128, Stage 4 ポーズ＆ポーズ
+            file_18 : PVR 1024 ×  128, Stage 5 モンキーリプレイ
+            file_19 : PVR  256 ×  128, CLEARED!
+            file_20 : PVR  256 ×  128, FAILED
+            file_21 : # PVM, 19 files
+                o_new00  : PVR   64 ×  64, 0
+                o_new01  : PVR   64 ×  64, 1
+                o_new02  : PVR   64 ×  64, 2
+                o_new03  : PVR   64 ×  64, 3
+                o_new04  : PVR   64 ×  64, 4
+                o_new05  : PVR   64 ×  64, 5
+                o_new06  : PVR   64 ×  64, 6
+                o_new07  : PVR   64 ×  64, 7
+                o_new08  : PVR   64 ×  64, 8
+                o_new09  : PVR   64 ×  64, 9
+                o_maru   : PVR  128 × 128, (orange circle)
+                o_last01 : PVR  128 ×  64, キレ
+                o_last02 : PVR  128 ×  64, パワー
+                o_last03 : PVR  128 ×  64, スピード
+                o_last04 : PVR  128 ×  64, アピール
+                o_last05 : PVR  128 ×  64, ノリ
+                o_maji02 : PVR  256 × 512, 1P - あなたの - ラテン指数 - 点
+                o_maji03 : PVR  256 × 512, 2P - あなたの - ラテン指数 - 点
+                o_sougou : PVR 1024 × 128, 総合成績
+            file_22 : # PVM, 18 files
+                o_game         : PVR  256 × 128, ゲーム説明
+                ready_mg       : PVR  256 ×  64, READY
+                go_mg          : PVR  256 ×  64, GO!!
+                timeup         : PVR  256 ×  64, TIME UP!
+                o_maji01       : PVR  512 × 512, (yellow score board with wood pattern)
+                o_mg_tanni_ten : PVR   32 ×  32, 点
+                t_plate        : PVR  256 × 128, TIME
+                t_n00          : PVR  256 × 128, 0
+                t_n01          : PVR  256 × 128, 1
+                t_n02          : PVR  256 × 128, 2
+                t_n03          : PVR  256 × 128, 3
+                t_n04          : PVR  256 × 128, 4
+                t_n05          : PVR  256 × 128, 5
+                t_n06          : PVR  256 × 128, 6
+                t_n07          : PVR  256 × 128, 7
+                t_n08          : PVR  256 × 128, 8
+                t_n09          : PVR  256 × 128, 9
+                t_chon         : PVR  256 × 128, (double quotes)
+            file_23 : PVR  256 ×   64, モグラパニック
+            file_24 : PVR  128 ×  128, (mole with sombrero, sunglasses and open mouth)
+            file_25 : PVR  128 ×  128, (mole with sombrero and one tooth)
+            file_26 : PVR  128 ×  128, (mole with sombrero and smiling)
+            file_27 : PVR   32 ×   32, 間
+            file_28 : PVR   64 ×   64, 間
+            file_29 : PVR  256 ×   64, モンキーリプレイ
+            file_30 : PVR  256 ×   64, 1 ステージモード
+            file_31 : PVR  512 ×  128, 1 ステージモード
+            file_32 : PVR  512 ×  128, ステージを一つ選んでプレイします。
+            file_33 : PVR  128 ×  128, (12 pointed white star on black background)
+            file_34 : PVR  512 ×  128, (red, yellow and green circles)から出てくるモグラをたたけ！
+            file_35 : PVR  512 ×  128, とにかく連打！ガンガンふりまくって(岩)をぶちこわせ！
+            file_36 : PVR  512 ×  128, 1、2、3BA!の順番でうて！間違ってバクダンをうつと、バクハツするぞ！
+            file_37 : PVR  512 ×  128, つぎつぎかわるポーズマークとおなじポーズをとれ！
+            file_38 : PVR  512 ×  128, お手本とおなじリズムおなじ場所でマラカスをふれ！
+            file_39 : PVR  256 ×  128, お手本
+            file_40 : PVR  256 ×  128, (rock, entire)
+            file_41 : PVR  256 ×  128, (rock, left part)
+            file_42 : PVR  256 ×  128, (rock, top part)
+            file_43 : PVR  256 ×  128, (rock, right part)
+            file_44 : PVR  256 ×  128, (rock, bottom part)
+            file_45 : PVR   32 ×   32, 個
+            file_46 : PVR  128 ×   32, ポーズ
+            file_47 : PVR  128 ×   32, YOU
+            file_48 : PVR   64 ×   64, (yellow sombrero pointing top right)
+            file_49 : PVR   64 ×   64, (yellow sombrero pointing up)
+            file_50 : PVR   64 ×   64, (yellow sombrero pointing top left)
+            file_51 : PVR  128 ×  128, (yellow geometric pattern background)
+            file_52 : PVR  128 ×  128, (pink geometric pattern background)
+            file_53 : PVR 1024 ×  128, モグラパニック　成績
+            file_54 : PVR 1024 ×  128, パワーラッシュ 成績
+            file_55 : PVR 1024 ×  128, 1-2-サンバ 成績
+            file_56 : PVR 1024 ×  128, ポーズ＆ポーズ 成績
+            file_57 : PVR 1024 ×  128, モンキーリプレイ 成績
+            file_58 : PVR  128 ×   64, キレ
+            file_59 : PVR  256 ×   64, パワー
+            file_60 : PVR  256 ×   64, スピード
+            file_61 : PVR  256 ×   64, アピール
+            file_62 : PVR  128 ×   64, ノリ
+            file_63 : PVR  512 ×  256, (two player minigame screenshot of Guacamole)
+            file_64 : PVR  512 ×  256, (two player minigame screenshot of Power Rush)
+            file_65 : PVR  512 ×  256, (two player minigame screenshot of 1-2-Samba!)
+            file_66 : PVR  512 ×  256, (two player minigame screenshot of Strike a Pose!)
+            file_67 : PVR  512 ×  256, (two player minigame screenshot of Monkey See, Monkey Do)
+            file_68 : PVR  256 ×   32, ポーズ＆ポーズ
+            file_69 : PVR  256 ×   32, パワーラッシュ
+            file_70 : PVR  256 ×   32, 1-2-サンバ
+            file_71 : PVR 1024 × 1024, (Chumba and Wamba)
+            file_72 : PVR 1024 × 1024, (Amigo)
+            file_73 : PVR 1024 × 1024, (Bingo and Bongo)
+            file_74 : PVR 1024 × 1024, (Linda)
+            file_75 : PVR 1024 × 1024, (Rio)
+            file_76 : PVR 1024 × 1024, (all game characters)
+            file_77 : PVR   64 ×   64, (orange pattern, also seen in the skin of some characters)
+            file_78 : PVR  256 ×  256, (Amigo's face close-up)
+            file_79 : PVR   64 ×   64, (pink sprinkles on blue background pattern)
+            file_80 : PVR  128 ×   64, (Bingo's mouth)
+            file_81 : PVR  128 ×   64, (Bongo's mouth)
+            file_82 : PVR   64 ×   64, (cheetah pattern used by Rio)
+            file_83 : PVR  128 ×   64, (Chumba's eyes)
+            file_84 : PVR  128 ×   64, (Wamba's eyes)
+            file_85 : PVR   64 ×   64, (purple harts on pink background)
+            file_86 : PVR  128 ×  128, (Linda's left eye, closed)
+            file_87 : PVR  128 ×  128, (Linda's right eye, closed)
+            file_88 : PVR   64 ×   64, (green circles pattern)
+            file_89 : PVR  256 ×  128, キーリプレイ (and Rio's closed eyes)
+            file_90 : PVR  256 ×  128, (Rio's closed eyes)
+            file_91 : PVR  128 ×  128, (Amigo's silhouette on orange background)
+            file_92 : PVR  128 ×  128, (Bingo and Bongo's silhouette on blue and pink background)
+            file_93 : PVR  128 ×  128, (Chumba and Wanba's silhouette on yellow background)
+            file_94 : PVR  128 ×  128, (Linda's silhouette on purple background)
+            file_95 : PVR  128 ×  128, (Rio's silhouette on green background)
+            file_96 : PVR  256 ×  256, (blue sun on yellow background)
+            file_97 : PVR  256 ×  256, (green sun on pink background)
+            file_98 : PVR  256 ×  256, (red sun on yellow background)
+            file_99 : PVR  256 ×  256, (blue sun on light blue background)
+            file_100: PVR  256 ×  256, (blue sun on green background)
+            file_101: PVR  256 ×   64, トータルチェックモード
+            file_102: PVR  512 ×  128, トータルチェックモード
+            file_103: PVR  512 ×  128, 5つのステージであなたの「ラテン指数」をはかります。
+            file_104: PVR  512 ×  128, ボイス　をおぼえた！
+            file_105: PVR  256 ×  256, (16 pointed star/splash white figure on gray background)
+        US:
+            file_1  : PVR  128 ×  128, 1
+            file_2  : PVR  128 ×  128, 2
+            file_3  : PVR  128 ×  128, Samba!
+            file_4  : PVR  128 ×  128, (smiling bomb)
+            file_5  : PVR  512 ×  128, (red rounded rectangle)
+            file_6  : PVR  512 ×  128, (yellow rounded rectangle)
+            file_7  : PVR  512 ×  128, (cyan rounded rectangle)
+            file_8  : PVR  256 ×   32, 左のボタンで戻る
+            file_9  : PVR   64 ×   64, Q
+            file_10 : # PVM, 4 files
+                samba_frame : PVR 256 × 256, (flames)
+                sda_bom01   : PVR 128 × 128, (explosion)
+                sda_bom02   : PVR  64 ×  64, (bubbles or cloud)
+                sda_hanabi01: PVR 256 × 256, (fireworks)
+            file_11 : PVR  128 ×   32, Moles
+            file_12 : PVR  128 ×   32, Combos
+            file_13 : PVR  128 ×   32, Poses
+            file_14 : PVR 1024 ×  128, Stage 1 Guacamole
+            file_15 : PVR 1024 ×  128, Stage 2 Power Rush
+            file_16 : PVR 1024 ×  128, Stage 3 1-2-Samba
+            file_17 : PVR 1024 ×  128, Stage 4 Strike a Pose!
+            file_18 : PVR 1024 ×  128, Stage 5 Monkey See, Monkey Do
+            file_19 : PVR  256 ×  128, CLEARED!
+            file_20 : PVR  256 ×  128, FAILED
+            file_21 : # PVM, 19 files
+                o_new00  : PVR   64 ×  64, 0
+                o_new01  : PVR   64 ×  64, 1
+                o_new02  : PVR   64 ×  64, 2
+                o_new03  : PVR   64 ×  64, 3
+                o_new04  : PVR   64 ×  64, 4
+                o_new05  : PVR   64 ×  64, 5
+                o_new06  : PVR   64 ×  64, 6
+                o_new07  : PVR   64 ×  64, 7
+                o_new08  : PVR   64 ×  64, 8
+                o_new09  : PVR   64 ×  64, 9
+                o_maru   : PVR  128 × 128, (orange circle)
+                o_last01 : PVR  128 ×  64, SHARPNESS
+                o_last02 : PVR  128 ×  64, POWER
+                o_last03 : PVR  128 ×  64, SPEED
+                o_last04 : PVR  128 ×  64, APPEAL
+                o_last05 : PVR  128 ×  64, GROOVE
+                o_maji02 : PVR  256 × 512, 1P - Your - Samba Score - Points
+                o_maji03 : PVR  256 × 512, 2P - Your - Samba Score - Points
+                o_sougou : PVR 1024 × 128, TOTAL RESULTS
+            file_22 : # PVM, 18 files
+                o_game         : PVR  256 × 128, INSTRUCTIONS
+                ready_mg       : PVR  256 ×  64, READY
+                go_mg          : PVR  256 ×  64, GO!!
+                timeup         : PVR  256 ×  64, TIME UP!
+                o_maji01       : PVR  512 × 512, (yellow score board with wood pattern)
+                o_mg_tanni_ten : PVR   64 ×  32, Points
+                t_plate        : PVR  256 × 128, TIME
+                t_n00          : PVR  256 × 128, 0
+                t_n01          : PVR  256 × 128, 1
+                t_n02          : PVR  256 × 128, 2
+                t_n03          : PVR  256 × 128, 3
+                t_n04          : PVR  256 × 128, 4
+                t_n05          : PVR  256 × 128, 5
+                t_n06          : PVR  256 × 128, 6
+                t_n07          : PVR  256 × 128, 7
+                t_n08          : PVR  256 × 128, 8
+                t_n09          : PVR  256 × 128, 9
+                t_chon         : PVR  256 × 128, (double quotes)
+            file_23 : PVR  256 ×   64, Guacamole
+            file_24 : PVR  128 ×  128, (mole with sombrero, sunglasses and open mouth)
+            file_25 : PVR  128 ×  128, (mole with sombrero and one tooth)
+            file_26 : PVR  128 ×  128, (mole with sombrero and smiling)
+            file_27 : PVR   32 ×   32, 間
+            file_28 : PVR  256 ×   64, Questions
+            file_29 : PVR  256 ×   64, Monkey See, Monkey Do
+            file_30 : PVR  256 ×   64, 1 Stage Mode
+            file_31 : PVR  512 ×  128, 1 Stage Mode
+            file_32 : PVR  512 ×  128, Choose a stage to play.
+            file_33 : PVR  128 ×  128, (12 pointed white star on black background)
+            file_34 : PVR  512 ×  128, Hit the moles that come out of the (red, yellow and green circles)!
+            file_35 : PVR  512 ×  128, Shake rapidly and continuously to break the (rock)!
+            file_36 : PVR  512 ×  128, Hit in the order of 1-2-Samba! If you make a mistake and hit the bomb, it will explode! Watch out!
+            file_37 : PVR  512 ×  128, Pose icons will be shown one after another. Just do the same pose and you'll be alright!
+            file_38 : PVR  512 ×  128, Copy the example. Shake your maracas in the same rhythm and in the same positions!
+            file_39 : PVR  256 ×  128, EXAMPLE
+            file_40 : PVR  256 ×  128, (rock, entire)
+            file_41 : PVR  256 ×  128, (rock, left part)
+            file_42 : PVR  256 ×  128, (rock, top part)
+            file_43 : PVR  256 ×  128, (rock, right part)
+            file_44 : PVR  256 ×  128, (rock, bottom part)
+            file_45 : PVR  128 ×   32, Rocks
+            file_46 : PVR  128 ×   32, ポーズ
+            file_47 : PVR  128 ×   32, YOU
+            file_48 : PVR   64 ×   64, (yellow sombrero pointing top right)
+            file_49 : PVR   64 ×   64, (yellow sombrero pointing up)
+            file_50 : PVR   64 ×   64, (yellow sombrero pointing top left)
+            file_51 : PVR  128 ×  128, (yellow geometric pattern background)
+            file_52 : PVR  128 ×  128, (pink geometric pattern background)
+            file_53 : PVR 1024 ×  128, Guacamole RESULTS
+            file_54 : PVR 1024 ×  128, Power Rush RESULTS
+            file_55 : PVR 1024 ×  128, 1-2-Samba! RESULTS
+            file_56 : PVR 1024 ×  128, Strike a Pose! RESULTS
+            file_57 : PVR 1024 ×  128, Monkey See, Monkey Do RESULTS
+            file_58 : PVR  256 ×   64, SHARPNESS
+            file_59 : PVR  256 ×   64, POWER
+            file_60 : PVR  256 ×   64, SPEED
+            file_61 : PVR  256 ×   64, APPEAL
+            file_62 : PVR  256 ×   64, GROOVE
+            file_63 : PVR  512 ×  256, (two player minigame screenshot of Guacamole)
+            file_64 : PVR  512 ×  256, (two player minigame screenshot of Power Rush)
+            file_65 : PVR  512 ×  256, (two player minigame screenshot of 1-2-Samba!)
+            file_66 : PVR  512 ×  256, (two player minigame screenshot of Strike a Pose!)
+            file_67 : PVR  512 ×  256, (two player minigame screenshot of Monkey See, Monkey Do)
+            file_68 : PVR  256 ×   64, Strike a Pose!
+            file_69 : PVR  256 ×   64, Power Rush
+            file_70 : PVR  256 ×   64, 1-2-Samba!
+            file_71 : PVR 1024 × 1024, (Chumba and Wamba)
+            file_72 : PVR 1024 × 1024, (Amigo)
+            file_73 : PVR 1024 × 1024, (Bingo and Bongo)
+            file_74 : PVR 1024 × 1024, (Linda)
+            file_75 : PVR 1024 × 1024, (Rio)
+            file_76 : PVR 1024 × 1024, (all game characters)
+            file_77 : PVR   64 ×   64, (orange pattern, also seen in the skin of some characters)
+            file_78 : PVR  256 ×  256, (Amigo's face close-up)
+            file_79 : PVR   64 ×   64, (pink sprinkles on blue background pattern)
+            file_80 : PVR  128 ×   64, (Bingo's mouth)
+            file_81 : PVR  128 ×   64, (Bongo's mouth)
+            file_82 : PVR   64 ×   64, (cheetah pattern used by Rio)
+            file_83 : PVR  128 ×   64, (Chumba's eyes)
+            file_84 : PVR  128 ×   64, (Wamba's eyes)
+            file_85 : PVR   64 ×   64, (purple harts on pink background)
+            file_86 : PVR  128 ×  128, (Linda's left eye, closed)
+            file_87 : PVR  128 ×  128, (Linda's right eye, closed)
+            file_88 : PVR   64 ×   64, (green circles pattern)
+            file_89 : PVR  256 ×  128, キーリプレイ (and Rio's closed eyes)
+            file_90 : PVR  256 ×  128, (Rio's closed eyes)
+            file_91 : PVR  128 ×  128, (Amigo's silhouette on orange background)
+            file_92 : PVR  128 ×  128, (Bingo and Bongo's silhouette on blue and pink background)
+            file_93 : PVR  128 ×  128, (Chumba and Wanba's silhouette on yellow background)
+            file_94 : PVR  128 ×  128, (Linda's silhouette on purple background)
+            file_95 : PVR  128 ×  128, (Rio's silhouette on green background)
+            file_96 : PVR  256 ×  256, (blue sun on yellow background)
+            file_97 : PVR  256 ×  256, (green sun on pink background)
+            file_98 : PVR  256 ×  256, (red sun on yellow background)
+            file_99 : PVR  256 ×  256, (blue sun on light blue background)
+            file_100: PVR  256 ×  256, (blue sun on green background)
+            file_101: PVR  256 ×   64, Total Check Mode
+            file_102: PVR  512 ×  128, Total Check Mode
+            file_103: PVR  512 ×  128, Your Samba Score will be averaged over 5 stages.
+            file_104: PVR  512 ×  128, You learned MARACAS SE
+            file_105: PVR  256 ×  256, (16 pointed star/splash white figure on gray background)
+    AFS_MUSICNAME.AFS:         # [_, U, U, 54 PVR files]
+        file_1  : PVR  512 × 128, SAMBA DE JANEIRO
+        file_2  : PVR  512 × 128, MACARENA
+        file_3  : PVR  512 × 128, EL RITMO TROPICAL
+        file_4  : PVR  512 × 128, MAS QUE NADA
+        file_5  : PVR  512 × 128, TUBTHUMPING
+        file_6  : PVR  512 × 128, AL COMPAS DEL MAMBO
+        file_7  : PVR  512 × 128, TAKE ON ME
+        file_8  : PVR  512 × 128, THE CUP OF LIFE
+        file_9  : PVR  512 × 128, LIVIN' LA VIDA LOCA
+        file_10 : PVR  512 × 128, LA BAMBA
+        file_11 : PVR  512 × 128, LOVE LEASE
+        file_12 : PVR  512 × 128, ALI BOMBAYE
+        file_13 : PVR  512 × 128, SOUL BOSSA NOVA
+        file_14 : PVR  512 × 128, EL MAMBO
+        file_15 : PVR  512 × 128, TEQUILA
+        file_16 : PVR  512 × 128, Open Your Heart
+        file_17 : PVR  512 × 128, Sonic - You Can Do Anything
+        file_18 : PVR  512 × 128, Super Sonic Racing
+        file_19 : PVR  512 × 128, Sonic A Go Go!!
+        file_20 : PVR  512 × 128, Burning Hearts
+        file_21 : PVR  512 × 128, Dreams Dreams
+        file_22 : PVR  512 × 128, After Burner
+        file_23 : PVR  512 × 128, Magical Sound Shower
+        file_24 : PVR  512 × 128, OPA-OPA!
+        file_25 : PVR  512 × 128, SAMBA DE AMIGO
+        file_26 : PVR  512 × 128, RENT A HERO NO.1
+        file_27 : PVR  512 × 128, One Week
+        file_28 : PVR  512 ×  32, SAMBA DE JANEIRO
+        file_29 : PVR  512 ×  32, MACARENA
+        file_30 : PVR  512 ×  32, EL RITMO TROPICAL
+        file_31 : PVR  512 ×  32, MAS QUE NADA
+        file_32 : PVR  512 ×  32, TUBTHUMPING
+        file_33 : PVR  512 ×  32, AL COMPAS DEL MAMBO
+        file_34 : PVR  512 ×  32, TAKE ON ME
+        file_35 : PVR  512 ×  32, THE CUP OF LIFE
+        file_36 : PVR  512 ×  32, LIVIN' LA VIDA LOCA
+        file_37 : PVR  512 ×  32, LA BAMBA
+        file_38 : PVR  512 ×  32, LOVE LEASE
+        file_39 : PVR  512 ×  32, ALI BOMBAYE
+        file_40 : PVR  512 ×  32, SOUL BOSSA NOVA
+        file_41 : PVR  512 ×  32, EL MAMBO
+        file_42 : PVR  512 ×  32, TEQUILA
+        file_43 : PVR  512 ×  32, Open Your Heart
+        file_44 : PVR  512 ×  32, Sonic - You Can Do Anything
+        file_45 : PVR  512 ×  32, Super Sonic Racing
+        file_46 : PVR  512 ×  32, Sonic A Go Go!!
+        file_47 : PVR  512 ×  32, Burning Hearts
+        file_48 : PVR  512 ×  32, Dreams Dreams
+        file_49 : PVR  512 ×  32, After Burner
+        file_50 : PVR  512 ×  32, Magical Sound Shower
+        file_51 : PVR  512 ×  32, OPA-OPA!
+        file_52 : PVR  512 ×  32, SAMBA DE AMIGO
+        file_53 : PVR  512 ×  32, RENT A HERO NO.1
+        file_54 : PVR  512 ×  32, One Week
+    AFS_OPTION.AFS:            # [J, U, P, 115-116 PVR/PVM files]
+        JP: # 115 PVR/PVM files
+            file_1           : PVR  128 × 128, (...)
+            file_2           : PVR  128 × 128, (...)
+            file_3           : PVR  128 × 128, (...)
+            file_4           : PVR 1024 × 512, (...)
+            file_5           : PVR 1024 × 512, (...)
+            file_6           : PVR  128 × 128, (...)
+            file_7           : PVR  128 × 128, (...)
+            file_8           : PVR  128 × 128, (...)
+            file_9           : PVR  128 × 128, (...)
+            file_10          : PVR  128 × 128, (...)
+            file_11          : PVR  512 × 128, (...)
+            file_12          : PVR  128 × 128, (...)
+            file_13          : PVR  512 × 128, (...)
+            file_14          : PVR  256 ×  64, (...)
+            file_15          : PVR  512 × 128, (...)
+            file_16          : PVR  512 × 128, (...)
+            file_17          : PVR  256 ×  64, (...)
+            file_18          : PVR  256 ×  64, (...)
+            file_19          : PVR  256 ×  64, (...)
+            file_20          : PVR  256 ×  64, (...)
+            file_21          : PVR  256 ×  64, (...)
+            file_22          : PVR  256 ×  64, (...)
+            file_23          : PVR  256 ×  64, (...)
+            file_24          : PVR  256 ×  64, (...)
+            file_25          : PVR  256 ×  64, (...)
+            file_26          : PVR  256 ×  64, (...)
+            file_27          : PVR  256 ×  64, (...)
+            file_28          : PVR  256 ×  64, (...)
+            file_29          : PVR  256 ×  64, (...)
+            file_30          : PVR  256 ×  64, (...)
+            file_31          : PVR  256 ×  64, (...)
+            file_32          : PVR  256 ×  64, (...)
+            file_33          : PVR  256 ×  64, (...)
+            file_34          : PVR  256 ×  64, (...)
+            file_35          : PVR   64 ×  64, (...)
+            file_36          : PVR  256 ×  64, (...)
+            file_37          : PVR  256 × 128, (...)
+            file_38          : PVR  128 × 256, (...)
+            file_39          : PVR  256 ×  64, (...)
+            file_40          : PVR  256 ×  64, (...)
+            file_41          : PVR  256 ×  64, (...)
+            file_42          : PVR  256 ×  64, (...)
+            file_43          : PVR  256 ×  64, (...)
+            file_44          : PVR  256 × 256, (...)
+            file_45          : PVR  256 × 256, (...)
+            file_46          : PVR  256 × 256, (...)
+            file_47          : PVR  256 × 256, (...)
+            file_48          : PVR  256 × 256, (...)
+            file_49          : PVR  256 ×  64, (...)
+            file_50          : PVR  128 × 128, (...)
+            file_51          : PVR  512 × 128, (...)
+            file_52          : PVR  512 × 128, (...)
+            file_53          : # 11 PVR files, credits
+                o_roll01         : PVR  256 × 512, (...)
+                o_roll02         : PVR  256 × 512, (...)
+                o_roll03         : PVR  256 × 512, (...)
+                o_roll04         : PVR  256 × 512, (...)
+                o_roll05         : PVR  256 × 512, (...)
+                o_roll06         : PVR  256 × 512, (...)
+                o_roll07         : PVR  256 × 512, (...)
+                o_roll08         : PVR  256 × 512, (...)
+                o_adx            : PVR  512 × 256, (...)
+                o_credit         : PVR  512 × 128, (...)
+                o_sega2          : PVR  256 × 128, (...)
+            file_54          : PVR  512 × 128, (...)
+            file_55          : PVR  512 × 128, (...)
+            file_56          : PVR  512 × 128, (...)
+            file_57          : PVR  512 × 128, (...)
+            file_58          : PVR  512 ×  64, (...)
+            file_59          : PVR  512 ×  64, (...)
+            file_60          : PVR  512 ×  64, (...)
+            file_61          : PVR  512 ×  16, (...)
+            file_62          : PVR  256 ×  64, (...)
+            file_63          : PVR  512 ×  64, (...)
+            file_64          : PVR  512 ×  64, (...)
+            file_65          : PVR  512 ×  64, (...)
+            file_66          : PVR  512 × 128, (...)
+            file_67          : PVR  512 × 128, (...)
+            file_68          : PVR  512 × 128, (...)
+            file_69          : PVR  256 ×  64, (...)
+            file_70          : PVR  256 ×  64, (...)
+            file_71          : PVR  256 ×  64, (...)
+            file_72          : PVR  256 ×  64, (...)
+            file_73          : PVR  256 × 128, (...)
+            file_74          : PVR  256 ×  64, (...)
+            file_75          : PVR  256 ×  64, (...)
+            file_76          : PVR  256 ×  64, (...)
+            file_77          : PVR  512 × 128, (...)
+            file_78          : PVR  512 × 256, (...)
+            file_79          : PVR  256 ×  64, (...)
+            file_80          : PVR  256 ×  64, (...)
+            file_81          : PVR  256 ×  64, (...)
+            file_82          : PVR  512 × 512, (...)
+            file_83          : PVR  512 × 512, (...)
+            file_84          : PVR  512 × 128, (...)
+            file_85          : PVR  512 × 128, (...)
+            file_86          : PVR  512 × 128, (...)
+            file_87          : PVR  256 ×  64, (...)
+            file_88          : # PVM, 20 PVR files (names of maracas SFX)
+                wv01_nashi      : PVR  256 ×  64, (...)
+                wv01_mara       : PVR  256 ×  64, (...)
+                wv01_kiai       : PVR  256 ×  64, (...)
+                wv01_hoissle    : PVR  256 ×  64, (...)
+                wv01_kakegoe    : PVR  256 ×  64, (...)
+                wv01_sf         : PVR  256 ×  64, (...)
+                wv01_chu        : PVR  256 ×  64, (...)
+                wv01_chao       : PVR  256 ×  64, (...)
+                wv01_omaturi    : PVR  256 ×  64, (...)
+                wv01_doubutu    : PVR  256 ×  64, (...)
+                wv01_tindon     : PVR  256 ×  64, (...)
+                wv01_kanfu      : PVR  256 ×  64, (...)
+                wv01_soldier    : PVR  256 ×  64, (...)
+                wv01_dj         : PVR  256 ×  64, (...)
+                wv01_kowai      : PVR  256 ×  64, (...)
+                wv01_yowai      : PVR  256 ×  64, (...)
+                wv01_boze       : PVR  256 ×  64, (...)
+                wv01_gal        : PVR  256 ×  64, (...)
+                wv01_sexy       : PVR  256 ×  64, (...)
+                wv01_lovemachine: PVR  256 ×  64, (...)
+            file_89          : PVR   64 ×  64, (...)
+            file_90          : PVR 1024 × 512, (...)
+            file_91          : PVR 1024 × 512, (...)
+            file_92          : PVR   64 ×  64, (...)
+            file_93          : PVR  256 ×  32, (...)
+            file_94          : PVR  256 ×  32, (...)
+            file_95          : PVR   32 ×  32, (...)
+            file_96          : PVR  256 ×  64, (...)
+            file_97          : PVR  256 ×  64, (...)
+            file_98          : PVR  256 ×  64, (...)
+            file_99          : PVR  256 ×  64, (...)
+            file_100         : PVR  256 ×  64, (...)
+            file_101         : PVR  256 ×  64, (...)
+            file_102         : PVR  256 ×  64, (...)
+            file_103         : PVR  256 ×  64, (...)
+            file_104         : PVR  256 ×  64, (...)
+            file_105         : PVR  256 ×  64, (...)
+            file_106         : PVR  256 ×  64, (...)
+            file_107         : PVR  256 ×  64, (...)
+            file_108         : PVR  256 ×  64, (...)
+            file_109         : PVR  256 ×  64, (...)
+            file_110         : PVR  256 ×  64, (...)
+            file_111         : PVR  256 ×  64, (...)
+            file_112         : PVR  256 ×  64, (...)
+            file_113         : PVR  256 ×  64, (...)
+            file_114         : PVR  256 ×  64, (...)
+            file_115         : PVR  256 ×  64, (...)
+        US: # 116 PVR/PVM files
+            file_1           : PVR  128 × 128, (...)
+            file_2           : PVR  128 × 128, (...)
+            file_3           : PVR  128 × 128, (...)
+            file_4           : PVR 1024 × 512, (...)
+            file_5           : PVR 1024 × 512, (...)
+            file_6           : PVR  128 × 128, (...)
+            file_7           : PVR  128 × 128, (...)
+            file_8           : PVR  128 × 128, (...)
+            file_9           : PVR  128 × 128, (...)
+            file_10          : PVR  128 × 128, (...)
+            file_11          : PVR  512 × 128, (...)
+            file_12          : PVR  128 × 128, (...)
+            file_13          : PVR  512 × 128, (...)
+            file_14          : PVR  256 ×  64, (...)
+            file_15          : PVR  512 × 128, (...)
+            file_16          : PVR  512 × 128, (...)
+            file_17          : PVR  256 ×  64, (...)
+            file_18          : PVR  256 ×  64, (...)
+            file_19          : PVR  256 ×  64, (...)
+            file_20          : PVR  256 ×  64, (...)
+            file_21          : PVR  256 ×  64, (...)
+            file_22          : PVR  256 ×  64, (...)
+            file_23          : PVR  256 ×  64, (...)
+            file_24          : PVR  256 ×  64, (...)
+            file_25          : PVR  256 ×  64, (...)
+            file_26          : PVR  256 ×  64, (...)
+            file_27          : PVR  256 ×  64, (...)
+            file_28          : PVR  256 ×  64, (...)
+            file_29          : PVR  256 ×  64, (...)
+            file_30          : PVR  256 ×  64, (...)
+            file_31          : PVR  256 ×  64, (...)
+            file_32          : PVR  256 ×  64, (...)
+            file_33          : PVR  256 ×  64, (...)
+            file_34          : PVR  256 ×  64, (...)
+            file_35          : PVR   64 ×  64, (...)
+            file_36          : PVR  256 ×  64, (...)
+            file_37          : PVR  256 × 128, (...)
+            file_38          : PVR  128 × 256, (...)
+            file_39          : PVR  256 ×  64, (...)
+            file_40          : PVR  256 ×  64, (...)
+            file_41          : PVR  256 ×  64, (...)
+            file_42          : PVR  256 ×  64, (...)
+            file_43          : PVR  256 ×  64, (...)
+            file_44          : PVR  256 × 256, (...)
+            file_45          : PVR  256 × 256, (...)
+            file_46          : PVR  256 × 256, (...)
+            file_47          : PVR  256 × 256, (...)
+            file_48          : PVR  256 × 256, (...)
+            file_49          : PVR  256 ×  64, (...)
+            file_50          : PVR  128 × 128, (...)
+            file_51          : PVR  512 × 128, (...)
+            file_52          : PVR  512 × 128, (...)
+            file_53          : # 14 PVR files, credits
+                o_roll01         : PVR  256 × 512, (...)
+                o_roll02         : PVR  256 × 512, (...)
+                o_roll03         : PVR  256 × 512, (...)
+                o_roll04         : PVR  256 × 512, (...)
+                o_roll05         : PVR  256 × 512, (...)
+                o_roll06         : PVR  256 × 512, (...)
+                o_roll07         : PVR  256 × 512, (...)
+                o_roll08         : PVR  256 × 512, (...)
+                o_roll09         : PVR  256 × 512, (...)
+                o_adx            : PVR  512 × 256, (...)
+                o_credit         : PVR  512 × 128, (...)
+                o_sega2          : PVR  256 × 128, (...)
+                o_sonicmark      : PVR  256 × 128, (...)
+                o_sonicteam      : PVR  256 ×  32, (...)
+            file_54          : PVR  512 × 128, (...)
+            file_55          : PVR  512 × 128, (...)
+            file_56          : PVR  512 × 128, (...)
+            file_57          : PVR  512 × 128, (...)
+            file_58          : PVR  512 ×  64, (...)
+            file_59          : PVR  512 ×  64, (...)
+            file_60          : PVR  512 ×  64, (...)
+            file_61          : PVR  512 ×  16, (...)
+            file_62          : PVR  256 ×  64, (...)
+            file_63          : PVR  512 ×  64, (...)
+            file_64          : PVR  512 ×  64, (...)
+            file_65          : PVR  512 ×  64, (...)
+            file_66          : PVR  512 × 128, (...)
+            file_67          : PVR  512 × 128, (...)
+            file_68          : PVR  512 × 128, (...)
+            file_69          : PVR  256 ×  64, (...)
+            file_70          : PVR  256 ×  64, (...)
+            file_71          : PVR  256 ×  64, (...)
+            file_72          : PVR  256 ×  64, (...)
+            file_73          : PVR  256 × 128, (...)
+            file_74          : PVR  256 ×  64, (...)
+            file_75          : PVR  256 ×  64, (...)
+            file_76          : PVR  256 ×  64, (...)
+            file_77          : PVR  512 × 128, (...)
+            file_78          : PVR  512 × 256, (...)
+            file_79          : PVR  256 ×  64, (...)
+            file_80          : PVR  256 ×  64, (...)
+            file_81          : PVR  256 ×  64, (...)
+            file_82          : PVR  512 × 512, (...)
+            file_83          : PVR  512 × 512, (...)
+            file_84          : PVR  512 × 128, (...)
+            file_85          : PVR  512 × 128, (...)
+            file_86          : PVR  512 × 128, (...)
+            file_87          : PVR  256 ×  64, (...)
+            file_88          : # PVM, 20 PVR files (names of maracas SFX)
+                wv01_nashi       : PVR  256 ×  64, (...)
+                wv01_mara        : PVR  256 ×  64, (...)
+                wv01_kiai        : PVR  256 ×  64, (...)
+                wv01_hoissle     : PVR  256 ×  64, (...)
+                wv01_kakegoe     : PVR  256 ×  64, (...)
+                wv01_sf          : PVR  256 ×  64, (...)
+                wv01_chu         : PVR  256 ×  64, (...)
+                wv01_chao        : PVR  256 ×  64, (...)
+                wv01_omaturi     : PVR  256 ×  64, (...)
+                wv01_doubutu     : PVR  256 ×  64, (...)
+                wv01_tindon      : PVR  256 ×  64, (...)
+                wv01_kanfu       : PVR  256 ×  64, (...)
+                wv01_soldier     : PVR  256 ×  64, (...)
+                wv01_dj          : PVR  256 ×  64, (...)
+                wv01_kowai       : PVR  256 ×  64, (...)
+                wv01_yowai       : PVR  256 ×  64, (...)
+                wv01_boze        : PVR  256 ×  64, (...)
+                wv01_gal         : PVR  256 ×  64, (...)
+                wv01_sexy        : PVR  256 ×  64, (...)
+                wv01_lovemachine : PVR  256 ×  64, (...)
+            file_89          : PVR   64 ×  64, (...)
+            file_90          : PVR 1024 × 512, Failed to connect to the Internet. - SAMBA DE AMIGO. - "Internet Service Provider information not found. Please insert browser disk now for your free trial of SegaNet, the high-speed online gaming network and ISP built exclusively for Dreamcast and PC gamers. If you don't have a browser disk, please request it at http://newbrowser.sega.com. For more information about SegaNet, check out http://www.sega.net."
+            file_91          : PVR 1024 × 512, (...)
+            file_92          : PVR   64 ×  64, (...)
+            file_93          : PVR  256 ×  32, (...)
+            file_94          : PVR  256 ×  32, (...)
+            file_95          : PVR   32 ×  32, (...)
+            file_96          : PVR  256 ×  64, (...)
+            file_97          : PVR  256 ×  64, (...)
+            file_98          : PVR  256 ×  64, (...)
+            file_99          : PVR  256 ×  64, (...)
+            file_100         : PVR  256 ×  64, (...)
+            file_101         : PVR  256 ×  64, (...)
+            file_102         : PVR  256 ×  64, (...)
+            file_103         : PVR  256 ×  64, (...)
+            file_104         : PVR  256 ×  64, (...)
+            file_105         : PVR  256 ×  64, (...)
+            file_106         : PVR  256 ×  64, (...)
+            file_107         : PVR  256 ×  64, (...)
+            file_108         : PVR  256 ×  64, (...)
+            file_109         : PVR  256 ×  64, (...)
+            file_110         : PVR  256 ×  64, (...)
+            file_111         : PVR  256 ×  64, (...)
+            file_112         : PVR  256 ×  64, (...)
+            file_113         : PVR  256 ×  64, (...)
+            file_114         : PVR  256 ×  64, (...)
+            file_115         : PVR  256 ×  64, (...)
+            file_116         : PVR  256 ×  64, (...)
+        PAL: # Same as US, except for one file
+            file_90          : PVR 1024 × 512, Failed to connect to the Internet. - SAMBA DE AMIGO. - To connect to the Internet, the settings have to be adjusted with the Dreamcast Browser. Pleaser refer to the User's Manual of your Dreamcast Browser for more instructions.
+    AFS_PREVIEW.AFS:           # [_, U, _, 7 PVR files]
+        file_1  : PVR 1024 × 512, サンバDEアミーゴ - ドリームキャスト版には、
+        file_2  : PVR 1024 × 512, チャレンジモード - チャレンジメニュー - (screenshot of challenge menu in Japanese)
+        file_3  : PVR 1024 × 512, ラブラブモード - LOVE LOVE - (screenshot of love love menu in Japanese)
+        file_4  : PVR 1024 × 512, ミニゲーム - (screenshot of mini game Stage 1 in Japanese)
+        file_5  : PVR 1024 × 512, などドリームキャスト版 ならではの追加要素も 含まれているぞ！ みんなでサンバろうぜ！
+        file_6  : PVR 1024 × 512, サンバDEアミーゴ - 4月27日（木）発売予定 ゲームソフト￥5,800. マラカスコントローラ￥7,800.
+        file_7  : PVR  128 ×  64, 体験版
+    AFS_REGULAR.AFS:           # [J, U, U, 142-191 PVR/PVM files]
+        JP: # 191 files
+            file_1           : # PVM, 2 files
+                uketuke1         : PVR  256 ×  32, (...)
+                uketuke2         : PVR  256 ×  32, (...)
+            file_2           : # PVM, 4 files
+                entry1           : PVR  128 × 128, (...)
+                entry2           : PVR  128 × 128, (...)
+                entrysun         : PVR  256 × 256, (...)
+                rannyuentry      : PVR  256 × 256, (...)
+            file_3           : # PVM, 2 files
+                setumei          : PVR  512 ×  64, (...)
+                sentaku1         : PVR  256 ×  32, (...)
+            file_4           : # PVM, 10 files
+                con0             : PVR  128 × 128, (...)
+                con1             : PVR  128 × 128, (...)
+                con2             : PVR  128 × 128, (...)
+                con3             : PVR  128 × 128, (...)
+                con4             : PVR  128 × 128, (...)
+                con5             : PVR  128 × 128, (...)
+                con6             : PVR  128 × 128, (...)
+                con7             : PVR  128 × 128, (...)
+                con8             : PVR  128 × 128, (...)
+                con9             : PVR  128 × 128, (...)
+            file_5           : # PVM, 39 files
+                entrya           : PVR   64 ×  64, (...)
+                entryb           : PVR   64 ×  64, (...)
+                entryc           : PVR   64 ×  64, (...)
+                entryd           : PVR   64 ×  64, (...)
+                entrye           : PVR   64 ×  64, (...)
+                entryf           : PVR   64 ×  64, (...)
+                entryg           : PVR   64 ×  64, (...)
+                entryh           : PVR   64 ×  64, (...)
+                entryi           : PVR   64 ×  64, (...)
+                entryj           : PVR   64 ×  64, (...)
+                entryk           : PVR   64 ×  64, (...)
+                entryl           : PVR   64 ×  64, (...)
+                entrym           : PVR   64 ×  64, (...)
+                entryn           : PVR   64 ×  64, (...)
+                entryo           : PVR   64 ×  64, (...)
+                entryp           : PVR   64 ×  64, (...)
+                entryq           : PVR   64 ×  64, (...)
+                entryr           : PVR   64 ×  64, (...)
+                entrys           : PVR   64 ×  64, (...)
+                entryt           : PVR   64 ×  64, (...)
+                entryu           : PVR   64 ×  64, (...)
+                entryv           : PVR   64 ×  64, (...)
+                entryw           : PVR   64 ×  64, (...)
+                entryx           : PVR   64 ×  64, (...)
+                entryy           : PVR   64 ×  64, (...)
+                entryz           : PVR   64 ×  64, (...)
+                entry0           : PVR   64 ×  64, (...)
+                entry1           : PVR   64 ×  64, (...)
+                entry2           : PVR   64 ×  64, (...)
+                entry3           : PVR   64 ×  64, (...)
+                entry4           : PVR   64 ×  64, (...)
+                entry5           : PVR   64 ×  64, (...)
+                entry6           : PVR   64 ×  64, (...)
+                entry7           : PVR   64 ×  64, (...)
+                entry8           : PVR   64 ×  64, (...)
+                entry9           : PVR   64 ×  64, (...)
+                hatena           : PVR   64 ×  64, (...)
+                entryspace       : PVR   64 ×  64, (...)
+                end              : PVR   64 ×  64, (...)
+            file_6           : # PVM, 8 files
+                tyui             : PVR  512 × 128, (...)
+                tyuibun          : PVR  512 × 128, (...)
+                tyuimara1        : PVR  128 × 128, (...)
+                tyuimara2        : PVR  128 × 128, (...)
+                entrymara        : PVR  128 × 128, (...)
+                tyuired          : PVR   16 ×  16, (...)
+                tyuitya          : PVR   64 ×  64, (...)
+                maramottes       : PVR  256 ×  64, (...)
+            file_7           : PVR 1024 × 512, (...)
+            file_8           : PVR 1024 × 512, (...)
+            file_9           : PVR  512 × 128, (...)
+            file_10          : # PVM, 15 files
+                banana1          : PVR   64 ×  64, (...)
+                banana2          : PVR   64 ×  64, (...)
+                banana3          : PVR   64 ×  64, (...)
+                modeselect       : PVR  512 × 128, (...)
+                easy             : PVR  256 × 128, (...)
+                normal           : PVR  256 × 128, (...)
+                hard             : PVR  256 × 128, (...)
+                superhard        : PVR  256 × 128, (...)
+                random           : PVR  256 × 128, (...)
+                bon_1stage       : PVR  128 × 128, (...)
+                bon_2stage       : PVR  128 × 128, (...)
+                bon_3stage       : PVR  128 × 128, (...)
+                hitoup           : PVR  256 × 512, (...)
+                hitomiddle       : PVR  256 × 512, (...)
+                hitodown         : PVR  256 × 512, (...)
+            file_11          : # PVM, 5 files
+                total            : PVR  256 ×  64, (...)
+                wv_totalsan      : PVR  512 × 512, (...)
+                wv_winmara01     : PVR  512 × 256, (...)
+                wv_winmara02     : PVR  512 × 256, (...)
+                wv_totalback     : PVR  128 × 128, (...)
+            file_12          : PVR  512 ×  32, (...)
+            file_13          : PVR  512 ×  32, (...)
+            file_14          : PVR  512 ×  32, (...)
+            file_15          : PVR  128 × 128, (...)
+            file_16          : PVR  128 × 128, (...)
+            file_17          : PVR  128 × 128, (...)
+            file_18          : PVR  128 × 128, (...)
+            file_19          : PVR  128 × 128, (...)
+            file_20          : PVR  128 × 128, (...)
+            file_21          : PVR  128 × 128, (...)
+            file_22          : PVR  128 × 128, (...)
+            file_23          : # PVM, 48 files
+                marabuttonS      : PVR   64 ×  64, (...)
+                posebuttonS      : PVR   64 ×  64, (...)
+                position         : PVR   64 ×  64, (...)
+                buttonR          : PVR   64 ×  64, (...)
+                buttonY          : PVR   64 ×  64, (...)
+                buttonG          : PVR   64 ×  64, (...)
+                hikari           : PVR   64 ×  64, (...)
+                yeah             : PVR   64 ×  32, (...)
+                boo              : PVR   64 ×  32, (...)
+                hit              : PVR   64 ×  32, (...)
+                renda            : PVR  128 ×  64, (...)
+                poselong         : PVR  256 ×  64, (...)
+                amigo            : PVR   64 ×  32, (...)
+                gagecolor        : PVR   16 ×  16, (...)
+                gagefix          : PVR  256 × 256, (...)
+                leA              : PVR   64 ×  64, (...)
+                leB              : PVR   64 ×  64, (...)
+                leC              : PVR   64 ×  64, (...)
+                leD              : PVR   64 ×  64, (...)
+                leE              : PVR   64 ×  64, (...)
+                score0           : PVR   32 ×  32, (...)
+                score1           : PVR   32 ×  32, (...)
+                score2           : PVR   32 ×  32, (...)
+                score3           : PVR   32 ×  32, (...)
+                score4           : PVR   32 ×  32, (...)
+                score5           : PVR   32 ×  32, (...)
+                score6           : PVR   32 ×  32, (...)
+                score7           : PVR   32 ×  32, (...)
+                score8           : PVR   32 ×  32, (...)
+                score9           : PVR   32 ×  32, (...)
+                hit0             : PVR   64 ×  64, (...)
+                hit1             : PVR   64 ×  64, (...)
+                hit2             : PVR   64 ×  64, (...)
+                hit3             : PVR   64 ×  64, (...)
+                hit4             : PVR   64 ×  64, (...)
+                hit5             : PVR   64 ×  64, (...)
+                hit6             : PVR   64 ×  64, (...)
+                hit7             : PVR   64 ×  64, (...)
+                hit8             : PVR   64 ×  64, (...)
+                hit9             : PVR   64 ×  64, (...)
+                maru             : PVR  128 × 128, (...)
+                batu             : PVR  128 × 128, (...)
+                position3        : PVR   64 ×  64, (...)
+                easy_s           : PVR  256 ×  32, (...)
+                normal_s         : PVR  256 ×  32, (...)
+                hard_s           : PVR  256 ×  32, (...)
+                superhard_s      : PVR  256 ×  32, (...)
+                random_s         : PVR  256 ×  32, (...)
+            file_24          : # PVM, 29 files
+                032_kosi01       : PVR   32 ×  32, (...)
+                032_skaf01       : PVR   32 ×  32, (...)
+                032_skaf02       : PVR   32 ×  32, (...)
+                064_hat01        : PVR   64 ×  64, (...)
+                064_hat02        : PVR   64 ×  64, (...)
+                064_hat03        : PVR   64 ×  64, (...)
+                064_hat04        : PVR   64 ×  64, (...)
+                064_huku01       : PVR   64 ×  64, (...)
+                064_jean01       : PVR   64 ×  64, (...)
+                064_jean02       : PVR   64 ×  64, (...)
+                064_jean03       : PVR   64 ×  64, (...)
+                064_jean04       : PVR   64 ×  64, (...)
+                064_mara01       : PVR   64 ×  64, (...)
+                064_mimi01       : PVR   64 ×  64, (...)
+                064_mimi02       : PVR   64 ×  64, (...)
+                064_skaf01       : PVR   64 ×  64, (...)
+                128_hada01       : PVR  128 × 128, (...)
+                128_kao01        : PVR  128 × 128, (...)
+                128_ke01         : PVR  128 × 128, (...)
+                128_tuika01      : PVR  128 × 128, (...)
+                128_tuika02      : PVR  128 × 128, (...)
+                128_kao02        : PVR  128 × 128, (...)
+                128_kao03        : PVR  128 × 128, (...)
+                128_tuika03      : PVR  128 × 128, (...)
+                128_tuika04      : PVR  128 × 128, (...)
+                128_kao04        : PVR  128 × 128, (...)
+                sda_spot01       : PVR   64 ×  64, (...)
+                sda_ssan01       : PVR   32 ×  32, (...)
+                128_spe01        : PVR  128 × 128, (...)
+            file_25          : # PVM, 6 files
+                sda_slbk01       : PVR   64 ×  64, (...)
+                sda_slbk02       : PVR   64 ×  64, (...)
+                sda_slbk03       : PVR  128 × 128, (...)
+                sda_slmara01     : PVR   32 ×  32, (...)
+                sda_slmara03     : PVR   32 ×  32, (...)
+                sda_slmara04     : PVR   32 ×  32, (...)
+            file_26          : PVR  256 × 128, (...)
+            file_27          : PVR  512 × 128, (...)
+            file_28          : PVR 1024 × 512, (...)
+            file_29          : PVR  512 ×  32, (...)
+            file_30          : PVR  512 ×  32, (...)
+            file_31          : PVR  512 ×  32, (...)
+            file_32          : PVR  512 × 128, (...)
+            file_33          : PVR  128 × 128, (...)
+            file_34          : PVR  128 × 128, (...)
+            file_35          : PVR 1024 × 512, (...)
+            file_36          : PVR  512 × 512, (...)
+            file_37          : PVR  256 × 128, (...)
+            file_38          : PVR  256 ×  64, (...)
+            file_39          : PVR  512 ×  32, (...)
+            file_40          : PVR  256 × 128, (...)
+            file_41          : PVR  256 × 128, (...)
+            file_42          : PVR  256 × 128, (...)
+            file_43          : PVR  256 × 128, (...)
+            file_44          : PVR  256 × 128, (...)
+            file_45          : PVR  256 × 128, (...)
+            file_46          : PVR  256 × 128, (...)
+            file_47          : PVR  128 × 128, (...)
+            file_48          : PVR  128 × 128, (...)
+            file_49          : PVR  512 × 128, (...)
+            file_50          : # PVM, 13 files
+                highscore        : PVR  512 × 128, (...)
+                gizamoyo         : PVR  128 × 128, (...)
+                star             : PVR  256 × 256, (...)
+                en_easymode      : PVR  256 ×  32, (...)
+                en_normalmode    : PVR  256 ×  32, (...)
+                en_hardmode      : PVR  256 ×  32, (...)
+                en_superhardmode : PVR  256 ×  32, (...)
+                en_randommode    : PVR  256 ×  32, (...)
+                name1p           : PVR  128 ×  64, (...)
+                name2p           : PVR  128 ×  64, (...)
+                b_hs_stage1      : PVR  128 ×  32, (...)
+                b_hs_stage2      : PVR  128 ×  32, (...)
+                b_hs_stage3      : PVR  128 ×  32, (...)
+            file_51          : PVR  128 ×  64, (...)
+            file_52          : PVR  512 ×  32, (...)
+            file_53          : PVR 1024 ×1024, (...)
+            file_54          : PVR  512 ×  32, (...)
+            file_55          : PVR  512 ×  32, (...)
+            file_56          : PVR  512 ×  32, (...)
+            file_57          : PVR  512 ×  32, (...)
+            file_58          : PVR  512 ×  32, (...)
+            file_59          : PVR  512 ×  32, (...)
+            file_60          : PVR  256 × 256, (...)
+            file_61          : PVR  256 × 256, (...)
+            file_62          : PVR  256 × 256, (...)
+            file_63          : PVR  256 × 256, (...)
+            file_64          : PVR  512 × 128, (...)
+            file_65          : PVR  512 × 128, (...)
+            file_66          : PVR  512 × 128, (...)
+            file_67          : PVR  512 × 128, (...)
+            file_68          : PVR  512 × 128, (...)
+            file_69          : PVR  512 × 128, (...)
+            file_70          : PVR  512 × 128, (...)
+            file_71          : PVR  512 × 128, (...)
+            file_72          : PVR  512 × 128, (...)
+            file_73          : PVR  512 × 128, (...)
+            file_74          : PVR  512 × 128, (...)
+            file_75          : PVR  512 × 128, (...)
+            file_76          : PVR  512 × 128, (...)
+            file_77          : PVR  512 × 128, (...)
+            file_78          : PVR  512 × 128, (...)
+            file_79          : PVR  512 × 128, (...)
+            file_80          : PVR  512 × 128, (...)
+            file_81          : PVR  512 × 128, (...)
+            file_82          : PVR  512 × 128, (...)
+            file_83          : PVR  512 × 128, (...)
+            file_84          : PVR  512 × 128, (...)
+            file_85          : PVR  512 × 128, (...)
+            file_86          : PVR  512 × 128, (...)
+            file_87          : PVR  512 × 128, (...)
+            file_88          : PVR  512 × 128, (...)
+            file_89          : PVR  512 × 128, (...)
+            file_90          : PVR  512 × 128, (...)
+            file_91          : # PVM, 18 files
+                namerntry        : PVR  512 × 128, (...)
+                gizamoyo         : PVR  128 × 128, (...)
+                star             : PVR  256 × 256, (...)
+                resultscore      : PVR  128 ×  32, (...)
+                en_name          : PVR  128 ×  32, (...)
+                en_left          : PVR   64 ×  64, (...)
+                en_right         : PVR   64 ×  64, (...)
+                en_huki          : PVR  256 × 128, (...)
+                en_kettei        : PVR  256 ×  64, (...)
+                en_modoru        : PVR  256 ×  64, (...)
+                en_oukan         : PVR  128 ×  64, (...)
+                en_easymode      : PVR  256 ×  32, (...)
+                en_normalmode    : PVR  256 ×  32, (...)
+                en_hardmode      : PVR  256 ×  32, (...)
+                en_superhardmode : PVR  256 ×  32, (...)
+                en_randommode    : PVR  256 ×  32, (...)
+                name1p           : PVR  128 ×  64, (...)
+                name2p           : PVR  128 ×  64, (...)
+            file_92          : PVR  256 ×  32, (...)
+            file_93          : PVR  512 ×  32, (...)
+            file_94          : PVR  512 ×  32, (...)
+            file_95          : PVR  512 × 256, (...)
+            file_96          : PVR  512 × 256, (...)
+            file_97          : PVR  512 × 256, (...)
+            file_98          : PVR  512 × 256, (...)
+            file_99          : PVR  512 × 256, (...)
+            file_100         : PVR  512 × 256, (...)
+            file_101         : PVR  512 × 256, (...)
+            file_102         : PVR  512 × 256, (...)
+            file_103         : PVR  512 × 256, (...)
+            file_104         : PVR  512 × 256, (...)
+            file_105         : PVR  512 × 256, (...)
+            file_106         : PVR  512 × 256, (...)
+            file_107         : PVR  512 × 128, (...)
+            file_108         : PVR  256 ×  64, (...)
+            file_109         : PVR  256 ×  64, (...)
+            file_110         : PVR  256 ×  64, (...)
+            file_111         : PVR  256 ×  64, (...)
+            file_112         : PVR  256 ×  64, (...)
+            file_113         : PVR  256 ×  64, (...)
+            file_114         : PVR  256 ×  64, (...)
+            file_115         : PVR  512 × 128, (...)
+            file_116         : PVR  256 ×  64, (...)
+            file_117         : PVR  256 ×  64, (...)
+            file_118         : PVR  256 ×  64, (...)
+            file_119         : PVR 1024 × 512, (...)
+            file_120         : PVR  256 × 256, (...)
+            file_121         : PVR 1024 × 512, (...)
+            file_122         : PVR  128 × 256, (...)
+            file_123         : PVR  128 × 256, (...)
+            file_124         : PVR  256 × 128, (...)
+            file_125         : PVR  256 ×  64, (...)
+            file_126         : PVR  128 ×  64, (...)
+            file_127         : PVR  512 × 128, (...)
+            file_128         : PVR   32 ×  32, (...)
+            file_129         : PVR  512 × 128, (...)
+            file_130         : # PVM, 3 files
+                u_icon03         : PVR   32 ×  32, (...)
+                u_icon02         : PVR   32 ×  32, (...)
+                u_icon01         : PVR   32 ×  32, (...)
+            file_131         : PVR  256 ×  64, (...)
+            file_132         : PVR  256 ×  64, (...)
+            file_133         : PVR  256 × 128, (...)
+            file_134         : PVR   64 ×  64, (...)
+            file_135         : PVR  512 ×  32, (...)
+            file_136         : # PVM, 10 files
+                first            : PVR  128 ×  64, (...)
+                second           : PVR  128 ×  64, (...)
+                third            : PVR  128 ×  64, (...)
+                forth            : PVR  128 ×  64, (...)
+                fifth            : PVR  128 ×  64, (...)
+                sixth            : PVR  128 ×  64, (...)
+                seventh          : PVR  128 ×  64, (...)
+                eighth           : PVR  128 ×  64, (...)
+                nineth           : PVR  128 ×  64, (...)
+                tenth            : PVR  128 ×  64, (...)
+            file_137         : PVR  512 ×  32, (...)
+            file_138         : PVR  512 ×  32, (...)
+            file_139         : PVR  256 × 128, (...)
+            file_140         : PVR  128 ×  32, (...)
+            file_141         : PVR  128 ×  32, (...)
+            file_142         : PVR  128 ×  32, (...)
+            file_143         : PVR  128 ×  32, (...)
+            file_144         : PVR  256 ×  64, (...)
+            file_145         : PVR  512 ×  32, (...)
+            file_146         : PVR  512 ×  32, (...)
+            file_147         : PVR  256 ×  64, (...)
+            file_148         : PVR  512 ×  32, (...)
+            file_149         : PVR 1024 ×1024, (...)
+            file_150         : PVR  512 ×  32, (...)
+            file_151         : # PVM, 2 files
+                staff01          : PVR  512 × 512, (...)
+                staff02          : PVR  512 × 512, (...)
+            file_152         : PVR  512 ×  32, (...)
+            file_153         : PVR  512 ×  32, (...)
+            file_154         : PVR  512 ×  32, (...)
+            file_155         : PVR 1024 ×1024, (...)
+            file_156         : # PVM, 5 files
+                segaltd          : PVR  512 ×  32, (...)
+                marakasu1        : PVR  128 ×  64, (...)
+                marakasu2        : PVR  128 ×  64, (...)
+                title            : PVR  512 × 512, (...)
+                titlesun         : PVR  512 × 512, (...)
+            file_157         : PVR  512 ×  32, (...)
+            file_158         : # PVM, 15 files
+                hyou06           : PVR   16 ×  16, (...)
+                demoback         : PVR   64 ×  64, (...)
+                setumei          : PVR  512 × 128, (...)
+                setumei1         : PVR  512 × 128, (...)
+                setumei2         : PVR  512 × 128, (...)
+                setumei3         : PVR  512 × 128, (...)
+                setumei4         : PVR  512 × 128, (...)
+                setumei5         : PVR  512 × 128, (...)
+                setumei6         : PVR  512 × 128, (...)
+                setumei7         : PVR  512 × 128, (...)
+                setumei8         : PVR  512 × 128, (...)
+                setumei9         : PVR  512 × 128, (...)
+                setumei10        : PVR  512 × 128, (...)
+                setumei11        : PVR  512 × 128, (...)
+                setumei12        : PVR  512 × 128, (...)
+            file_159         : PVR  512 ×  32, (...)
+            file_160         : # PVM, 10 files
+                s_suji00         : PVR   32 ×  32, (...)
+                s_suji01         : PVR   32 ×  32, (...)
+                s_suji02         : PVR   32 ×  32, (...)
+                s_suji03         : PVR   32 ×  32, (...)
+                s_suji04         : PVR   32 ×  32, (...)
+                s_suji05         : PVR   32 ×  32, (...)
+                s_suji06         : PVR   32 ×  32, (...)
+                s_suji07         : PVR   32 ×  32, (...)
+                s_suji08         : PVR   32 ×  32, (...)
+                s_suji09         : PVR   32 ×  32, (...)
+            file_161         : # PVM, 10 files
+                o_block00        : PVR   32 ×  32, (...)
+                o_block01        : PVR   32 ×  32, (...)
+                o_block02        : PVR   32 ×  32, (...)
+                o_block03        : PVR   32 ×  32, (...)
+                o_block04        : PVR   32 ×  32, (...)
+                o_block05        : PVR   32 ×  32, (...)
+                o_block06        : PVR   32 ×  32, (...)
+                o_block07        : PVR   32 ×  32, (...)
+                o_block08        : PVR   32 ×  32, (...)
+                o_block09        : PVR   32 ×  32, (...)
+            file_162         : # PVM, 10 files
+                m_suji00         : PVR   32 ×  32, (...)
+                m_suji01         : PVR   32 ×  32, (...)
+                m_suji02         : PVR   32 ×  32, (...)
+                m_suji03         : PVR   32 ×  32, (...)
+                m_suji04         : PVR   32 ×  32, (...)
+                m_suji05         : PVR   32 ×  32, (...)
+                m_suji06         : PVR   32 ×  32, (...)
+                m_suji07         : PVR   32 ×  32, (...)
+                m_suji08         : PVR   32 ×  32, (...)
+                m_suji09         : PVR   32 ×  32, (...)
+            file_163         : # PVM, 4 files
+                o_block_a        : PVR   32 ×  32, (...)
+                o_block_b        : PVR   32 ×  32, (...)
+                o_block_c        : PVR   32 ×  32, (...)
+                o_block_d        : PVR   32 ×  32, (...)
+            file_164         : PVR  128 × 128, (...)
+            file_165         : PVR  128 × 128, (...)
+            file_166         : PVR   32 ×  32, (...)
+            file_167         : PVR  256 ×  64, (...)
+            file_168         : PVR  256 × 128, (...)
+            file_169         : PVR  128 ×  64, (...)
+            file_170         : # PVM, 10 files
+                vs_0             : PVR   64 ×  64, (...)
+                vs_1             : PVR   64 ×  64, (...)
+                vs_2             : PVR   64 ×  64, (...)
+                vs_3             : PVR   64 ×  64, (...)
+                vs_4             : PVR   64 ×  64, (...)
+                vs_5             : PVR   64 ×  64, (...)
+                vs_6             : PVR   64 ×  64, (...)
+                vs_7             : PVR   64 ×  64, (...)
+                vs_8             : PVR   64 ×  64, (...)
+                vs_9             : PVR   64 ×  64, (...)
+            file_171         : PVR  256 × 128, (...)
+            file_172         : # PVM, 6 files
+                sabowelcome_l    : PVR  128 × 128, (...)
+                sabowelcome_r    : PVR  128 × 128, (...)
+                welcome          : PVR  256 × 128, (...)
+                specialstage     : PVR  512 × 256, (...)
+                welgrade         : PVR   64 ×  64, (...)
+                starmoyo         : PVR  128 × 128, (...)
+            file_173         : PVR   64 ×  64, (...)
+            file_174         : PVR  256 × 128, (...)
+            file_175         : PVR  256 × 128, (...)
+            file_176         : PVR  256 ×  64, (...)
+            file_177         : PVR  256 ×  64, (...)
+            file_178         : PVR 1024 × 512, (...)
+            file_179         : PVR  128 × 128, (...)
+            file_180         : PVR 1024 × 512, (...)
+            file_181         : PVR 1024 × 512, (...)
+            file_182         : # PVM, 46 files
+                sda_sstage01     : PVR   64 ×  64, (...)
+                sda_sstage02     : PVR   64 ×  64, (...)
+                sda_sstage03     : PVR   64 ×  64, (...)
+                sda_ssan02low    : PVR   32 ×  32, (...)
+                sda_ssan03low    : PVR   64 ×  64, (...)
+                sda_ssan03hi     : PVR   64 ×  64, (...)
+                sda_ssan02hi     : PVR   32 ×  32, (...)
+                sda_sbill01green : PVR   64 ×  64, (...)
+                sda_sbill01blue  : PVR   64 ×  64, (...)
+                sda_sbill01      : PVR   64 ×  64, (...)
+                sda_sbill01red   : PVR   64 ×  64, (...)
+                sda_sbill02      : PVR   64 ×  64, (...)
+                sda_sbill02blue  : PVR   64 ×  64, (...)
+                sda_sbill02green : PVR   64 ×  64, (...)
+                sda_sbill02red   : PVR   64 ×  64, (...)
+                sda_sbill03      : PVR   32 ×  32, (...)
+                sda_sbill04      : PVR   64 ×  64, (...)
+                sda_sbill05      : PVR   32 ×  32, (...)
+                sda_sbill06      : PVR   16 ×  16, (...)
+                sda_sbill07      : PVR   64 ×  64, (...)
+                sda_sbill07blue  : PVR   64 ×  64, (...)
+                sda_sbill07green : PVR   64 ×  64, (...)
+                sda_sbill07red   : PVR   64 ×  64, (...)
+                sda_sbill08      : PVR   32 ×  32, (...)
+                sda_sbill09      : PVR   32 ×  32, (...)
+                sda_sbill12      : PVR   64 ×  64, (...)
+                sda_sbill13      : PVR   64 ×  64, (...)
+                sda_sbill14      : PVR   64 ×  64, (...)
+                sda_ssan02       : PVR   32 ×  32, (...)
+                sda_ssan03       : PVR   64 ×  64, (...)
+                sda_ssan04       : PVR   32 ×  32, (...)
+                sda_ssan05       : PVR   32 ×  32, (...)
+                sda_kumo01       : PVR   64 ×  64, (...)
+                sda_kumo02       : PVR   64 ×  64, (...)
+                sda_kumo03       : PVR   64 ×  64, (...)
+                sda_sstage06     : PVR  128 × 128, (...)
+                sda_gt01         : PVR   64 ×  64, (...)
+                sda_gt02         : PVR   32 ×  32, (...)
+                sda_gt03         : PVR   32 ×  32, (...)
+                sda_gt04         : PVR   64 ×  64, (...)
+                sda_gt05         : PVR   64 ×  64, (...)
+                sda_tvca07       : PVR   16 ×  16, (...)
+                sda_tvs12        : PVR   16 ×  16, (...)
+                sda_sstage10     : PVR   64 ×  64, (...)
+                sda_ssan01       : PVR   32 ×  32, (...)
+                sda_sbill15      : PVR   16 ×  16, (...)
+            file_183         : # PVM, 21 files
+                128_chou06       : PVR  128 × 128, (...)
+                128_chou05       : PVR  128 × 128, (...)
+                0128_chou01      : PVR  128 × 128, (...)
+                032_chou01       : PVR   32 ×  32, (...)
+                032_chou03       : PVR   32 ×  32, (...)
+                032_chou04       : PVR   32 ×  32, (...)
+                032_chou05       : PVR   32 ×  32, (...)
+                032_chou06       : PVR   32 ×  32, (...)
+                032_chou07       : PVR   32 ×  32, (...)
+                032_chou08       : PVR   32 ×  32, (...)
+                032_chou09       : PVR   32 ×  32, (...)
+                032_chou10       : PVR   32 ×  32, (...)
+                064_chou01       : PVR   64 ×  64, (...)
+                064_chou02       : PVR   64 ×  64, (...)
+                064_chou03       : PVR   64 ×  64, (...)
+                064_chou04       : PVR   64 ×  64, (...)
+                064_chou05       : PVR   64 ×  64, (...)
+                064_chou07       : PVR   64 ×  64, (...)
+                128_chou02       : PVR  128 × 128, (...)
+                128_chou03       : PVR  128 × 128, (...)
+                128_chou04       : PVR  128 × 128, (...)
+            file_184         : # PVM, 184 files
+                sda_ng0201       : PVR   64 ×  64, (...)
+                sda_ng0202       : PVR   64 ×  64, (...)
+                sda_ng0203       : PVR   64 ×  64, (...)
+                sda_ng0204       : PVR   32 ×  32, (...)
+                sda_ng0205       : PVR   16 ×  16, (...)
+                sda_ng0206       : PVR   32 ×  32, (...)
+                sda_ng0207       : PVR   32 ×  32, (...)
+                sda_ng0208       : PVR   16 ×  16, (...)
+                sda_ng0209       : PVR   32 ×  32, (...)
+                sda_ng0210       : PVR   16 ×  16, (...)
+                sda_ng0301       : PVR   64 ×  64, (...)
+                sda_ng0302       : PVR   16 ×  16, (...)
+                sda_ng0303       : PVR   16 ×  16, (...)
+                sda_ng0304       : PVR   32 ×  32, (...)
+                sda_ng0305       : PVR   32 ×  32, (...)
+                sda_ng0306       : PVR   16 ×  16, (...)
+                sda_ng0307       : PVR   16 ×  16, (...)
+                sda_ng0308       : PVR   32 ×  32, (...)
+                sda_ng0309       : PVR   32 ×  32, (...)
+                sda_ng0310       : PVR   32 ×  32, (...)
+                sda_ng0311       : PVR   64 ×  64, (...)
+                sda_ng0401       : PVR   32 ×  32, (...)
+                sda_ng0402       : PVR   64 ×  64, (...)
+                sda_ng0405       : PVR   16 ×  16, (...)
+                sda_ng0407       : PVR   16 ×  16, (...)
+                sda_ng0408       : PVR   16 ×  16, (...)
+                sda_ng0409       : PVR   32 ×  32, (...)
+                sda_ng0410       : PVR   32 ×  32, (...)
+                sda_ng0411       : PVR   32 ×  32, (...)
+                sda_ng0501       : PVR   64 ×  64, (...)
+                sda_ng0502       : PVR   16 ×  16, (...)
+                sda_ng0503       : PVR   64 ×  64, (...)
+                sda_ng0504       : PVR   64 ×  64, (...)
+                sda_ng0505       : PVR   64 ×  64, (...)
+                sda_ng0506       : PVR   32 ×  32, (...)
+                sda_ng0507       : PVR   32 ×  32, (...)
+                sda_ng0508       : PVR   16 ×  16, (...)
+                sda_ng0509       : PVR   64 ×  64, (...)
+                sda_ng0403       : PVR   32 ×  32, (...)
+                sda_ng0404       : PVR   16 ×  16, (...)
+                sda_ng0406       : PVR   16 ×  16, (...)
+                sda_ng0602       : PVR   16 ×  16, (...)
+                sda_ng0603       : PVR   32 ×  32, (...)
+                sda_ng0604       : PVR   32 ×  32, (...)
+                sda_ng0605       : PVR   32 ×  32, (...)
+                sda_ng0606       : PVR   32 ×  32, (...)
+                sda_ng0607       : PVR   32 ×  32, (...)
+                sda_ng0608       : PVR   32 ×  32, (...)
+                sda_ng0601       : PVR   64 ×  64, (...)
+            file_185         : # PVM, 72 files
+                sda_sbill08      : PVR   16 ×  16, (...)
+                sda_tvs02        : PVR   64 ×  64, (...)
+                sda_tvs03        : PVR   64 ×  64, (...)
+                sda_tvs04        : PVR  128 × 128, (...)
+                sda_tvs06        : PVR   64 ×  64, (...)
+                sda_tvs07        : PVR   16 ×  16, (...)
+                sda_tvs08        : PVR   16 ×  16, (...)
+                sda_tvs09        : PVR   32 ×  32, (...)
+                sda_tvs0101      : PVR  128 × 128, (...)
+                sda_tvs11        : PVR   16 ×  16, (...)
+                sda_tvs12        : PVR   32 ×  32, (...)
+                sda_tvs14        : PVR   32 ×  32, (...)
+                sda_tvs15        : PVR   64 ×  64, (...)
+                032_pro01        : PVR   32 ×  32, (...)
+                032_pro02        : PVR   32 ×  32, (...)
+                032_pro03        : PVR   32 ×  32, (...)
+                032_pro04        : PVR   32 ×  32, (...)
+                032_pro05        : PVR   32 ×  32, (...)
+                032_pro06        : PVR   32 ×  32, (...)
+                032_pro07        : PVR   32 ×  32, (...)
+                032_skaf02       : PVR   32 ×  32, (...)
+                064_mara01       : PVR   64 ×  64, (...)
+                064_pro01        : PVR   64 ×  64, (...)
+                sda_tvs05        : PVR   32 ×  32, (...)
+                sda_tvs10        : PVR   32 ×  32, (...)
+                sda_tvs13        : PVR  128 × 128, (...)
+                sda_tvst01       : PVR   64 ×  64, (...)
+                sda_tvst02       : PVR   64 ×  64, (...)
+                sda_tvst03       : PVR   32 ×  32, (...)
+                sda_tvst04       : PVR   32 ×  32, (...)
+                sda_tvst05       : PVR   32 ×  32, (...)
+                sda_tvst06       : PVR   32 ×  32, (...)
+                sda_tvst01r      : PVR   64 ×  64, (...)
+                sda_tvst02r      : PVR   64 ×  64, (...)
+                sda_tvst06r      : PVR   32 ×  32, (...)
+                sda_tvfl01       : PVR   32 ×  32, (...)
+                sda_tvfl02       : PVR   16 ×  16, (...)
+                sda_tvfl03       : PVR   16 ×  16, (...)
+                sda_tvfl04       : PVR   32 ×  32, (...)
+                sda_tvca01       : PVR   32 ×  32, (...)
+                sda_tvca02       : PVR   32 ×  32, (...)
+                sda_tvca04       : PVR   32 ×  32, (...)
+                sda_tvca05       : PVR   32 ×  32, (...)
+                sda_tvca06       : PVR   64 ×  64, (...)
+                sda_tvca07       : PVR   16 ×  16, (...)
+                sda_tvfl01blue   : PVR   32 ×  32, (...)
+                sda_tvfl01yellow : PVR   32 ×  32, (...)
+                sda_tvfl01parpl  : PVR   32 ×  32, (...)
+                sda_tvfl01green  : PVR   32 ×  32, (...)
+                sda_tvback01     : PVR  128 × 128, (...)
+                sda_tvback02     : PVR  128 × 128, (...)
+                sda_tvback03     : PVR  128 × 128, (...)
+                sda_tvback04     : PVR  128 × 128, (...)
+                sda_tvback06     : PVR  128 × 128, (...)
+                sda_tvback07     : PVR   32 ×  32, (...)
+                sda_tvca03       : PVR   32 ×  32, (...)
+                sda_tvl01        : PVR   32 ×  32, (...)
+                sda_tvl02        : PVR   16 ×  16, (...)
+                sda_tvl03        : PVR   16 ×  16, (...)
+                sda_tvl04        : PVR   16 ×  16, (...)
+                sda_tvl05        : PVR   16 ×  16, (...)
+                sda_sp01         : PVR   64 ×  64, (...)
+                sda_sp02         : PVR   32 ×  32, (...)
+                sda_sp03         : PVR   32 ×  32, (...)
+                032_new02        : PVR   32 ×  32, (...)
+                032_kyaku06      : PVR   32 ×  32, (...)
+                032_kyaku07      : PVR   32 ×  32, (...)
+                032_new01        : PVR   32 ×  32, (...)
+                032_new04        : PVR   32 ×  32, (...)
+                032_new03        : PVR   32 ×  32, (...)
+                032_new05        : PVR   32 ×  32, (...)
+                032_new06        : PVR   32 ×  32, (...)
+            file_186         : # PVM, 24 files
+                032_kuku08       : PVR   32 ×  32, (...)
+                032_kuma01       : PVR   32 ×  32, (...)
+                032_kuma03       : PVR   32 ×  32, (...)
+                032_kuma04       : PVR   32 ×  32, (...)
+                032_kuma05       : PVR   32 ×  32, (...)
+                032_kuma06       : PVR   32 ×  32, (...)
+                032_kuma07       : PVR   32 ×  32, (...)
+                032_kuma09       : PVR   32 ×  32, (...)
+                032_kuma10       : PVR   32 ×  32, (...)
+                064_38           : PVR   64 ×  64, (...)
+                064_hand         : PVR   64 ×  64, (...)
+                064_kuku01       : PVR   64 ×  64, (...)
+                064_kuku02       : PVR   64 ×  64, (...)
+                064_kuku07       : PVR   64 ×  64, (...)
+                064_kuma06       : PVR   64 ×  64, (...)
+                064_kuma09       : PVR   64 ×  64, (...)
+                128_kuku01       : PVR  128 × 128, (...)
+                128_kuku02       : PVR  128 × 128, (...)
+                064_kuma01       : PVR   64 ×  64, (...)
+                064_kuma02       : PVR   64 ×  64, (...)
+                064_kuma07       : PVR   64 ×  64, (...)
+                064_kuma08       : PVR   64 ×  64, (...)
+                128_kuma01       : PVR  128 × 128, (...)
+                128_kuma02       : PVR  128 × 128, (...)
+            file_187         : # PVM, 50 files
+                032_pro01        : PVR   32 ×  32, (...)
+                032_pro02        : PVR   32 ×  32, (...)
+                032_pro03        : PVR   32 ×  32, (...)
+                032_pro04        : PVR   32 ×  32, (...)
+                032_pro05        : PVR   32 ×  32, (...)
+                032_pro06        : PVR   32 ×  32, (...)
+                032_pro07        : PVR   32 ×  32, (...)
+                064_pro01        : PVR   64 ×  64, (...)
+                016_elvis01      : PVR   16 ×  16, (...)
+                016_elvis02      : PVR   16 ×  16, (...)
+                016_elvis03      : PVR   16 ×  16, (...)
+                032_elvis01      : PVR   32 ×  32, (...)
+                032_elvis02      : PVR   32 ×  32, (...)
+                032_elvis03      : PVR   32 ×  32, (...)
+                032_elvis04      : PVR   32 ×  32, (...)
+                032_elvis05      : PVR   32 ×  32, (...)
+                032_elvis06      : PVR   32 ×  32, (...)
+                032_elvis07      : PVR   32 ×  32, (...)
+                032_elvis08      : PVR   32 ×  32, (...)
+                032_elvis09      : PVR   32 ×  32, (...)
+                032_elvis10      : PVR   32 ×  32, (...)
+                032_elvis11      : PVR   32 ×  32, (...)
+                032_elvis12      : PVR   32 ×  32, (...)
+                016_gai01        : PVR   16 ×  16, (...)
+                016_gai02        : PVR   16 ×  16, (...)
+                032_gai01        : PVR   32 ×  32, (...)
+                032_gai02        : PVR   32 ×  32, (...)
+                032_gai03        : PVR   32 ×  32, (...)
+                032_gai04        : PVR   32 ×  32, (...)
+                032_gai05        : PVR   32 ×  32, (...)
+                032_gai06        : PVR   32 ×  32, (...)
+                032_gai07        : PVR   32 ×  32, (...)
+                032_gai08        : PVR   32 ×  32, (...)
+                032_gai09        : PVR   32 ×  32, (...)
+                032_kyaku02      : PVR   32 ×  32, (...)
+                016_cook01       : PVR   16 ×  16, (...)
+                016_cook02       : PVR   16 ×  16, (...)
+                016_cook03       : PVR   16 ×  16, (...)
+                032_cook01       : PVR   32 ×  32, (...)
+                032_cook02       : PVR   32 ×  32, (...)
+                032_cook03       : PVR   32 ×  32, (...)
+                032_cook04       : PVR   32 ×  32, (...)
+                032_cook05       : PVR   32 ×  32, (...)
+                032_cook06       : PVR   32 ×  32, (...)
+                032_cook07       : PVR   32 ×  32, (...)
+                032_cook08       : PVR   32 ×  32, (...)
+                032_cook09       : PVR   32 ×  32, (...)
+                032_kuma07       : PVR   32 ×  32, (...)
+                064_cook01       : PVR   64 ×  64, (...)
+                064_cook02       : PVR   64 ×  64, (...)
+            file_188         : # PVM, 69 files
+                sda3_st01        : PVR   64 ×  64, (...)
+                sda3_st02        : PVR   64 ×  64, (...)
+                sda3_st03        : PVR   64 ×  64, (...)
+                sda3_st04        : PVR   32 ×  32, (...)
+                sda3_st05        : PVR  128 × 128, (...)
+                sda3_st06        : PVR   64 ×  64, (...)
+                sda3_st07        : PVR   32 ×  32, (...)
+                sda3_yasi05      : PVR   64 ×  64, (...)
+                sda3_kumo2       : PVR   64 ×  64, (...)
+                sda3_kumo        : PVR   64 ×  64, (...)
+                sda3_hata01      : PVR   64 ×  64, (...)
+                sda3_hata02      : PVR   64 ×  64, (...)
+                sda3_hata03      : PVR   64 ×  64, (...)
+                sda3_hata04      : PVR   64 ×  64, (...)
+                sda3_st08        : PVR   32 ×  32, (...)
+                sda3_st09        : PVR   32 ×  32, (...)
+                sda3_yasi02      : PVR   32 ×  32, (...)
+                sda3_yasi01      : PVR   32 ×  32, (...)
+                sda3_yasi03      : PVR   32 ×  32, (...)
+                sda3_yasi04      : PVR   32 ×  32, (...)
+                sda3_yagura01    : PVR   64 ×  64, (...)
+                sda3_yagura02    : PVR   32 ×  32, (...)
+                sda3_yagura03    : PVR   32 ×  32, (...)
+                sda3_yagura04    : PVR   32 ×  32, (...)
+                sda3_yagura05    : PVR   32 ×  32, (...)
+                sda3_obj03off    : PVR   32 ×  32, (...)
+                sda3_obj04off    : PVR   32 ×  32, (...)
+                sda3_obj05off    : PVR   32 ×  32, (...)
+                sda_spot01       : PVR   32 ×  32, (...)
+                sda3_obj01       : PVR   32 ×  32, (...)
+                sda3_obj02       : PVR   32 ×  32, (...)
+                sda3_obj03       : PVR   32 ×  32, (...)
+                sda3_obj04       : PVR   32 ×  32, (...)
+                sda3_obj05       : PVR   32 ×  32, (...)
+                sda3_obj06       : PVR   32 ×  32, (...)
+                sda3_sp01        : PVR   64 ×  64, (...)
+                sda3_sp02        : PVR   32 ×  32, (...)
+                sda3_sp04        : PVR   32 ×  32, (...)
+                sda3_sp05        : PVR   64 ×  64, (...)
+                sda3_st10        : PVR   32 ×  32, (...)
+                sda_ssan02       : PVR   32 ×  32, (...)
+                sda_ssan01       : PVR   32 ×  32, (...)
+                sda_ssan02hi     : PVR   32 ×  32, (...)
+                sda_ssan02low    : PVR   32 ×  32, (...)
+                sda_ssan03       : PVR   64 ×  64, (...)
+                sda_ssan03hi     : PVR   64 ×  64, (...)
+                sda_ssan03low    : PVR   64 ×  64, (...)
+                sda_ssan04       : PVR   32 ×  32, (...)
+                sda_ssan05       : PVR   32 ×  32, (...)
+                sda3_star32      : PVR   32 ×  32, (...)
+                s3_sng02         : PVR   64 ×  64, (...)
+                s3_sng05         : PVR   64 ×  64, (...)
+                s3_sng06         : PVR   64 ×  64, (...)
+                s3_sng07         : PVR   64 ×  64, (...)
+                s3_sng08         : PVR   64 ×  64, (...)
+                sda3_ng01        : PVR   64 ×  64, (...)
+                s3_sng04         : PVR   64 ×  64, (...)
+                s3_sng03         : PVR   64 ×  64, (...)
+                016_dol01        : PVR   16 ×  16, (...)
+                016_dol02        : PVR   16 ×  16, (...)
+                032_dol01        : PVR   32 ×  32, (...)
+                032_dol02        : PVR   32 ×  32, (...)
+                032_dol03        : PVR   32 ×  32, (...)
+                032_dol04        : PVR   32 ×  32, (...)
+                032_dol05        : PVR   32 ×  32, (...)
+                sda3_umi00       : PVR   32 ×  32, (...)
+                sda3_umi01       : PVR   32 ×  32, (...)
+                sda3_umi02       : PVR   32 ×  32, (...)
+                sda3_umi03       : PVR   64 ×  64, (...)
+            file_189         : # PVM, 46 files
+                016_hyou01       : PVR   16 ×  16, (...)
+                016_hyou02       : PVR   16 ×  16, (...)
+                016_hyou03       : PVR   16 ×  16, (...)
+                016_hyou04       : PVR   16 ×  16, (...)
+                016_hyou05       : PVR   16 ×  16, (...)
+                032_hyou01       : PVR   32 ×  32, (...)
+                032_hyou02       : PVR   32 ×  32, (...)
+                032_hyou03       : PVR   32 ×  32, (...)
+                032_hyou05       : PVR   32 ×  32, (...)
+                064_hyou01       : PVR   64 ×  64, (...)
+                064_hyou02       : PVR   64 ×  64, (...)
+                064_hyou03       : PVR   64 ×  64, (...)
+                128_hyou01       : PVR  128 × 128, (...)
+                128_hyou02       : PVR  128 × 128, (...)
+                128_hyou03       : PVR  128 × 128, (...)
+                128_hyou04       : PVR  128 × 128, (...)
+                016_gita01       : PVR   16 ×  16, (...)
+                016_gita02       : PVR   16 ×  16, (...)
+                032_gita01       : PVR   32 ×  32, (...)
+                032_gita02       : PVR   32 ×  32, (...)
+                032_gita03       : PVR   32 ×  32, (...)
+                032_gita04       : PVR   32 ×  32, (...)
+                032_gita05       : PVR   32 ×  32, (...)
+                032_gita06       : PVR   32 ×  32, (...)
+                032_gita07       : PVR   32 ×  32, (...)
+                064_gita01       : PVR   64 ×  64, (...)
+                064_gita02       : PVR   64 ×  64, (...)
+                064_gita03       : PVR   64 ×  64, (...)
+                064_gita04       : PVR   64 ×  64, (...)
+                064_gita05       : PVR   64 ×  64, (...)
+                064_gita06       : PVR   64 ×  64, (...)
+                064_gita07       : PVR   64 ×  64, (...)
+                064_gita09       : PVR   64 ×  64, (...)
+                064_gita10       : PVR   64 ×  64, (...)
+                064_gita11       : PVR   64 ×  64, (...)
+                128_gita01       : PVR  128 × 128, (...)
+                032_kon01        : PVR   32 ×  32, (...)
+                032_kuma02       : PVR   32 ×  32, (...)
+                064_gita08       : PVR   64 ×  64, (...)
+                064_grass01      : PVR   64 ×  64, (...)
+                064_kon01        : PVR   64 ×  64, (...)
+                064_kon02        : PVR   64 ×  64, (...)
+                064_kon03        : PVR   64 ×  64, (...)
+                064_kon04        : PVR   64 ×  64, (...)
+                064_kon05        : PVR   64 ×  64, (...)
+                064_kon06        : PVR   64 ×  64, (...)
+            file_190         : # PVM, 28 files
+                banzai_hada_8    : PVR    8 ×   8, (...)
+                banzai_kao1_64   : PVR   64 ×  64, (...)
+                banzai_mimi_16   : PVR   16 ×  16, (...)
+                02_f2            : PVR   32 ×  32, (...)
+                02f2             : PVR   64 ×  64, (...)
+                02h              : PVR   64 ×  64, (...)
+                02h2             : PVR   64 ×  64, (...)
+                02h3             : PVR   32 ×  32, (...)
+                02kutu           : PVR   32 ×  32, (...)
+                dance_huku1_64   : PVR   64 ×  64, (...)
+                dance_huku2_64   : PVR   64 ×  64, (...)
+                dance_kao1_64    : PVR   64 ×  64, (...)
+                dance_kao2_64    : PVR   64 ×  64, (...)
+                dance_kutu_32    : PVR   32 ×  32, (...)
+                dance_mimi_16    : PVR   16 ×  16, (...)
+                dance_pants_32   : PVR   32 ×  32, (...)
+                dance_sode_32    : PVR   32 ×  32, (...)
+                dance_tenohira_32: PVR   32 ×  32, (...)
+                gori_ashi_32     : PVR   32 ×  32, (...)
+                gori_hada_8      : PVR    8 ×   8, (...)
+                gori_huku1_64    : PVR   64 ×  64, (...)
+                gori_huku2_64    : PVR   64 ×  64, (...)
+                gori_kao3_64     : PVR   64 ×  64, (...)
+                gori_kao4_64     : PVR   64 ×  64, (...)
+                gori_kutu_32     : PVR   32 ×  32, (...)
+                gori_tenohira_32 : PVR   32 ×  32, (...)
+                gori_ude_32      : PVR   32 ×  32, (...)
+                gori_zubon_32    : PVR   32 ×  32, (...)
+            file_191         : # PVM, 77 files
+                sda_ssan02       : PVR   32 ×  32, (...)
+                sda_ssan01       : PVR   32 ×  32, (...)
+                sda_ssan03hi     : PVR   64 ×  64, (...)
+                sda_ssan04       : PVR   32 ×  32, (...)
+                sda_ssan05       : PVR   32 ×  32, (...)
+                sda_slbk01       : PVR   64 ×  64, (...)
+                sda_slbk02       : PVR   64 ×  64, (...)
+                sda_slbk03       : PVR   64 ×  64, (...)
+                sda_slmara01     : PVR   32 ×  32, (...)
+                sda_slmara03     : PVR   32 ×  32, (...)
+                sda_slmara04     : PVR   32 ×  32, (...)
+                sda_sssan01      : PVR   32 ×  32, (...)
+                sda_sssan02      : PVR   32 ×  32, (...)
+                sda_sssan03      : PVR   32 ×  32, (...)
+                sda_sssan04      : PVR   32 ×  32, (...)
+                sda_sssan05      : PVR   32 ×  32, (...)
+                sda_sssan06      : PVR   64 ×  64, (...)
+                sdasb03_b        : PVR   64 ×  64, (...)
+                sdasb02_b        : PVR   64 ×  64, (...)
+                sdasb02_d        : PVR   64 ×  64, (...)
+                sdasb01_d        : PVR   64 ×  64, (...)
+                sdasb01_e        : PVR   64 ×  64, (...)
+                sdasb02_a        : PVR   32 ×  32, (...)
+                sdasb01_a        : PVR   32 ×  32, (...)
+                sdasb02_e        : PVR   64 ×  64, (...)
+                sdasb03_a        : PVR   64 ×  64, (...)
+                sdasb03_d        : PVR   64 ×  64, (...)
+                sdasb03_e        : PVR   64 ×  64, (...)
+                sdassobj_a05     : PVR   16 ×  16, (...)
+                sdasb05_a        : PVR   32 ×  32, (...)
+                sdasb06_a        : PVR   16 ×  16, (...)
+                sdasb07_a        : PVR   32 ×  32, (...)
+                sdasskozal01     : PVR   64 ×  64, (...)
+                sdasskozal02     : PVR   32 ×  32, (...)
+                sdasskozal03     : PVR   32 ×  32, (...)
+                sdasskozal04     : PVR   64 ×  64, (...)
+                sdasskozal05     : PVR   64 ×  64, (...)
+                sdassobj_a01     : PVR   64 ×  64, (...)
+                sdassobj_a02     : PVR   32 ×  32, (...)
+                sdassobj_a03     : PVR   16 ×  16, (...)
+                sdassobj_a04     : PVR   32 ×  32, (...)
+                sdasb04_a        : PVR   32 ×  32, (...)
+                sdassobj_a06     : PVR   32 ×  32, (...)
+                sdassobj_a07     : PVR   32 ×  32, (...)
+                sdassobj_a08     : PVR   32 ×  32, (...)
+                sdassobj_a09     : PVR   32 ×  32, (...)
+                sdassobj_a10     : PVR   32 ×  32, (...)
+                sdassobj_a11     : PVR   32 ×  32, (...)
+                sdassobj_a12     : PVR   64 ×  64, (...)
+                sdassobj_a13     : PVR   32 ×  32, (...)
+                sdassobj_a14     : PVR   16 ×  16, (...)
+                sdassobj_a15     : PVR   16 ×  16, (...)
+                sdassobj_a16     : PVR   64 ×  64, (...)
+                sdassobj_a17     : PVR   32 ×  32, (...)
+                sdassobj_a18     : PVR   32 ×  32, (...)
+                sdassobj_a19     : PVR   16 ×  16, (...)
+                sdassobj_e01     : PVR   32 ×  32, (...)
+                sdassobj_e02     : PVR   32 ×  32, (...)
+                sdassobj_e03     : PVR   32 ×  32, (...)
+                sdassobj_e04     : PVR   64 ×  64, (...)
+                sdassobj_e05     : PVR   32 ×  32, (...)
+                sdassobj_e06     : PVR   32 ×  32, (...)
+                128_a01          : PVR  128 × 128, (...)
+                128_b01          : PVR  128 × 128, (...)
+                128_b02          : PVR  128 × 128, (...)
+                128_c01          : PVR  128 × 128, (...)
+                128_c02          : PVR  128 × 128, (...)
+                128_c03          : PVR  128 × 128, (...)
+                128_c04          : PVR  128 × 128, (...)
+                128_d01          : PVR  128 × 128, (...)
+                128_d02          : PVR  128 × 128, (...)
+                128_d03          : PVR  128 × 128, (...)
+                128_d04          : PVR  128 × 128, (...)
+                128_e01          : PVR  128 × 128, (...)
+                128_b03          : PVR  128 × 128, (...)
+                064_jet          : PVR   64 ×  64, (...)
+                spaceship        : PVR  128 × 128, (...)
+        US: # 142 files, most of them just like AFS_REGULAR_EU.AFS (PAL,US) below, except for:
+            file_34 : PVR  256 × 128, OVER 3'6"
+            file_35 : PVR  256 × 128, OVER 4'2"
+            file_36 : PVR  256 × 128, OVER 5'0"
+            file_37 : PVR  256 × 128, OVER 5'7"
+            file_38 : PVR  256 × 128, OVER 6'3"
+            file_54 : PVR  512 × 256, A Controller was removed, or a VMU is being recognized
+            file_55 : PVR  512 × 256, No VMU found. Insert a VMU to Slot   of the Controller connected to Port   .
+            file_56 : PVR  512 × 256, Not enough free memory blocks available on the VMU.   blocks required to save.
+            file_57 : PVR  512 × 256, To save your data, you will need a VMU with   blocks of free memory.
+    AFS_REGULAR_EU.AFS:        # [_, U, P, 142 PVR/PVM files]
+        PAL:
+            file_1  : # PVM, 2 files
+                uketuke1   : PVR  256 ×  32, WAITING FOR 1P'S ENTRY
+                uketuke2   : PVR  256 ×  32, WAITING FOR 2P'S ENTRY
+            file_2  : # PVM, 4 files
+                entry1     : PVR  128 × 128, 1P
+                entry2     : PVR  128 × 128, 2P
+                entrysun   : PVR  128 × 128, (yellow sun)
+                rannyuentry: PVR  256 × 256, ENTRY
+            file_3  : # PVM, 2 files
+                setumei    : PVR  512 ×  64, RAISE OR LOWER THE LEFT MARACA TO SELECT, SHAKE THE RIGHT MARACA TO ENTER.
+                sentaku    : PVR  256 ×  32, ONLY 1P CAN SELECT!
+            file_4  : # PVM, 10 files
+                con0       : PVR  128 × 128, 0
+                con1       : PVR  128 × 128, 1
+                con2       : PVR  128 × 128, 2
+                con3       : PVR  128 × 128, 3
+                con4       : PVR  128 × 128, 4
+                con5       : PVR  128 × 128, 5
+                con6       : PVR  128 × 128, 6
+                con7       : PVR  128 × 128, 7
+                con8       : PVR  128 × 128, 8
+                con9       : PVR  128 × 128, 9
+            file_5  : # PVM, 10 files
+                entrya     : PVR   64 ×  64, A
+                entryb     : PVR   64 ×  64, B
+                entryc     : PVR   64 ×  64, C
+                entryd     : PVR   64 ×  64, D
+                entrye     : PVR   64 ×  64, E
+                entryf     : PVR   64 ×  64, F
+                entryg     : PVR   64 ×  64, G
+                entryh     : PVR   64 ×  64, H
+                entryi     : PVR   64 ×  64, I
+                entryj     : PVR   64 ×  64, J
+                entryk     : PVR   64 ×  64, K
+                entryl     : PVR   64 ×  64, L
+                entrym     : PVR   64 ×  64, M
+                entryn     : PVR   64 ×  64, N
+                entryo     : PVR   64 ×  64, O
+                entryp     : PVR   64 ×  64, P
+                entryq     : PVR   64 ×  64, Q
+                entryr     : PVR   64 ×  64, R
+                entrys     : PVR   64 ×  64, S
+                entryt     : PVR   64 ×  64, T
+                entryu     : PVR   64 ×  64, U
+                entryv     : PVR   64 ×  64, V
+                entryw     : PVR   64 ×  64, W
+                entryx     : PVR   64 ×  64, X
+                entryy     : PVR   64 ×  64, Y
+                entryz     : PVR   64 ×  64, Z
+                entry0     : PVR   64 ×  64, 0
+                entry1     : PVR   64 ×  64, 1
+                entry2     : PVR   64 ×  64, 2
+                entry3     : PVR   64 ×  64, 3
+                entry4     : PVR   64 ×  64, 4
+                entry5     : PVR   64 ×  64, 5
+                entry6     : PVR   64 ×  64, 6
+                entry7     : PVR   64 ×  64, 7
+                entry8     : PVR   64 ×  64, 8
+                entry9     : PVR   64 ×  64, 9
+                hatena     : PVR   64 ×  64, ?
+                entryspace : PVR   64 ×  64, .
+                end        : PVR   64 ×  64, END
+            file_6  : # PVM, 8 files
+                tyui       : PVR  512 × 128, ! CAUTION !
+                tyuibun    : PVR  512 × 128, TO AVOID HITTING MARACAS, STAND ON THE FOOTPRINTS MARKED ON THE MAT BELOW.
+                tyuimara1  : PVR  128 × 128, (maracas not hitting each other)
+                tyuimara2  : PVR  128 × 128, (maracas hitting each other)
+                entrymara  : PVR  128 × 128, (maracas touching each other)
+                tyuired    : PVR   16 ×  16, (red)
+                tyuitya    : PVR   64 ×  64, (dark red wavy pattern)
+                maramottes : PVR  256 ×  64, GET THE MARACAS READY!
+            file_7  : PVR 1024 × 512, Warning! Please be careful not to hit people or things around you when using the Maracas Controller. Please refer to the User's Manual for your Maracas Controller to see how to use them.
+            file_8  : PVR 1024 × 512, Warning! Effects such as flashing lights or light patterns are included in this game. Please read the User's Manual carefully before you start playing. Make sure that the room in which you are playing has all the lights turned on and is well lit, and sit a safe distance away from the television screen.
+            file_9  : PVR  512 × 128, MODE SELECT
+            file_10 : # PVM, 15 files
+                banana1    : PVR   64 ×  64, (banana)
+                banana2    : PVR   64 ×  64, (banana slightly rotated clockwise)
+                banana3    : PVR   64 ×  64, (banana slightly more rotated clockwise)
+                modeselect : PVR  512 × 128, MODE SELECT
+                easy       : PVR  256 × 128, EASY
+                normal     : PVR  256 × 128, NORMAL
+                hard       : PVR  256 × 128, HARD
+                superhard  : PVR  256 × 128, SUPER HARD
+                random     : PVR  256 × 128, RANDOM
+                bon_1stage : PVR  128 × 128, 1 STAGE PLAY
+                bon_2stage : PVR  128 × 128, 2 STAGE PLAY
+                bon_3stage : PVR  128 × 128, 3 STAGE PLAY
+                hitoup     : PVR  256 × 512, (pose figure with left maraca up and right maraca down)
+                hitomiddle : PVR  256 × 512, (pose figure with left maraca in the middle and right maraca down)
+                hitodown   : PVR  256 × 512, (pose figure with left and right maracas down)
+            file_11 : # PVM, 5 files
+                total       : PVR  256 ×  64, TOTAL
+                wv_totalsan : PVR  512 × 512, (orange sun on yellow background)
+                wv_winmara01: PVR  512 × 256, (maracas on red background pointing inward)
+                wv_winmara02: PVR  512 × 256, (maracas on red background pointing outward)
+                wv_totalback: PVR  128 × 128, (bombs on red/orange explosing background)
+            file_12 : PVR  128 × 128, (turtable on salmon background)
+            file_13 : PVR  128 × 128, (turtable on salmon background)
+            file_14 : PVR  128 × 128, (turtable on yellow background)
+            file_15 : PVR  128 × 128, (turtable on yellow background)
+            file_16 : PVR  128 × 128, (turtable on dark yellow background)
+            file_17 : PVR  128 × 128, (turtable on dark yellow background)
+            file_18 : PVR  128 × 128, (turtable on cyan background)
+            file_19 : PVR  128 × 128, (turtable on cyan background)
+            file_20 : # PVM, 49 files
+                marabuttonS : PVR   64 ×  64, (blue ball)
+                posebuttonS : PVR   64 ×  64, (red ball)
+                position    : PVR   64 ×  64, (black and white maraca position mark)
+                buttonr     : PVR   64 ×  64, (red circle)
+                buttony     : PVR   64 ×  64, (yellow circle)
+                buttong     : PVR   64 ×  64, (green circle)
+                hikari      : PVR   64 ×  64, (bright circle)
+                yeah        : PVR   64 ×  32, Yeah!
+                boo         : PVR   64 ×  32, BOO!
+                hit         : PVR   64 ×  32, HIT!
+                renda       : PVR  128 ×  64, RAPIDLY!
+                poselong    : PVR  256 ×  64, POSE!!
+                amigo       : PVR   64 ×  32, AMIGO
+                gagecolor   : PVR   16 ×  16, (square with red, yellow, green, light blue, dark blue, white, black and gray boxes)
+                gagefix     : PVR  256 × 256, (score and rank gage for both players)
+                leA         : PVR   64 ×  64, A
+                leB         : PVR   64 ×  64, B
+                leC         : PVR   64 ×  64, C
+                leD         : PVR   64 ×  64, D
+                leE         : PVR   64 ×  64, E
+                score0      : PVR   32 ×  32, 0
+                score1      : PVR   32 ×  32, 1
+                score2      : PVR   32 ×  32, 2
+                score3      : PVR   32 ×  32, 3
+                score4      : PVR   32 ×  32, 4
+                score5      : PVR   32 ×  32, 5
+                score6      : PVR   32 ×  32, 6
+                score7      : PVR   32 ×  32, 7
+                score8      : PVR   32 ×  32, 8
+                score9      : PVR   32 ×  32, 9
+                hit0        : PVR   64 ×  64, 0
+                hit1        : PVR   64 ×  64, 1
+                hit2        : PVR   64 ×  64, 2
+                hit3        : PVR   64 ×  64, 3
+                hit4        : PVR   64 ×  64, 4
+                hit5        : PVR   64 ×  64, 5
+                hit6        : PVR   64 ×  64, 6
+                hit7        : PVR   64 ×  64, 7
+                hit8        : PVR   64 ×  64, 8
+                hit9        : PVR   64 ×  64, 9
+                maru        : PVR  128 × 128, (red circle)
+                batu        : PVR  128 × 128, (blue cross)
+                position3   : PVR   64 ×  64, (black and white position mark for both maracas)
+                EASY_s      : PVR  256 ×  32, EASY
+                normal_s    : PVR  256 ×  32, NORMAL
+                hard_s      : PVR  256 ×  32, HARD
+                superhard_s : PVR  256 ×  32, SUPERHARD
+                random_s    : PVR  256 ×  32, RANDOM
+                amigos      : PVR   64 ×  32, AMIGOS
+            file_21 : # PVM, 29 files
+                032_kosi01  : PVR   32 ×  32, (Amigo's belt pattern)
+                032_skaf01  : PVR   32 ×  32, (Amigo's red skarf pattern?)
+                032_skaf02  : PVR   32 ×  32, (red)
+                064_hat01   : PVR   64 ×  64, (sombrero pattern)
+                064_hat02   : PVR   64 ×  64, (sombrero pattern)
+                064_hat03   : PVR   64 ×  64, (sombrero pattern)
+                064_hat04   : PVR   64 ×  64, (sombrero pattern)
+                064_huku01  : PVR   64 ×  64, (Amigo's shirt pattern)
+                064_jean01  : PVR   64 ×  64, (Amigo's pants pattern)
+                064_jean02  : PVR   64 ×  64, (Amigo's pants pattern)
+                064_jean03  : PVR   64 ×  64, (Amigo's pants pattern)
+                064_jean04  : PVR   64 ×  64, (Amigo's pants pattern)
+                064_mara01  : PVR   64 ×  64, (maraca's pattern)
+                064_mimi01  : PVR   64 ×  64, (Amigo's ear)
+                064_mimi02  : PVR   64 ×  64, (Amigo's ear with earring)
+                064_skaf01  : PVR   64 ×  64, (Amigo's red skarf pattern?)
+                128_hada01  : PVR  128 × 128, (Amigo's skin?)
+                128_kao01   : PVR  128 × 128, (Amigo's smiling face)
+                128_ke01    : PVR  128 × 128, (Amigo's fur)
+                128_tuika01 : PVR  128 × 128, (Amigo's normal face)
+                128_tuika02 : PVR  128 × 128, (Amigo's normal face with closed eyes)
+                128_kao02   : PVR  128 × 128, (Amigo's despaired face)
+                128_kao03   : PVR  128 × 128, (Amigo's excited face)
+                128_tuika03 : PVR  128 × 128, (Amigo's smiling face looking left)
+                128_tuika04 : PVR  128 × 128, (Amigo's smiling face looking right)
+                128_kao04   : PVR  128 × 128, (Amigo's crying face)
+                sda_spot01  : PVR   64 ×  64, (vertical white to black gradient)
+                sda_ssan01  : PVR   32 ×  32, (sun?)
+                128_spe01   : PVR  128 × 128, (Amigo's starry eyes face)
+            file_22 : # PVM,  6 files
+                sda_slbk01  : PVR   64 ×  64, (colorful vertical gradient)
+                sda_slbk02  : PVR   64 ×  64, (gray smoke? flowers?)
+                sda_slbk03  : PVR  128 × 128, (swirling gray sun with Amigo magenta silhouette)
+                sda_slmara01: PVR   32 ×  32, (maraca's pattern? gray background with 6 dark dots and light reflections?)
+                sda_slmara02: PVR   32 ×  32, (maraca's pattern)
+                sda_slmara03: PVR   32 ×  32, (maraca's pattern? red and magenta twirl?)
+            file_23 : PVR  512 × 128, CONTINUE
+            file_24 : PVR  512 × 128, CLEARED!
+            file_25 : PVR 1024 × 512, PRESENTED BY SEGA
+            file_26 : PVR  512 × 128, FAILED
+            file_27 : PVR  128 × 128, (orange maracas on dark orange background, pointing inward)
+            file_28 : PVR  128 × 128, (orange maracas on dark orange background, pointing outward)
+            file_29 : PVR 1024 × 512, (yellow background with maracas)
+            file_30 : PVR  512 × 512, (yellow sun on yellow background)
+            file_31 : PVR  256 × 128, GAME OVER
+            file_32 : PVR  256 ×  64, END GAME
+            file_33 : PVR  512 ×  32, GO TO THE SPECIAL STAGE
+            file_34 : PVR  256 × 128, OVER 110 cm
+            file_35 : PVR  256 × 128, OVER 130 cm
+            file_36 : PVR  256 × 128, OVER 150 cm
+            file_37 : PVR  256 × 128, OVER 170 cm
+            file_38 : PVR  256 × 128, OVER 190 cm
+            file_39 : PVR  256 × 128, 70 cm以上
+            file_40 : PVR  256 × 128, 90 cm以上
+            file_41 : PVR  128 × 128, (dancing figures on orange background)
+            file_42 : PVR  128 × 128, (dancing figures on orange background)
+            file_43 : PVR  512 × 128, HEIGHT SELECT
+            file_44 : # PVM, 13 files
+                sda_slbk01      : PVR  512 × 128, HIGH SCORE
+                gizamoyo        : PVR  128 × 128, (orange pattern)
+                star            : PVR  256 × 256, (yellow 20 pointed star on orange background)
+                en_easymode     : PVR  256 ×  32, EASY MODE
+                en_normalmode   : PVR  256 ×  32, NORMAL MODE
+                en_hardmode     : PVR  256 ×  32, HARD MODE
+                en_superhardmode: PVR  256 ×  32, SUPERHARD MODE
+                en_randommode   : PVR  256 ×  32, RANDOM MODE
+                name1p          : PVR  128 ×  64, 1P
+                name2p          : PVR  128 ×  64, 2P
+                b_hs_stage1     : PVR  128 ×  32, 1 STAGE
+                b_hs_stage2     : PVR  128 ×  32, 2 STAGE
+                b_hs_stage3     : PVR  128 ×  32, 3 STAGE
+            file_45 : PVR  128 ×  64, HP
+            file_46 : PVR 1024 ×1024, (6 cacti on the desert and orange background)
+            file_47 : PVR  256 × 256, (bright 4 cacti looking left)
+            file_48 : PVR  256 × 256, (bright 4 cacti looking right)
+            file_49 : PVR  256 × 256, (dark 4 cacti looking left)
+            file_49 : PVR  256 × 256, (dark 4 cacti looking left)
+            file_50 : PVR  256 × 256, (dark 4 cacti looking right)
+            file_51 : PVR  512 × 128, MUSIC SELECT
+            file_52 : # PVM, 18 files
+                namerntry       : PVR  512 × 128, NAME ENTRY
+                gizamoyo        : PVR  128 × 128, (orange pattern)
+                star            : PVR  256 × 256, (yellow 20 pointed star on orange background)
+                resultscore     : PVR  128 ×  32, SCORE
+                en_name         : PVR  128 ×  32, NAME
+                en_left         : PVR   64 ×  64, (left arrow)
+                en_right        : PVR   64 ×  64, (right arrow)
+                en_huki         : PVR  256 × 128, (light yellow balloon/note on orange background)
+                en_kettei       : PVR  256 ×  64, ENTER
+                en_modoru       : PVR  256 ×  64, BACK
+                en_oukan        : PVR  128 ×  64, (crown)
+                en_easymode     : PVR  256 ×  32, EASY MODE
+                en_normalmode   : PVR  256 ×  32, NORMAL MODE
+                en_hardmode     : PVR  256 ×  32, HARD MODE
+                en_superhardmode: PVR  256 ×  32, SUPERHARD MODE
+                en_randommode   : PVR  256 ×  32, RANDOM MODE
+                name1p          : PVR  128 ×  64, 1P
+                name2p          : PVR  128 ×  64, 2P
+            file_53 : PVR  512 ×  32, GO TO THE NEXT STAGE
+            file_54 : PVR  512 × 256, A Controller was removed, or a VM is being recognized
+            file_55 : PVR  512 × 256, No VM found. Insert a VM to Slot   of the Controller connected to Port   .
+            file_56 : PVR  512 × 256, Not enough free memory blocks available on the VM.   blocks required to save.
+            file_57 : PVR  512 × 256, To save your data, you will need a VM with   blocks of free memory.
+            file_58 : PVR  512 × 256, Save failed.
+            file_59 : PVR  512 × 256, Load failed.
+            file_60 : PVR  512 × 256, 「サンバDEアミーゴ」のファイルを検索しています。
+            file_61 : PVR  512 × 256, Now loading.
+            file_62 : PVR  512 × 256, ポート　のスロット　に差してあるメモリーカードから正しくデータをロードしました。ゲーム中のセーブ、ロードは、ポート　のスロット　によって行われます。ゲーム中のメモリーカードの抜き差しは、行わないでください。
+            file_63 : PVR  512 × 256, A new file will be created with   blocks of free memory.
+            file_64 : PVR  512 × 256, The game will not be saved.
+            file_65 : PVR  512 × 256, (red rounded rectangle like those in the messages above)
+            file_66 : PVR  512 × 128, MENU
+            file_67 : PVR  256 ×  64, ARCADE
+            file_68 : PVR  256 ×  64, ORIGINAL
+            file_69 : PVR  256 ×  64, CHALLENGE
+            file_70 : PVR  256 ×  64, PARTY
+            file_71 : PVR  256 ×  64, TRAINING
+            file_72 : PVR  256 ×  64, INTERNET
+            file_73 : PVR  256 ×  64, OPTIONS
+            file_74 : PVR  512 × 128, PARTY MENU
+            file_75 : PVR  256 ×  64, BATTLE
+            file_76 : PVR  256 ×  64, COUPLES MODE
+            file_77 : PVR  256 ×  64, MINI GAMES
+            file_78 : PVR 1024 × 512, (characters in a convertible with the number 38)
+            file_79 : PVR  256 × 256, (yellow and orange pattern of horizontal triangular lines)
+            file_80 : PVR 1024 × 512, SELECT A VM - SLOT 1 - SLOT 2 - A B C D - blocks required to save
+            file_81 : PVR  128 × 256, (vmu)
+            file_82 : PVR  128 × 256, (slightly smaller vmu)
+            file_83 : PVR  256 × 128, blocks of free memory
+            file_84 : PVR  256 × 128, NO DATA
+            file_85 : PVR  128 ×  64, (red arrow up)
+            file_86 : PVR  512 × 128, PAUSE
+            file_87 : PVR   32 ×  32, %
+            file_88 : PVR  512 × 128, PERFECT!!
+            file_89 : # PVM, 3 files
+                u_icon03        : PVR   32 ×  32, (Dreamcast controller)
+                u_icon02        : PVR   32 ×  32, (maraca)
+                u_icon01        : PVR   32 ×  32, (DDR mat)
+            file_90 : PVR  256 ×  64, (blue rectangle)
+            file_91 : PVR  256 ×  64, (red rectangle)
+            file_92 : PVR  256 × 128, PLEASE WAIT
+            file_93 : PVR   64 ×  64, NEXT (left cyan arrow)
+            file_94 : PVR  512 ×  32, PRESS START BUTTON!!
+            file_95 : # PVM, 10 files
+                first           : PVR  128 ×  64, 1ST
+                second          : PVR  128 ×  64, 2ND
+                third           : PVR  128 ×  64, 3RD
+                forth           : PVR  128 ×  64, 4TH
+                fifth           : PVR  128 ×  64, 5TH
+                sixth           : PVR  128 ×  64, 6TH
+                seventh         : PVR  128 ×  64, 7TH
+                eight           : PVR  128 ×  64, 8TH
+                nineth          : PVR  128 ×  64, 9TH
+                tenth           : PVR  128 ×  64, 10TH
+            file_96 : PVR  256 × 128, RESULTS
+            file_97 : PVR  128 ×  32, MAX AMIGOS
+            file_98 : PVR  128 ×  32, RANK
+            file_99 : PVR  128 ×  32, RATE
+            file_100: PVR  128 ×  32, SCORE
+            file_101: PVR  256 ×  64, RESTART
+            file_102: PVR  256 ×  64, SELECT
+            file_103: PVR 1024 ×1024, IN COOPERATION WITH SONIC TEAM
+            file_103: # PVM,  2 files
+                staff01         : PVR  512 × 512, (game credits)
+                staff02         : PVR  512 × 512, (game credits)
+            file_105: PVR 1024 ×1024, (maracas background used in the opening?)
+            file_106: # PVM,  5 files
+                segaltd         : PVR  512 ×  64, Original Game © SEGA, 1999 - © SEGA/SONICTEAM, 2000
+                marakasu2       : PVR  128 ×  64, (blue maracas pointing outward)
+                marakasu1       : PVR  128 ×  64, (blue maracas pointing inward)
+                title           : PVR  512 × 512, SAMBA DE AMIGO
+                w_titlesun      : PVR  512 × 512, (sun used in the opening)
+            file_107: # PVM, 15 files
+                hyou06          : PVR   16 ×  16, (light yellow)
+                demoback        : PVR   64 ×  64, (triangular lines and triangles pattern)
+                setsumei        : PVR  512 × 128, AS THE BALL FALLS ON TOP OF THE FRAME, SHAKE THE MARACAS.
+                setsumei1       : PVR  512 × 128, (blue ball) が (red circle) に重なった瞬間にマラカスをふろう！
+                setsumei2       : PVR  512 × 128, WHEN (blue ball) FLOW INTO (red circle)
+                setsumei3       : PVR  512 × 128, SHAKE THE MARACAS AT THE UPPER PART.
+                setsumei4       : PVR  512 × 128, WHEN (blue ball) FLOW INTO (yellow circle)
+                setsumei5       : PVR  512 × 128, SHAKE THE MARACAS AT THE MIDDLE PART.
+                setsumei6       : PVR  512 × 128, WHEN (blue ball) FLOW INTO (green circle)
+                setsumei7       : PVR  512 × 128, SHAKE THE MARACAS AT THE LOWER PART.
+                setsumei8       : PVR  512 × 128, WHEN POSE!! APPEARS
+                setsumei9       : PVR  512 × 128, POSE THE SAME AS (pose figure)
+                setsumei10      : PVR  512 × 128, THE GAME PROGRESSES LIKE THIS.
+                setsumei11      : PVR  512 × 128, YOU CAN CLEAR A STAGE WITH A C RANK OR BETTER.
+                setsumei12      : PVR  512 × 128, LET'S HAVE FUN AMIGO!
+            file_108: # PVM, 10 files (red digits on black background)
+                s_suji00        : PVR   32 ×  32, 0
+                s_suji01        : PVR   32 ×  32, 1
+                s_suji02        : PVR   32 ×  32, 2
+                s_suji03        : PVR   32 ×  32, 3
+                s_suji04        : PVR   32 ×  32, 4
+                s_suji05        : PVR   32 ×  32, 5
+                s_suji06        : PVR   32 ×  32, 6
+                s_suji07        : PVR   32 ×  32, 7
+                s_suji08        : PVR   32 ×  32, 8
+                s_suji09        : PVR   32 ×  32, 9
+            file_109: # PVM, 10 files (black digits with white contour on black background)
+                o_block00       : PVR   32 ×  32, 0
+                o_block01       : PVR   32 ×  32, 1
+                o_block02       : PVR   32 ×  32, 2
+                o_block03       : PVR   32 ×  32, 3
+                o_block04       : PVR   32 ×  32, 4
+                o_block05       : PVR   32 ×  32, 5
+                o_block06       : PVR   32 ×  32, 6
+                o_block07       : PVR   32 ×  32, 7
+                o_block08       : PVR   32 ×  32, 8
+                o_block09       : PVR   32 ×  32, 9
+            file_110: # PVM, 10 files (red digits with white contour on black background)
+                m_suji00        : PVR   32 ×  32, 0
+                m_suji01        : PVR   32 ×  32, 1
+                m_suji02        : PVR   32 ×  32, 2
+                m_suji03        : PVR   32 ×  32, 3
+                m_suji04        : PVR   32 ×  32, 4
+                m_suji05        : PVR   32 ×  32, 5
+                m_suji06        : PVR   32 ×  32, 6
+                m_suji07        : PVR   32 ×  32, 7
+                m_suji08        : PVR   32 ×  32, 8
+                m_suji09        : PVR   32 ×  32, 9
+            file_111: # PVM,  4 files (black letters with white contour on black background)
+                o_block_a       : PVR   32 ×  32, A
+                o_block_b       : PVR   32 ×  32, B
+                o_block_c       : PVR   32 ×  32, C
+                o_block_d       : PVR   32 ×  32, D
+            file_112: PVR  128 × 128, (bomb)
+            file_113: PVR  128 × 128, BOMB
+            file_114: PVR   32 ×  32, (gradient of red, yellow and green)
+            file_115: PVR  256 ×  64, (red horizontal bar)
+            file_116: PVR  256 × 128, LOSE
+            file_117: PVR  128 ×  64, MAX
+            file_118: # PVM, 10 files (red/orange digits with contour on dark red background)
+                vs_0            : PVR   64 ×  64, 0
+                vs_1            : PVR   64 ×  64, 1
+                vs_2            : PVR   64 ×  64, 2
+                vs_3            : PVR   64 ×  64, 3
+                vs_4            : PVR   64 ×  64, 4
+                vs_5            : PVR   64 ×  64, 5
+                vs_6            : PVR   64 ×  64, 6
+                vs_7            : PVR   64 ×  64, 7
+                vs_8            : PVR   64 ×  64, 8
+                vs_9            : PVR   64 ×  64, 9
+            file_119: PVR  256 × 128, WIN
+            file_120: # PVM,  6 files
+                sabowelcome_l   : PVR  128 × 128, (cactus looking right)
+                sabowelcome_r   : PVR  128 × 128, (cactus looking left)
+                welcome         : PVR  256 × 128, Welcome to the
+                specialstage    : PVR  512 × 256, SPECIAL STAGE!!
+                welgrade        : PVR   64 ×  64, (colorful vertical gradient)
+                starmoyo        : PVR  128 × 128, (gray star pattern)
+            file_121: PVR   64 ×  64, (gray ball)
+            file_122: PVR  256 × 128, DRAW
+            file_123: PVR  256 × 128, KO
+            file_124: PVR  256 ×  64, CONTINUE
+            file_125: PVR  256 ×  64, QUIT
+            file_126: PVR 1024 × 512, INSTRUCTIONS - Battle to the beat! Shake your maracas with good timing to make your (bomb) grow bigger! When it reaches MAX, you can attack your opponent with it!
+            file_127: PVR  128 × 128, (orange bomb pattern)
+            file_128: PVR 1024 × 512, Now recognizing the Maracas Controller. Please wait... (Amigo with eyes open)
+            file_129: PVR 1024 × 512, Now recognizing the Maracas Controller. Please wait... (Amigo with eyes closed)
+            file_130: # PVM, 46 files (stage textures)
+                sda_sstage01    : PVR   64 ×  64, (circles tile pattern)
+                sda_sstage02    : PVR   64 ×  64, (bricks pattern)
+                sda_sstage03    : PVR   64 ×  64, (bricks pattern)
+                sda_ssan02low   : PVR   32 ×  32, (sad green eye)
+                sda_ssan03low   : PVR   64 ×  64, (sad mouth)
+                sda_ssan03hi    : PVR   64 ×  64, (happy open mouth)
+                sda_ssan02hi    : PVR   32 ×  32, (happy green eye)
+                sda_sbill01green: PVR   64 ×  64, (door with arch on green wall)
+                sda_sbill01blue : PVR   64 ×  64, (door with arch on blue wall)
+                sda_sbill01     : PVR   64 ×  64, (door with arch on yellow wall)
+                sda_sbill01red  : PVR   64 ×  64, (door with arch on red wall)
+                sda_sbill02     : PVR   64 ×  64, (door on yellow wall)
+                sda_sbill02blue : PVR   64 ×  64, (door on blue wall)
+                sda_sbill02green: PVR   64 ×  64, (door on green wall)
+                sda_sbill02red  : PVR   64 ×  64, (door on red wall)
+                sda_sbill03     : PVR   32 ×  32, (door or window with 3 panes)
+                sda_sbill04     : PVR   64 ×  64, CAZA DO AMIGO
+                sda_sbill05     : PVR   64 ×  64, (two doors)
+                sda_sbill06     : PVR   16 ×  16, (horizontal lines pattern)
+                sda_sbill07blue : PVR   64 ×  64, (blue rectangles on white background)
+                sda_sbill07green: PVR   64 ×  64, (green rectangles on white background)
+                sda_sbill07red  : PVR   64 ×  64, (red rectangles on white background)
+                sda_sbill08     : PVR   32 ×  32, (colorful dark dots on dark brown background)
+                sda_sbill09     : PVR   32 ×  32, (dark wood pattern)
+                sda_sbill12     : PVR   64 ×  64, LET'S AMIGO (flag?)
+                sda_sbill13     : PVR   64 ×  64, SAMBA DE AMIGO (flag?)
+                sda_sbill14     : PVR   64 ×  64, WOOH BABY! (flag?)
+                sda_ssan02      : PVR   32 ×  32, (round green eye)
+                sda_ssan03      : PVR   32 ×  32, (happy closed mouth)
+                sda_ssan04      : PVR   32 ×  32, (yellow triangle on orange background - hat?)
+                sda_ssan05      : PVR   32 ×  32, (orange triangle on dark orange background - hat?)
+                sda_kumo01      : PVR   64 ×  64, (cloud)
+                sda_kumo02      : PVR   64 ×  64, (cloud)
+                sda_kumo03      : PVR   64 ×  64, (cloud)
+                sda_sstage06    : PVR  128 × 128, (yellow and pink buildings)
+                sda_gt01        : PVR   64 ×  64, (green pattern)
+                sda_gt02        : PVR   32 ×  32, (green pattern)
+                sda_gt03        : PVR   32 ×  32, (reflection of buildings?)
+                sda_gt04        : PVR   64 ×  64, SONIC TEAM (red flag)
+                sda_gt05        : PVR   64 ×  64, SONIC TEAM (blue flag)
+                sda_tvca07      : PVR   16 ×  16, (gray pattern)
+                sda_tvs12       : PVR   16 ×  16, (yellow pattern)
+                sda_sstage10    : PVR   64 ×  64, (green pattern/tile)
+                sda_ssan01      : PVR   32 ×  32, (white and yellow pattern)
+                sda_sbill15     : PVR   16 ×  16, (white pattern)
+            file_131: # PVM, 21 files (Linda textures)
+                128_chou06      : PVR  128 × 128, (Linda's face, winking)
+                128_chou05      : PVR  128 × 128, (Linda's face, looking right)
+                0128_chou01     : PVR  128 × 128, (Linda's face, looking left)
+                032_chou01      : PVR   32 ×  32, (pink and orange background)
+                032_chou03      : PVR   32 ×  32, (cyan)
+                032_chou04      : PVR   32 ×  32, (pink pattern)
+                032_chou05      : PVR   32 ×  32, (dark purple)
+                032_chou06      : PVR   32 ×  32, (white and red pattern)
+                032_chou07      : PVR   32 ×  32, (pink and red pattern)
+                032_chou08      : PVR   32 ×  32, (orange)
+                032_chou09      : PVR   32 ×  32, (pink)
+                032_chou10      : PVR   32 ×  32, (orange half-circle on pink background)
+                064_chou01      : PVR   64 ×  64, (blueish pattern)
+                064_chou02      : PVR   64 ×  64, (circles on pink pattern)
+                064_chou03      : PVR   64 ×  64, (red heart on pink pattern)
+                064_chou04      : PVR   64 ×  64, (spiral on yellow pattern)
+                064_chou05      : PVR   64 ×  64, (red heart in pink circle - bra pattern)
+                064_chou07      : PVR   64 ×  64, (orange background with a small vertical brown line)
+                128_chou02      : PVR  128 × 128, (circles on pink pattern)
+                128_chou03      : PVR  128 × 128, (butterfly wing pattern, top)
+                128_chou04      : PVR  128 × 128, (butterfly wing pattern, bottom)
+            file_132: # PVM, 49 files (background characters' textures)
+                sda_ng0201      : PVR   64 ×  64, (...)
+                sda_ng0202      : PVR   64 ×  64, (...)
+                sda_ng0203      : PVR   64 ×  64, (...)
+                sda_ng0204      : PVR   32 ×  32, (...)
+                sda_ng0205      : PVR   16 ×  16, (...)
+                sda_ng0206      : PVR   32 ×  32, (...)
+                sda_ng0207      : PVR   32 ×  32, (...)
+                sda_ng0208      : PVR   16 ×  16, (...)
+                sda_ng0209      : PVR   32 ×  32, (...)
+                sda_ng0210      : PVR   16 ×  16, (...)
+                sda_ng0301      : PVR   64 ×  64, (...)
+                sda_ng0302      : PVR   16 ×  16, (...)
+                sda_ng0303      : PVR   16 ×  16, (...)
+                sda_ng0304      : PVR   32 ×  32, (...)
+                sda_ng0305      : PVR   32 ×  32, (...)
+                sda_ng0306      : PVR   16 ×  16, (...)
+                sda_ng0307      : PVR   16 ×  16, (...)
+                sda_ng0308      : PVR   32 ×  32, (...)
+                sda_ng0309      : PVR   32 ×  32, (...)
+                sda_ng0310      : PVR   32 ×  32, (...)
+                sda_ng0311      : PVR   64 ×  64, (...)
+                sda_ng0401      : PVR   32 ×  32, (...)
+                sda_ng0402      : PVR   64 ×  64, (...)
+                sda_ng0405      : PVR   16 ×  16, (...)
+                sda_ng0407      : PVR   16 ×  16, (...)
+                sda_ng0408      : PVR   16 ×  16, (...)
+                sda_ng0409      : PVR   32 ×  32, (...)
+                sda_ng0410      : PVR   32 ×  32, (...)
+                sda_ng0411      : PVR   32 ×  32, (...)
+                sda_ng0501      : PVR   64 ×  64, (...)
+                sda_ng0502      : PVR   16 ×  16, (...)
+                sda_ng0503      : PVR   64 ×  64, (...)
+                sda_ng0504      : PVR   64 ×  64, (...)
+                sda_ng0505      : PVR   64 ×  64, (...)
+                sda_ng0506      : PVR   32 ×  32, (...)
+                sda_ng0507      : PVR   32 ×  32, (...)
+                sda_ng0508      : PVR   16 ×  16, (...)
+                sda_ng0509      : PVR   64 ×  64, (...)
+                sda_ng0403      : PVR   32 ×  32, (...)
+                sda_ng0404      : PVR   16 ×  16, (...)
+                sda_ng0406      : PVR   16 ×  16, (...)
+                sda_ng0602      : PVR   16 ×  16, (...)
+                sda_ng0603      : PVR   32 ×  32, (...)
+                sda_ng0604      : PVR   32 ×  32, (...)
+                sda_ng0605      : PVR   32 ×  32, (...)
+                sda_ng0606      : PVR   32 ×  32, (...)
+                sda_ng0607      : PVR   32 ×  32, (...)
+                sda_ng0608      : PVR   32 ×  32, (...)
+                sda_ng0601      : PVR   64 ×  64, (...)
+            file_133: # PVM, 72 files (background characters' textures)
+                sda_sbill08     : PVR   16 ×  16, (...)
+                sda_tvs02       : PVR   64 ×  64, (...)
+                sda_tvs03       : PVR   64 ×  64, (...)
+                sda_tvs04       : PVR  128 × 128, (...)
+                sda_tvs06       : PVR   64 ×  64, (...)
+                sda_tvs07       : PVR   16 ×  16, (...)
+                sda_tvs08       : PVR   16 ×  16, (...)
+                sda_tvs09       : PVR   32 ×  32, (...)
+                sda_tvs0101     : PVR  128 × 128, (...)
+                sda_tvs11       : PVR   16 ×  16, (...)
+                sda_tvs12       : PVR   32 ×  32, (...)
+                sda_tvs14       : PVR   32 ×  32, (...)
+                sda_tvs15       : PVR   64 ×  64, (...)
+                032_pro01       : PVR   32 ×  32, (...)
+                032_pro02       : PVR   32 ×  32, (...)
+                032_pro03       : PVR   32 ×  32, (...)
+                032_pro04       : PVR   32 ×  32, (...)
+                032_pro05       : PVR   32 ×  32, (...)
+                032_pro06       : PVR   32 ×  32, (...)
+                032_pro07       : PVR   32 ×  32, (...)
+                032_skaf02      : PVR   32 ×  32, (...)
+                064_mara01      : PVR   64 ×  64, (...)
+                064_pro01       : PVR   64 ×  64, (...)
+                sda_tvs05       : PVR   32 ×  32, (...)
+                sda_tvs10       : PVR   32 ×  32, (...)
+                sda_tvs13       : PVR  128 × 128, (...)
+                sda_tvst01      : PVR   64 ×  64, (...)
+                sda_tvst02      : PVR   64 ×  64, (...)
+                sda_tvst03      : PVR   32 ×  32, (...)
+                sda_tvst04      : PVR   32 ×  32, (...)
+                sda_tvst05      : PVR   32 ×  32, (...)
+                sda_tvst06      : PVR   32 ×  32, (...)
+                sda_tvst01r     : PVR   64 ×  64, (...)
+                sda_tvst02r     : PVR   64 ×  64, (...)
+                sda_tvst06r     : PVR   32 ×  32, (...)
+                sda_tvfl01      : PVR   32 ×  32, (...)
+                sda_tvfl02      : PVR   16 ×  16, (...)
+                sda_tvfl03      : PVR   16 ×  16, (...)
+                sda_tvfl04      : PVR   32 ×  32, (...)
+                sda_tvca01      : PVR   32 ×  32, (...)
+                sda_tvca02      : PVR   32 ×  32, (...)
+                sda_tvca04      : PVR   32 ×  32, (...)
+                sda_tvca05      : PVR   32 ×  32, (...)
+                sda_tvca06      : PVR   64 ×  64, (...)
+                sda_tvca07      : PVR   16 ×  16, (...)
+                sda_tvfl01blue  : PVR   32 ×  32, (...)
+                sda_tvfl01yellow: PVR   32 ×  32, (...)
+                sda_tvfl01parpl : PVR   32 ×  32, (...)
+                sda_tvfl01green : PVR   32 ×  32, (...)
+                sda_tvback01    : PVR  128 × 128, (...)
+                sda_tvback02    : PVR  128 × 128, (...)
+                sda_tvback03    : PVR  128 × 128, (...)
+                sda_tvback04    : PVR  128 × 128, (...)
+                sda_tvback06    : PVR  128 × 128, (...)
+                sda_tvback07    : PVR   32 ×  32, (...)
+                sda_tvca03      : PVR   32 ×  32, (...)
+                sda_tvl01       : PVR   32 ×  32, (...)
+                sda_tvl02       : PVR   16 ×  16, (...)
+                sda_tvl03       : PVR   16 ×  16, (...)
+                sda_tvl04       : PVR   16 ×  16, (...)
+                sda_tvl05       : PVR   16 ×  16, (...)
+                sda_sp01        : PVR   64 ×  64, (...)
+                sda_sp02        : PVR   32 ×  32, (...)
+                sda_sp03        : PVR   32 ×  32, (...)
+                032_new02       : PVR   32 ×  32, (...)
+                032_kyaku06     : PVR   32 ×  32, (...)
+                032_kyaku07     : PVR   32 ×  32, (...)
+                032_new01       : PVR   32 ×  32, (...)
+                032_new04       : PVR   32 ×  32, (...)
+                032_new03       : PVR   32 ×  32, (...)
+                032_new05       : PVR   32 ×  32, (...)
+                032_new06       : PVR   32 ×  32, (...)
+            file_134: # PVM, 24 files (Bingo Bongo's textures)
+                032_kuku08      : PVR   32 ×  32, (...)
+                032_kuma01      : PVR   32 ×  32, (...)
+                032_kuma03      : PVR   32 ×  32, (...)
+                032_kuma04      : PVR   32 ×  32, (...)
+                032_kuma05      : PVR   32 ×  32, (...)
+                032_kuma06      : PVR   32 ×  32, (...)
+                032_kuma07      : PVR   32 ×  32, (...)
+                032_kuma09      : PVR   32 ×  32, (...)
+                032_kuma10      : PVR   32 ×  32, (...)
+                064_38          : PVR   64 ×  64, (...)
+                064_hand        : PVR   64 ×  64, (...)
+                064_kuku01      : PVR   64 ×  64, (...)
+                064_kuku02      : PVR   64 ×  64, (...)
+                064_kuku07      : PVR   64 ×  64, (...)
+                064_kuma06      : PVR   64 ×  64, (...)
+                064_kuma09      : PVR   64 ×  64, (...)
+                128_kuku01      : PVR  128 × 128, (...)
+                128_kuku02      : PVR  128 × 128, (...)
+                064_kuma01      : PVR   64 ×  64, (...)
+                064_kuma02      : PVR   64 ×  64, (...)
+                064_kuma07      : PVR   64 ×  64, (...)
+                064_kuma08      : PVR   64 ×  64, (...)
+                128_kuma01      : PVR  128 × 128, (...)
+                128_kuma02      : PVR  128 × 128, (...)
+            file_135: # PVM, 50 files (background characters' textures)
+                032_pro01       : PVR   32 ×  32, (...)
+                032_pro02       : PVR   32 ×  32, (...)
+                032_pro03       : PVR   32 ×  32, (...)
+                032_pro04       : PVR   32 ×  32, (...)
+                032_pro05       : PVR   32 ×  32, (...)
+                032_pro06       : PVR   32 ×  32, (...)
+                032_pro07       : PVR   32 ×  32, (...)
+                064_pro01       : PVR   64 ×  64, (...)
+                016_elvis01     : PVR   16 ×  16, (...)
+                016_elvis02     : PVR   16 ×  16, (...)
+                016_elvis03     : PVR   16 ×  16, (...)
+                032_elvis01     : PVR   32 ×  32, (...)
+                032_elvis02     : PVR   32 ×  32, (...)
+                032_elvis03     : PVR   32 ×  32, (...)
+                032_elvis04     : PVR   32 ×  32, (...)
+                032_elvis05     : PVR   32 ×  32, (...)
+                032_elvis06     : PVR   32 ×  32, (...)
+                032_elvis07     : PVR   32 ×  32, (...)
+                032_elvis08     : PVR   32 ×  32, (...)
+                032_elvis09     : PVR   32 ×  32, (...)
+                032_elvis10     : PVR   32 ×  32, (...)
+                032_elvis11     : PVR   32 ×  32, (...)
+                032_elvis12     : PVR   32 ×  32, (...)
+                016_gai01       : PVR   16 ×  16, (...)
+                016_gai02       : PVR   16 ×  16, (...)
+                032_gai01       : PVR   32 ×  32, (...)
+                032_gai02       : PVR   32 ×  32, (...)
+                032_gai03       : PVR   32 ×  32, (...)
+                032_gai04       : PVR   32 ×  32, (...)
+                032_gai05       : PVR   32 ×  32, (...)
+                032_gai06       : PVR   32 ×  32, (...)
+                032_gai07       : PVR   32 ×  32, (...)
+                032_gai08       : PVR   32 ×  32, (...)
+                032_gai09       : PVR   32 ×  32, (...)
+                032_kyaku02     : PVR   32 ×  32, (...)
+                016_cook01      : PVR   16 ×  16, (...)
+                016_cook02      : PVR   16 ×  16, (...)
+                016_cook03      : PVR   16 ×  16, (...)
+                032_cook01      : PVR   32 ×  32, (...)
+                032_cook02      : PVR   32 ×  32, (...)
+                032_cook03      : PVR   32 ×  32, (...)
+                032_cook04      : PVR   32 ×  32, (...)
+                032_cook05      : PVR   32 ×  32, (...)
+                032_cook06      : PVR   32 ×  32, (...)
+                032_cook07      : PVR   32 ×  32, (...)
+                032_cook08      : PVR   32 ×  32, (...)
+                032_cook09      : PVR   32 ×  32, (...)
+                032_kuma07      : PVR   32 ×  32, (...)
+                064_cook01      : PVR   64 ×  64, (...)
+                064_cook02      : PVR   64 ×  64, (...)
+            file_136: # PVM, 69 files (background characters' textures)
+                sda3_st01       : PVR   64 ×  64, (...)
+                sda3_st02       : PVR   64 ×  64, (...)
+                sda3_st03       : PVR   64 ×  64, (...)
+                sda3_st04       : PVR   32 ×  32, (...)
+                sda3_st05       : PVR  128 × 128, (...)
+                sda3_st06       : PVR   64 ×  64, (...)
+                sda3_st07       : PVR   32 ×  32, (...)
+                sda3_yasi05     : PVR   64 ×  64, (...)
+                sda3_kumo2      : PVR   64 ×  64, (...)
+                sda3_kumo       : PVR   64 ×  64, (...)
+                sda3_hata01     : PVR   64 ×  64, (...)
+                sda3_hata02     : PVR   64 ×  64, (...)
+                sda3_hata03     : PVR   64 ×  64, (...)
+                sda3_hata04     : PVR   64 ×  64, (...)
+                sda3_st08       : PVR   32 ×  32, (...)
+                sda3_st09       : PVR   32 ×  32, (...)
+                sda3_yasi02     : PVR   32 ×  32, (...)
+                sda3_yasi01     : PVR   32 ×  32, (...)
+                sda3_yasi03     : PVR   32 ×  32, (...)
+                sda3_yasi04     : PVR   32 ×  32, (...)
+                sda3_yagura01   : PVR   64 ×  64, (...)
+                sda3_yagura02   : PVR   32 ×  32, (...)
+                sda3_yagura03   : PVR   32 ×  32, (...)
+                sda3_yagura04   : PVR   32 ×  32, (...)
+                sda3_yagura05   : PVR   32 ×  32, (...)
+                sda3_obj03off   : PVR   32 ×  32, (...)
+                sda3_obj04off   : PVR   32 ×  32, (...)
+                sda3_obj05off   : PVR   32 ×  32, (...)
+                sda_spot01      : PVR   32 ×  32, (...)
+                sda3_obj01      : PVR   32 ×  32, (...)
+                sda3_obj02      : PVR   32 ×  32, (...)
+                sda3_obj03      : PVR   32 ×  32, (...)
+                sda3_obj04      : PVR   32 ×  32, (...)
+                sda3_obj05      : PVR   32 ×  32, (...)
+                sda3_obj06      : PVR   32 ×  32, (...)
+                sda3_sp01       : PVR   64 ×  64, (...)
+                sda3_sp02       : PVR   32 ×  32, (...)
+                sda3_sp04       : PVR   32 ×  32, (...)
+                sda3_sp05       : PVR   64 ×  64, (...)
+                sda3_st10       : PVR   32 ×  32, (...)
+                sda_ssan02      : PVR   32 ×  32, (...)
+                sda_ssan01      : PVR   32 ×  32, (...)
+                sda_ssan02hi    : PVR   32 ×  32, (...)
+                sda_ssan02low   : PVR   32 ×  32, (...)
+                sda_ssan03      : PVR   64 ×  64, (...)
+                sda_ssan03hi    : PVR   64 ×  64, (...)
+                sda_ssan03low   : PVR   64 ×  64, (...)
+                sda_ssan04      : PVR   32 ×  32, (...)
+                sda_ssan05      : PVR   32 ×  32, (...)
+                sda3_star32     : PVR   32 ×  32, (...)
+                s3_sng02        : PVR   64 ×  64, (...)
+                s3_sng05        : PVR   64 ×  64, (...)
+                s3_sng06        : PVR   64 ×  64, (...)
+                s3_sng07        : PVR   64 ×  64, (...)
+                s3_sng08        : PVR   64 ×  64, (...)
+                sda3_ng01       : PVR   64 ×  64, (...)
+                s3_sng04        : PVR   64 ×  64, (...)
+                s3_sng03        : PVR   64 ×  64, (...)
+                016_dol01       : PVR   16 ×  16, (...)
+                016_dol02       : PVR   16 ×  16, (...)
+                032_dol01       : PVR   32 ×  32, (...)
+                032_dol02       : PVR   32 ×  32, (...)
+                032_dol03       : PVR   32 ×  32, (...)
+                032_dol04       : PVR   32 ×  32, (...)
+                032_dol05       : PVR   32 ×  32, (...)
+                sda3_umi00      : PVR   32 ×  32, (...)
+                sda3_umi01      : PVR   32 ×  32, (...)
+                sda3_umi02      : PVR   32 ×  32, (...)
+                sda3_umi03      : PVR   64 ×  64, (...)
+            file_137: # PVM, 46 files (Rio and Chumba and Wanba' textures)
+                016_hyou01      : PVR   16 ×  16, (...)
+                016_hyou02      : PVR   16 ×  16, (...)
+                016_hyou03      : PVR   16 ×  16, (...)
+                016_hyou04      : PVR   16 ×  16, (...)
+                016_hyou05      : PVR   16 ×  16, (...)
+                032_hyou01      : PVR   32 ×  32, (...)
+                032_hyou02      : PVR   32 ×  32, (...)
+                032_hyou03      : PVR   32 ×  32, (...)
+                032_hyou05      : PVR   32 ×  32, (...)
+                064_hyou01      : PVR   64 ×  64, (...)
+                064_hyou02      : PVR   64 ×  64, (...)
+                064_hyou03      : PVR   64 ×  64, (...)
+                128_hyou01      : PVR  128 × 128, (...)
+                128_hyou02      : PVR  128 × 128, (...)
+                128_hyou03      : PVR  128 × 128, (...)
+                128_hyou04      : PVR  128 × 128, (...)
+                016_gita01      : PVR   16 ×  16, (...)
+                016_gita02      : PVR   16 ×  16, (...)
+                032_gita01      : PVR   32 ×  32, (...)
+                032_gita02      : PVR   32 ×  32, (...)
+                032_gita03      : PVR   32 ×  32, (...)
+                032_gita04      : PVR   32 ×  32, (...)
+                032_gita05      : PVR   32 ×  32, (...)
+                032_gita06      : PVR   32 ×  32, (...)
+                032_gita07      : PVR   32 ×  32, (...)
+                064_gita01      : PVR   64 ×  64, (...)
+                064_gita02      : PVR   64 ×  64, (...)
+                064_gita03      : PVR   64 ×  64, (...)
+                064_gita04      : PVR   64 ×  64, (...)
+                064_gita05      : PVR   64 ×  64, (...)
+                064_gita06      : PVR   64 ×  64, (...)
+                064_gita07      : PVR   64 ×  64, (...)
+                064_gita09      : PVR   64 ×  64, (...)
+                064_gita10      : PVR   64 ×  64, (...)
+                064_gita11      : PVR   64 ×  64, (...)
+                128_gita01      : PVR  128 × 128, (...)
+                032_kon01       : PVR   32 ×  32, (...)
+                032_kuma02      : PVR   32 ×  32, (...)
+                064_gita08      : PVR   64 ×  64, (...)
+                064_grass01     : PVR   64 ×  64, (...)
+                064_kon01       : PVR   64 ×  64, (...)
+                064_kon02       : PVR   64 ×  64, (...)
+                064_kon03       : PVR   64 ×  64, (...)
+                064_kon04       : PVR   64 ×  64, (...)
+                064_kon05       : PVR   64 ×  64, (...)
+                064_kon06       : PVR   64 ×  64, (...)
+            file_138: # PVM, 28 files (background characters' textures)
+                banzai_hada_8    : PVR    8 ×   8, (...)
+                banzai_kao1_64   : PVR   64 ×  64, (...)
+                banzai_mimi_16   : PVR   16 ×  16, (...)
+                02_f2            : PVR   32 ×  32, (...)
+                02f2             : PVR   64 ×  64, (...)
+                02h              : PVR   64 ×  64, (...)
+                02h2             : PVR   64 ×  64, (...)
+                02h3             : PVR   32 ×  32, (...)
+                02kutu           : PVR   32 ×  32, (...)
+                dance_huku1_64   : PVR   64 ×  64, (...)
+                dance_huku2_64   : PVR   64 ×  64, (...)
+                dance_kao1_64    : PVR   64 ×  64, (...)
+                dance_kao2_64    : PVR   64 ×  64, (...)
+                dance_kutu_32    : PVR   32 ×  32, (...)
+                dance_mimi_16    : PVR   16 ×  16, (...)
+                dance_pants_32   : PVR   32 ×  32, (...)
+                dance_sode_32    : PVR   32 ×  32, (...)
+                dance_tenohira_32: PVR   32 ×  32, (...)
+                gori_ashi_32     : PVR   32 ×  32, (...)
+                gori_hada_8      : PVR    8 ×   8, (...)
+                gori_huku1_64    : PVR   64 ×  64, (...)
+                gori_huku2_64    : PVR   64 ×  64, (...)
+                gori_kao3_64     : PVR   64 ×  64, (...)
+                gori_kao4_64     : PVR   64 ×  64, (...)
+                gori_kutu_32     : PVR   32 ×  32, (...)
+                gori_tenohira_32 : PVR   32 ×  32, (...)
+                gori_ude_32      : PVR   32 ×  32, (...)
+                gori_zubon_32    : PVR   32 ×  32, (...)
+            file_139: # PVM, 77 files (background characters' textures, others)
+                sda_ssan02       : PVR   32 ×  32, (...)
+                sda_ssan01       : PVR   32 ×  32, (...)
+                sda_ssan03hi     : PVR   64 ×  64, (...)
+                sda_ssan04       : PVR   32 ×  32, (...)
+                sda_ssan05       : PVR   32 ×  32, (...)
+                sda_slbk01       : PVR   64 ×  64, (...)
+                sda_slbk02       : PVR   64 ×  64, (...)
+                sda_slbk03       : PVR   64 ×  64, (...)
+                sda_slmara01     : PVR   32 ×  32, (...)
+                sda_slmara03     : PVR   32 ×  32, (...)
+                sda_slmara04     : PVR   32 ×  32, (...)
+                sda_sssan01      : PVR   32 ×  32, (...)
+                sda_sssan02      : PVR   32 ×  32, (...)
+                sda_sssan03      : PVR   32 ×  32, (...)
+                sda_sssan04      : PVR   32 ×  32, (...)
+                sda_sssan05      : PVR   32 ×  32, (...)
+                sda_sssan06      : PVR   64 ×  64, (...)
+                sdasb03_b        : PVR   64 ×  64, (...)
+                sdasb02_b        : PVR   64 ×  64, (...)
+                sdasb02_d        : PVR   64 ×  64, (...)
+                sdasb01_d        : PVR   64 ×  64, (...)
+                sdasb01_e        : PVR   64 ×  64, (...)
+                sdasb02_a        : PVR   32 ×  32, (...)
+                sdasb01_a        : PVR   32 ×  32, (...)
+                sdasb02_e        : PVR   64 ×  64, (...)
+                sdasb03_a        : PVR   64 ×  64, (...)
+                sdasb03_d        : PVR   64 ×  64, (...)
+                sdasb03_e        : PVR   64 ×  64, (...)
+                sdassobj_a05     : PVR   16 ×  16, (...)
+                sdasb05_a        : PVR   32 ×  32, (...)
+                sdasb06_a        : PVR   16 ×  16, (...)
+                sdasb07_a        : PVR   32 ×  32, (...)
+                sdasskozal01     : PVR   64 ×  64, (...)
+                sdasskozal02     : PVR   32 ×  32, (...)
+                sdasskozal03     : PVR   32 ×  32, (...)
+                sdasskozal04     : PVR   64 ×  64, (...)
+                sdasskozal05     : PVR   64 ×  64, (...)
+                sdassobj_a01     : PVR   64 ×  64, (...)
+                sdassobj_a02     : PVR   32 ×  32, (...)
+                sdassobj_a03     : PVR   16 ×  16, (...)
+                sdassobj_a04     : PVR   32 ×  32, (...)
+                sdasb04_a        : PVR   32 ×  32, (...)
+                sdassobj_a06     : PVR   32 ×  32, (...)
+                sdassobj_a07     : PVR   32 ×  32, (...)
+                sdassobj_a08     : PVR   32 ×  32, (...)
+                sdassobj_a09     : PVR   32 ×  32, (...)
+                sdassobj_a10     : PVR   32 ×  32, (...)
+                sdassobj_a11     : PVR   32 ×  32, (...)
+                sdassobj_a12     : PVR   64 ×  64, (...)
+                sdassobj_a13     : PVR   32 ×  32, (...)
+                sdassobj_a14     : PVR   16 ×  16, (...)
+                sdassobj_a15     : PVR   16 ×  16, (...)
+                sdassobj_a16     : PVR   64 ×  64, (...)
+                sdassobj_a17     : PVR   32 ×  32, (...)
+                sdassobj_a18     : PVR   32 ×  32, (...)
+                sdassobj_a19     : PVR   16 ×  16, (...)
+                sdassobj_e01     : PVR   32 ×  32, (...)
+                sdassobj_e02     : PVR   32 ×  32, (...)
+                sdassobj_e03     : PVR   32 ×  32, (...)
+                sdassobj_e04     : PVR   64 ×  64, (...)
+                sdassobj_e05     : PVR   32 ×  32, (...)
+                sdassobj_e06     : PVR   32 ×  32, (...)
+                128_a01          : PVR  128 × 128, (characters in space suits)
+                128_b01          : PVR  128 × 128, (Amigo riding a horse)
+                128_b02          : PVR  128 × 128, (Linda)
+                128_c01          : PVR  128 × 128, (Wamba at the bar)
+                128_c02          : PVR  128 × 128, (Chumba preparing a cocktail)
+                128_c03          : PVR  128 × 128, (Rio working out)
+                128_c04          : PVR  128 × 128, (Bingo and Bongo, with bingo taking off the top part of his costume)
+                128_d01          : PVR  128 × 128, (Amigo looking at a maraca for the 1st time?)
+                128_d02          : PVR  128 × 128, (Amigo cowboy)
+                128_d03          : PVR  128 × 128, (Amigo leaving home)
+                128_d04          : PVR  128 × 128, (Amigo's mother crying)
+                128_e01          : PVR  128 × 128, (Amigo on the boxing ring)
+                128_b03          : PVR  128 × 128, (Linda)
+                064_jet          : PVR   64 ×  64, (...)
+                spaceship        : PVR  128 × 128, (maraca spaceship)
+            file_140: # PVM, 12 files (options)
+                w_tvset_50hz     : PVR  256 ×  64, (...)
+                w_tvset_60hz     : PVR  256 ×  64, (...)
+                w_tvset_test     : PVR  256 ×  64, (...)
+                w_tvset_1        : PVR  128 × 128, (...)
+                w_tvset_2        : PVR  128 × 128, (...)
+                w_tvset_3        : PVR  128 × 128, (...)
+                w_tvset_win50hz  : PVR  256 × 256, (...)
+                w_tvset_win60hz  : PVR  256 × 256, (...)
+                w_tvset_wintest  : PVR  256 × 256, (...)
+                w_tvset_title    : PVR  512 × 128, (...)
+                w_buck_tvsetting : PVR  128 × 128, (...)
+                w_tvset_amigoface: PVR  512 × 256, (...)
+            file_141: PVR  256 × 128, Shake higher!
+            file_142: PVR  256 × 128, Shake lower!
+        US: # same content as PAL above, except for 3 files
+            file_25 : PVR 1024 × 512, PRESENTED BY SEGA (® larger than in the PAL version)
+            file_55 : PVR  512 × 256, No VMU found. Insert a VM to Slot   of the Controller connected to Port   . (use VMU instead of VM like in the PAL version)
+            file_106: 
+                segaltd         : PVR  512 ×  64, Original Game © SEGA, 1999 - © SEGA/SONICTEAM, LTD., 2000 (there is no LTD. in the PAL version)
+    AFS_VOICE.AFS:             # [J, U, U, 33 ADX/audio files in J, 26 files in U]
+        JP:
+            file_1  : タイミングよくマラカスを振ると爆弾が膨らんでマックスになると相手を攻撃だ
+            file_2  : サンバで二人でバットるしよう
+            file_3  : SFX
+            file_4  : SFX
+            file_5  : SFX
+            file_6  : SFX
+            file_7  : SFX
+            file_8  : SFX
+            file_9  : SFX
+            file_10 : SFX
+            file_11 : SFX
+            file_12 : あなたたちのラブラブとは
+            file_13 : サンバで2人のラブラブ度がわかるぞ
+            file_14 : 2人の息がピッタリあえばラブでるぞ！
+            file_15 : 2人でラブを集めてラブラブ度をあげよう！
+            file_16 : お手本と同じリズム同じ場所でマラカスを振れ
+            file_17 : バックから出てくるモグラをたたけ
+            file_18 : とにかく連打ガンガンふりまくって岩をぶちこわせ
+            file_19 : 1ー2ーサンバの順番でうて！間違ってバクダンをうつと、バクハツするぞ！
+            file_20 : つぎつぎかわるポーズマークとおなじポーズをとれ！
+            file_21 : Raise or lower the left maraca to select an item and shake the right maraca to enter your selection
+            file_22 : 左のマラカスをじょっげんに動かしてせんたくし右のマラカスを振って決定しましょう
+            file_23 : Be sure to snap your wrist when shaking the maracas
+            file_24 : マラカスは手首のスナップを使って縦に振りましょう
+            file_25 : You must earn a C rank or better to clear each stage, so let the rhythm move you and shake those maracas
+            file_26 : Cランク以上でステージクリアです。音楽に乗ってノリノリでマラカスを振りましょう
+            file_27 : Watch for the white circles that appear on the screen and position the maracas accordingly
+            file_28 : 白いサイトを見てマラカスの一致を確認しましょう
+            file_29 : If this is you first time you'd be better selecting easy
+            file_30 : 初めての人はイージーでプレイするのがいいですよ
+            file_31 : Now select your height
+            file_32 : あなたの身長選んでください
+            file_33 : SFX
+        US:
+            file_1  : Battle to the beat
+            file_2  : Shake your maracas with good timing to make your bomb grow bigger. When it reaches max, you can attack your opponent with it.
+            file_3  : SFX
+            file_4  : SFX
+            file_5  : SFX
+            file_6  : SFX
+            file_7  : SFX
+            file_8  : SFX
+            file_9  : SFX
+            file_10 : SFX
+            file_11 : SFX
+            file_12 : Your love rating is
+            file_13 : Determine your love rating
+            file_14 : Sincronize your maracas with each other and collect love points
+            file_15 : Hit the moles that come out of the circles
+            file_16 : Shake rapidly and continously to break the rocks
+            file_17 : Hit in the order 1-2-samba! If you make a mistake and hit the bomb, it will explode. Watch out!
+            file_18 : Pose icons will be shown one after another. Just do the same pose and you'll be allright.
+            file_19 : Copy the example. Shake your maracas in the same rhythm and in the same positions.
+            file_20 : Raise or lower the left maraca to select an item and shake the right maraca to enter your selection
+            file_21 : Be sure to snap your wrist when shaking the maracas
+            file_22 : You must earn a C rank or better to clear each stage, so let the rhythm move you and shake those maracas
+            file_23 : Watch for the white circles that appear on the screen and position the maracas accordingly
+            file_24 : If this is you first time you'd be better selecting easy
+            file_25 : Now select your height
+            file_26 : SFX
+
+MLT:
+    SAMBA_MINIGAME.MLT:          [J, U, U, "?"]
+    SAMBA_NORMALGAME.MLT:        [J, U, U, "?"]
+    SAMBA_SOUNDDATA.MLT:         [J, U, U, "?"]
+
